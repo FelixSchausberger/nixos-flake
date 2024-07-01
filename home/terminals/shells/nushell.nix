@@ -1,6 +1,7 @@
 {
   hostName,
   self,
+  windowManager,
   ...
 }: {
   programs.nushell = {
@@ -12,7 +13,7 @@
     '';
 
     loginFile.text = ''
-      if (tty) == "/dev/tty1" { Hyprland };
+      if (tty) == "/dev/tty1" { ${windowManager} };
     '';
 
     extraConfig = ''

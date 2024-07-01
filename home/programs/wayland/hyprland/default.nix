@@ -68,9 +68,11 @@ in {
         # "${deadd-notification-center}"
         "${pkgs.hypridle}/bin/hypridle"
         "${pkgs.hyprpaper}/bin/hyprpaper"
-        "${pkgs.smile}/bin/smile --start-hidden" # # An emoji picker for linux, with custom tags support and localization
+        "${pkgs.smile}/bin/smile --start-hidden" # Emoji picker for linux
         "${pkgs.udiskie}/bin/udiskie"
-        "wl-paste --watch cliphist store"
+        "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store";
+        "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store";
+
         "[workspace special:magic silent] wezterm start --class=floating-mode"
       ];
 

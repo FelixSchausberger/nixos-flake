@@ -62,25 +62,6 @@
 
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
-    # nix-index-db = {
-    #   url = "github:Mic92/nix-index-database";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # nix-gaming = {
-    #   url = "github:fufexan/nix-gaming";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.flake-parts.follows = "flake-parts";
-    # };
-
-    pre-commit-hooks = {
-      url = "github:cachix/pre-commit-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "flake-compat";
-    };
-
-    yazi.url = "github:sxyazi/yazi";
-
     hypridle = {
       url = "github:hyprwm/hypridle";
       inputs.hyprlang.follows = "hyprland/hyprlang";
@@ -107,22 +88,43 @@
       inputs.systems.follows = "hyprland/systems";
     };
 
-    ironbar = {
-      url = "github:JakeStanger/ironbar";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     Hyprspace = {
       url = "github:KZDKM/Hyprspace";
       inputs.hyprland.follows = "hyprland";
     };
 
+    ironbar = {
+      url = "github:JakeStanger/ironbar";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    niri = {
+      url = "github:sodiboo/niri-flake.nix";
+    };
+
+    # nix-index-db = {
+    #   url = "github:Mic92/nix-index-database";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
+    # nix-gaming = {
+    #   url = "github:fufexan/nix-gaming";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.flake-parts.follows = "flake-parts";
+    # };
+    
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nur.url = "github:nix-community/NUR";
+
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
+    };
 
     scripts.url = "./home/programs/wayland/scripts";
 
@@ -132,5 +134,7 @@
       url = "github:rafaelrc7/wayland-pipewire-idle-inhibit";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    yazi.url = "github:sxyazi/yazi";
   };
 }

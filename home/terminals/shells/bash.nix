@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, windowManager, ...}: {
   programs.bash = {
     enable = true;
 
@@ -8,7 +8,7 @@
 
     profileExtra = "
       if [ \"$(tty)\" == \"/dev/tty1\" ]; then
-        Hyprland
+        ${windowManager}
       fi
     ";
 

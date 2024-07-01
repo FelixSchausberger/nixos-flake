@@ -35,11 +35,16 @@
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
-  fileSystems."/mnt/2tb" =
-    {
-      device = "/dev/disk/by-uuid/315e4deb-50bb-4f36-89af-f9def614ed8d";
+  fileSystems."/home/fesch" =
+    { device = "/dev/disk/by-uuid/315e4deb-50bb-4f36-89af-f9def614ed8d";
       fsType = "ext4";
     };
+
+  # fileSystems."/mnt/2tb" =
+  #   {
+  #     device = "/dev/disk/by-uuid/315e4deb-50bb-4f36-89af-f9def614ed8d";
+  #     fsType = "ext4";
+  #   };
 
   swapDevices = [ ];
   # swapDevices =
