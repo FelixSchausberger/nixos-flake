@@ -2,12 +2,14 @@
 let
   # Define the variable here
   windowManager = "Hyprland"; # or "niri-session"
+  # windowManager = "sway";
 {
   imports = [
     # ./deadd-notification-center.nix # A haskell-written notification center
-    ./hyprland
+    ./hyprland # A dynamic tiling Wayland compositor that doesn't sacrifice on its looks
     ./ironbar.nix # Customizable gtk-layer-shell wlroots/sway bar written in Rust
-    ./niri
+    ./niri # A scrollable-tiling Wayland compositor
+    ./sway # An i3-compatible tiling Wayland compositor
   ];
 
   home.packages = with pkgs; [

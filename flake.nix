@@ -102,10 +102,10 @@
       url = "github:sodiboo/niri-flake.nix";
     };
 
-    # nix-index-db = {
-    #   url = "github:Mic92/nix-index-database";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    nix-index-db = {
+      url = "github:Mic92/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # nix-gaming = {
     #   url = "github:fufexan/nix-gaming";

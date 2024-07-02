@@ -1,4 +1,9 @@
+{inpiuts}
 {
+  imports = [
+    inputs.nix-index-db.hmModules.nix-index
+  ];
+  
   home = {
     homeDirectory = "/home/fesch";
     username = "fesch";
