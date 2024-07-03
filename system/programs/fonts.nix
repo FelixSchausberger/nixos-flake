@@ -8,7 +8,6 @@
       roboto
       roboto-mono
       source-serif-pro
-      symbola # Basic Latin, Greek, Cyrillic and many Symbol blocks of Unicode: Used for nh
     ];
 
     fontconfig = {

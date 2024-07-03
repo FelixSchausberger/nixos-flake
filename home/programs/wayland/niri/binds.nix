@@ -23,7 +23,7 @@
 
       "Mod+Plus".action = set-column-width "+10%";
 
-      "Mod+L".action = loginctl lock-session;
+      # "Mod+L".action = loginctl lock-session;
       
       # "XF86AudioRaiseVolume".action = spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+";
       # "XF86AudioLowerVolume".action = spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-";

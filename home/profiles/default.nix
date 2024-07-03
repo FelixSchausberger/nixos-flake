@@ -3,7 +3,7 @@
   inputs,
   ...
 }: let
-  # get these into the module system
+  # Get these into the module system
   extraSpecialArgs = {inherit inputs self;};
 
   homeImports = {
@@ -21,7 +21,7 @@
 
   pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
 in {
-  # we need to pass this to NixOS' HM module
+  # We need to pass this to NixOS' HM module
   _module.args = {inherit homeImports;};
 
   flake = {

@@ -100,6 +100,7 @@
       }
 
       #bar #end {
+        margin: 5px;
       	margin-right: 10px;
       }
       #bar #start {
