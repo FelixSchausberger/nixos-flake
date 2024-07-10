@@ -5,7 +5,9 @@
       wifi.powersave = true;
     };
 
-    hostId = "fb0ad2a7";
+    # Required by zfs. 
+    # Generate with 'head -c4 /dev/urandom | od -t x4 | cut -c9-16'
+    hostId = "89b3c408";
 
     # WiFi configuration
     wireless = {

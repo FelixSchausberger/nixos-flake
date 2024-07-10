@@ -8,7 +8,7 @@
         consoleMode = "max";
       };
 
-      grub.device = "/dev/sda"; 
+      grub.device = "/dev/nvme0n1"; 
 
       efi.canTouchEfiVariables = true;
       timeout = 0;
