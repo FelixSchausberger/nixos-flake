@@ -1,12 +1,13 @@
 {
   inputs,
+  defaultTerminal,
   pkgs,
   ...
 }: let
   browser = "${pkgs.firefox}/bin/firefox";
   # deadd-notification-center = "${pkgs.deadd-notification-center}/bin/deadd-notification-center";
   editor = "${pkgs.helix}/bin/hx";
-  terminal = "${pkgs.wezterm}/bin/wezterm";
+  terminal = "${pkgs.${defaultTerminal}}/bin/${defaultTerminal}";
 in {
   imports = [
     inputs.hyprland.homeManagerModules.default
@@ -70,8 +71,8 @@ in {
         "${pkgs.hyprpaper}/bin/hyprpaper"
         "${pkgs.smile}/bin/smile --start-hidden" # Emoji picker for linux
         "${pkgs.udiskie}/bin/udiskie"
-        "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store";
-        "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store";
+        "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store"
+        "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store"
 
         "[workspace special:magic silent] wezterm start --class=floating-mode"
       ];

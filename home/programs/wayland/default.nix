@@ -1,9 +1,8 @@
-{pkgs, ...}: 
-let
-  windowManager = "Hyprland"; 
+{pkgs, ...}: let
+  windowManager = "Hyprland";
   # windowManager = "niri-session";
   # windowManager = "sway";
-{
+in {
   imports = [
     # ./deadd-notification-center.nix # A haskell-written notification center
     ./hyprland # A dynamic tiling Wayland compositor that doesn't sacrifice on its looks

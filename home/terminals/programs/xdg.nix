@@ -1,5 +1,6 @@
 {
   config,
+  defaultTerminal,
   pkgs,
   ...
 }: let
@@ -69,7 +70,7 @@ in {
   home.packages = [
     # used by `gio open` and xdp-gtk
     (pkgs.writeShellScriptBin "xdg-terminal-exec" ''
-      ${pkgs.wezterm}/bin/wezterm "$@"
+      ${pkgs.${defaultTerminal}}/bin/${defaultTerminal} "$@"
     '')
     pkgs.xdg-utils
   ];

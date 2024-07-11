@@ -51,6 +51,8 @@
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    unstable.url = "nixpkgs/nixos-unstable";
+
     # Rest of inputs, alphabetical order
 
     helix.url = "github:SoraTenshi/helix/new-daily-driver";
@@ -99,7 +101,7 @@
     };
 
     niri.url = "github:sodiboo/niri-flake";
-    
+
     nix-index-db = {
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -110,7 +112,7 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     #   inputs.flake-parts.follows = "flake-parts";
     # };
-    
+
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";

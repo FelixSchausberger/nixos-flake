@@ -36,13 +36,13 @@ in {
           "$mod, a, exec, ${pkgs.nwg-drawer}/bin/nwg-drawer"
           "$mod, p, exec, ${pkgs.planify}/bin/io.github.alainm23.planify.quick-add"
           # "$mod, b, exec, $terminal start --class=floating-mode ${../scripts/result/bin/rbw-fzf}"
-          "$mod, v, exec, $terminal start --class=floating-mode ${../scripts/result/bin/cliphist}"
+          # "$mod, v, exec, $terminal start --class=floating-mode ${../scripts/result/bin/cliphist}"
           "alt, space, togglefloating"
           "$mod, c, exec, ironbar toggle-popup ironbar clock"
-          "$mod, i, exec, bash -c ${../scripts/result/bin/toggle-ironbar}"
+          # "$mod, i, exec, bash -c ${../scripts/result/bin/toggle-ironbar}"
           # "$mod, tab, exec, hyprspace, overview:toggle"
           "$mod ctrl, e, exec, ${pkgs.smile}/bin/smile --class=floating-mode"
-          "$mod ctrl, c, exec, ${../scripts/result/bin/toggle-vigiland}"
+          # "$mod ctrl, c, exec, ${../scripts/result/bin/toggle-vigiland}"
 
           # Move focus with mod + arrow keys
           "$mod, left, movefocus, l"

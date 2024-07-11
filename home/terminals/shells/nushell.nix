@@ -55,7 +55,9 @@
       pull = "git pull"; # --rebase origin main
       push = "git push"; # origin main
       # rebuild = "sudo nixos-rebuild --flake ${self}/#${host} switch";
-      rebuild = "nh os switch ${self}";
+      # rebuild = "nh os switch ${self}";
+      # rebuild = "nh os switch /per/etc/nixos/system/default.nix";
+      rebuild = "sudo nixos-rebuild --flake /per/etc/nixos/system/default.nix switch";
       repair = "sudo nix-store --verify --check-contents --repair";
       rip = "rip --graveyard /per/share/Trash";
     };
