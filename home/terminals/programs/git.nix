@@ -6,6 +6,7 @@
   home.packages = with pkgs; [
     # https://lgug2z.com/articles/handling-secrets-in-nixos-an-overview/
     git-crypt # Transparent file encryption in git
+    graphite-cli # CLI that makes creating stacked git changes fast & intuitive
     pre-commit # A framework for managing and maintaining multi-language pre-commit hooks
   ];
 
@@ -16,7 +17,7 @@
     delta = {enable = true;};
     extraConfig = {
       init.defaultBranch = "main";
-      pull.rebase = false;
+      pull.rebase = true;
       config.credential.helper = "libsecret";
       core.editor = "${pkgs.helix}/bin/hx";
       url = {

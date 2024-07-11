@@ -22,6 +22,7 @@
   };
 
   home.packages = with pkgs; [
+    impala # TUI for managing wifi
     quickemu # Quickly create and run virtual machines
   ];
 
