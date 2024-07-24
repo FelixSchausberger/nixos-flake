@@ -9,6 +9,8 @@
 
   programs.firefox = {
     enable = true;
+
+    policies.mozillaConfigPath = "/per/etc/.mozilla";
     profiles."default" = {
       search = {
         default = "DuckDuckGo";
@@ -78,14 +80,22 @@
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         bitwarden
         darkreader
-        # istilldontcareaboutcookies-1
-        # .1
-        # .4
+        i-dont-care-about-cookies
+        privacy-badger
+        to-deepl
         ublock-origin
+        unpaywall
         youtube-nonstop
       ];
 
+      # https://github.com/gvolpe/nix-config/blob/6feb7e4f47e74a8e3befd2efb423d9232f522ccd/home/programs/browsers/firefox.nix
       settings = {
+        "app.normandy.first_run" = false;
+        "app.shield.optoutstudies.enabled" = false;
+
+        # disable updates (pretty pointless with nix)
+        "app.update.channel" = "default";
+    
         # Performance settings
         "gfx.webrender.all" = true; # Force enable GPU acceleration
         "media.ffmpeg.vaapi.enabled" = true;
@@ -101,6 +111,15 @@
         "privacy.webrtc.legacyGlobalIndicator" = false;
 
         # Actual settings
+        "browser.search.region" = "DE";
+        "browser.search.widget.inNavBar" = true;
+
+        # disable all the annoying quick actions
+        "browser.urlbar.quickactions.enabled" = false;
+        "browser.urlbar.quickactions.showPrefs" = false;
+        "browser.urlbar.shortcuts.quickactions" = false;
+        "browser.urlbar.suggest.quickactions" = false;
+    
         "browser.bookmarks.restore_default_bookmarks" = false;
         "browser.contentblocking.category" = "strict";
         "browser.ctrlTab.recentlyUsedOrder" = false;
