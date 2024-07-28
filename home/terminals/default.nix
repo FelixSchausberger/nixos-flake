@@ -4,7 +4,6 @@
   cache = config.xdg.cacheHome;
 in {
   imports = [
-    ./emulators
     ./programs
     ./shells
   ];

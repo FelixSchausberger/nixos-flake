@@ -1,10 +1,10 @@
 {
-  self,
+  # self,
   inputs,
   ...
 }: let
   # Get these into the module system
-  extraSpecialArgs = {inherit inputs self;};
+  extraSpecialArgs = {inherit inputs;}; # self;};
 
   homeImports = {
     "fesch@desktop" = [

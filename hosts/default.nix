@@ -1,18 +1,18 @@
 {
   homeImports,
   inputs,
-  self,
+  # self,
   ...
 }: let
   # Shorten paths
   inherit (inputs.nixpkgs.lib) nixosSystem;
-  mod = "${self}/system";
+  # mod = "${self}/system";
   # Get the basic config to build on top of
-  inherit (import "${self}/system") desktop laptop;
+  inherit (import "${inputs.self}/system") desktop laptop;
   # Get these into the module system
   specialArgs = {
-    secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
-    inherit inputs self;
+    secrets = builtins.fromJSON (builtins.readFile "${inputs.self}/secrets/secrets.json");
+    inherit inputs; # self;
   };
 
   # Function to create a configuration with the host variable
@@ -30,14 +30,15 @@
             networking.hostName = hostName;
             _module.args.host = hostName;
           }
-          "${mod}/programs/hyprland.nix"
           {
             home-manager = {
               users.fesch.imports = homeImports."fesch@${hostName}";
               extraSpecialArgs = specialArgs // {inherit hostName;};
             };
           }
-          inputs.scripts.nixosModules
+          inputs.nixos-cosmic.nixosModules.default
+          inputs.lix-module.nixosModules.default
+          # inputs.scripts.nixosModules
         ]
         ++ extraModules;
     };
@@ -54,7 +55,6 @@ in {
       baseModules = laptop;
       extraModules = [
         ./surface
-        # Uncomment and adjust as needed:
         # nixos-hardware.nixosModules.microsoft-surface-pro-intel
         # {
         #   microsoft-surface.ipts.enable = true;

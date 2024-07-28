@@ -5,7 +5,6 @@
   host,
   lib,
   inputs,
-  pkgs,
   ...
 }: {
   imports = [
@@ -29,17 +28,14 @@
   # Set your time zone.
   time.timeZone = lib.mkDefault "Europe/Vienna";
 
-  environment.systemPackages = [
-    inputs.vigiland.packages.${pkgs.system}.vigiland
-  ];
-
   # Configure system-wide files.
   environment.etc = {
     "fuse.conf".text = ''
       user_allow_other
     '';
 
-    nixos.source = /per/etc/nixos/system/default.nix;
+    # nixos.source = /per/etc/nixos/system/default.nix;
+    nixos.source = "${inputs.self}";
 
     "ssh/ssh_host_ed25519_key.pub".source =
       if builtins.pathExists ../../hosts/${host}/ssh_host_ed25519_key.pub
@@ -50,7 +46,7 @@
   services.dbus.enable = true;
 
   # Compresses half the ram for use as swap
-  zramSwap.enable = true;
+  # zramSwap.enable = true;
 
   system.stateVersion = lib.mkDefault "24.05";
 }

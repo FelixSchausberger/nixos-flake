@@ -1,9 +1,4 @@
-{
-  hostName,
-  self,
-  windowManager,
-  ...
-}: {
+{hostName, ...}: {
   programs.nushell = {
     enable = true;
     envFile.text = ''
@@ -12,10 +7,7 @@
       };
     '';
 
-    loginFile.text = ''
-      if (tty) == "/dev/tty1" { ${windowManager} };
-    '';
-
+    # $nu.history-path = "/per/etc/nushell/history.txt"
     extraConfig = ''
       $env.PATH = ($env.PATH |
       split row (char esep) |
@@ -30,7 +22,7 @@
         direnv export json | from json | default {} | load-env
       }
 
-      def upgrade [] { sudo nix flake update ${self} | sudo nixos-rebuild --upgrade --flake "${self}/#${hostName}" switch }
+      def upgrade [] { sudo nix flake update /per/etc/nixos | sudo nixos-rebuild --upgrade --flake "/per/etc/nixos/#${hostName}" switch }
     '';
 
     # Move to home config once https://github.com/nushell/nushell/issues/10088 is closed
@@ -55,9 +47,7 @@
       pull = "git pull"; # --rebase origin main
       push = "git push"; # origin main
       # rebuild = "sudo nixos-rebuild --flake ${self}/#${host} switch";
-      # rebuild = "nh os switch ${self}";
-      # rebuild = "nh os switch /per/etc/nixos/system/default.nix";
-      rebuild = "sudo nixos-rebuild --flake /per/etc/nixos/system/default.nix switch";
+      rebuild = "nh os switch /per/etc/nixos";
       repair = "sudo nix-store --verify --check-contents --repair";
       rip = "rip --graveyard /per/share/Trash";
     };

@@ -1,11 +1,6 @@
 {secrets, ...}: {
   networking = {
-    networkmanager = {
-      enable = true;
-      wifi.powersave = true;
-    };
-
-    # Required by zfs. 
+    # Required by zfs.
     # Generate with 'head -c4 /dev/urandom | od -t x4 | cut -c9-16'
     hostId = "89b3c408";
 
@@ -23,7 +18,5 @@
     };
   };
 
-  environment.etc."NetworkManager/system-connections" = {
-    source = "/per/etc/NetworkManager/system-connections/";
-  };
+  environment.etc."NetworkManager/system-connections".source = "/per/etc/NetworkManager/system-connections";
 }

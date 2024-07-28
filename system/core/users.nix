@@ -1,5 +1,6 @@
 {
   pkgs,
+  secrets,
   ...
 }: {
   users.users = {
@@ -8,6 +9,7 @@
       description = "Felix Schausberger";
       extraGroups = ["networkmanager" "video" "wheel"];
       shell = pkgs.nushell;
+      password = "${secrets.fesch.password}";
     };
   };
 
