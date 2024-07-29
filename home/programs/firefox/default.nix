@@ -1,6 +1,6 @@
 {
   imports = [
     ./firefox.nix
-    ./firefox-webapp.nix
+    # ./firefox-webapp.nix
   ];
 }

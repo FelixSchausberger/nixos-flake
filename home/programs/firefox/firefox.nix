@@ -1,16 +1,80 @@
 {
   inputs,
+  lib,
   pkgs,
   ...
-}: {
+}: let
+  inherit (lib) mkForce;
+in {
   imports = [
     inputs.nur.nixosModules.nur
   ];
 
   programs.firefox = {
     enable = true;
+    languagePacks = ["de" "en-US"];
 
-    policies.mozillaConfigPath = "/per/etc/.mozilla";
+    /*
+    ---- POLICIES ----
+    */
+    # Check about:policies#documentation for options.
+    policies = {
+      "3rdparty".Extensions = {
+        # https://github.com/gorhill/uBlock/blob/master/platform/common/managed_storage.json
+        "uBlock0@raymondhill.net".adminSettings = {
+          userSettings = rec {
+            uiTheme = "dark";
+            uiAccentCustom = true;
+            uiAccentCustom0 = "#8300ff";
+            cloudStorageEnabled = mkForce false; # Security liability?
+            importedLists = [
+              "https://filters.adtidy.org/extension/ublock/filters/3.txt"
+              "https://github.com/DandelionSprout/adfilt/raw/master/LegitimateURLShortener.txt"
+            ];
+            externalLists = lib.concatStringsSep "\n" importedLists;
+          };
+          selectedFilterLists = [
+            "CZE-0"
+            "adguard-generic"
+            "adguard-annoyance"
+            "adguard-social"
+            "adguard-spyware-url"
+            "easylist"
+            "easyprivacy"
+            "https://github.com/DandelionSprout/adfilt/raw/master/LegitimateURLShortener.txt"
+            "plowe-0"
+            "ublock-abuse"
+            "ublock-badware"
+            "ublock-filters"
+            "ublock-privacy"
+            "ublock-quick-fixes"
+            "ublock-unbreak"
+            "urlhaus-1"
+          ];
+        };
+      };
+
+      FirefoxHome = {
+        Search = false;
+        TopSites = false;
+        SponsoredTopSites = false;
+        Highlights = false;
+        Pocket = false;
+        SponsoredPocket = false;
+        Snippets = false;
+        Locked = false;
+      };
+
+      Homepage = {
+        StartPage = "none";
+      };
+
+      OverrideFirstRunPage = "";
+      OverridePostUpdatePage = "";
+
+      PasswordManagerEnabled = false;
+    };
+
     profiles."default" = {
       search = {
         default = "DuckDuckGo";
@@ -90,12 +154,15 @@
 
       # https://github.com/gvolpe/nix-config/blob/6feb7e4f47e74a8e3befd2efb423d9232f522ccd/home/programs/browsers/firefox.nix
       settings = {
-        "app.normandy.first_run" = false;
-        "app.shield.optoutstudies.enabled" = false;
+        # Auto enable extensions'
+        "extensions.autoDisableScopes" = 0;
+
+        # "app.normandy.first_run" = false;
+        # "app.shield.optoutstudies.enabled" = false;
 
         # disable updates (pretty pointless with nix)
         "app.update.channel" = "default";
-    
+
         # Performance settings
         "gfx.webrender.all" = true; # Force enable GPU acceleration
         "media.ffmpeg.vaapi.enabled" = true;
@@ -119,7 +186,7 @@
         "browser.urlbar.quickactions.showPrefs" = false;
         "browser.urlbar.shortcuts.quickactions" = false;
         "browser.urlbar.suggest.quickactions" = false;
-    
+
         "browser.bookmarks.restore_default_bookmarks" = false;
         "browser.contentblocking.category" = "strict";
         "browser.ctrlTab.recentlyUsedOrder" = false;
@@ -156,7 +223,7 @@
         "extensions.getAddons.showPane" = false;
         "extensions.htmlaboutaddons.recommendations.enabled" = false;
         "extensions.pocket.enabled" = false;
-        "identity.fxaccounts.enabled" = true;
+        "identity.fxaccounts.enabled" = false;
         "privacy.trackingprotection.enabled" = true;
         "privacy.trackingprotection.socialtracking.enabled" = true;
       };
