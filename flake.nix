@@ -84,5 +84,7 @@
         flake-compat.follows = "flake-compat";
       };
     };
+
+    scripts.url = "${inputs.self}/home/scripts";
   };
 }

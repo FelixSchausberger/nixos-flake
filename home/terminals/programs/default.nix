@@ -24,9 +24,10 @@
     fd # A simple, fast and user-friendly alternative to find
     ouch # A CLI for easily compressing and decompressing files and directories
     procs # A modern replacement for ps
+    quickemu # Quickly create and run virtual machines
     rm-improved # Replacement for rm
     ripgrep-all # Ripgrep, but also search in PDFs, E-Books, Office documents, ...
-    quickemu # Quickly create and run virtual machines
+    # wl-clipboard # Command-line copy/paste utilities for Wayland
   ];
 
   services = {

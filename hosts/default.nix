@@ -36,7 +36,7 @@
           }
           inputs.nixos-cosmic.nixosModules.default
           inputs.lix-module.nixosModules.default
-          # inputs.scripts.nixosModules
+          inputs.scripts.nixosModules
         ]
         ++ extraModules;
     };
