@@ -1,9 +1,15 @@
 {
   homeImports,
   inputs,
+  lib,
   ...
 }: let
-  # Shorten paths
+  # Custom function to convert the first character to uppercase
+  capitalizeFirstChar = str: let
+    firstChar = builtins.substring 0 1 str;
+    restOfString = builtins.substring 1 (builtins.stringLength str - 1) str;
+  in "${lib.strings.toUpper firstChar}${restOfString}";
+
   inherit (inputs.nixpkgs.lib) nixosSystem;
   # Get the basic config to build on top of
   inherit (import "${inputs.self}/system") desktop laptop;
@@ -25,7 +31,7 @@
         baseModules
         ++ [
           {
-            networking.hostName = hostName;
+            networking.hostName = capitalizeFirstChar hostName;
             _module.args.host = hostName;
           }
           {
@@ -34,9 +40,6 @@
               extraSpecialArgs = specialArgs // {inherit hostName;};
             };
           }
-          inputs.nixos-cosmic.nixosModules.default
-          inputs.lix-module.nixosModules.default
-          inputs.scripts.nixosModules
         ]
         ++ extraModules;
     };

@@ -25,8 +25,9 @@
     pls = "sudo";
     # pull = "git pull"; # --rebase origin main
     # push = "git push"; # origin main
-    rebuild = "nh os -u switch /per/etc/nixos"; # "sudo nixos-rebuild --flake ${self}/#${host} switch";
+    rebuild = "nh os switch /per/etc/nixos"; # "sudo nixos-rebuild --flake ${self}/#${host} switch";
+    upgrade = "nh os switch -u /per/etc/nixos";
     repair = "sudo nix-store --verify --check-contents --repair";
-    rip = "rip --graveyard /per/share/Trash";
+    rip = "rip --graveyard .local/share/graveyard";
   };
 }

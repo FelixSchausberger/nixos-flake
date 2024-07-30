@@ -1,4 +1,8 @@
 {inputs, ...}: {
+  imports = [
+    inputs.lix-module.nixosModules.default
+  ];
+
   nixpkgs = {
     config = {
       allowUnfree = true;

@@ -1,6 +1,7 @@
 {inputs, ...}: {
   imports = [
     inputs.nix-index-db.hmModules.nix-index
+    ./persistence.nix
   ];
 
   home = {

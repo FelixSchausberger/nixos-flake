@@ -1,6 +1,6 @@
 {
+  inputs,
   pkgs,
-  helix-master,
   ...
 }: {
   imports = [./languages.nix];
@@ -8,7 +8,7 @@
   programs.helix = {
     enable = true;
     defaultEditor = true;
-    package = helix-master.packages.${pkgs.system}.default;
+    package = inputs.helix.packages.${pkgs.system}.default;
     extraPackages = [pkgs.helix-gpt];
     settings = {
       editor = {

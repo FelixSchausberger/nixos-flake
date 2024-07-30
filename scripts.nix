@@ -1,8 +1,13 @@
-{ config, lib, ... }:
-
-with lib;
-
 {
+  config,
+  lib,
+  ...
+}:
+with lib; {
+  imports = [
+    inputs.scripts.nixosModules
+  ];
+
   options = {
     services.scripts.enable = mkEnableOption "Enable custom scripts";
 
@@ -11,7 +16,6 @@ with lib;
   };
 
   config = mkIf (config.services.scripts.enable) {
-    environment.systemPackages = [ scripts.packages."x86_64-linux" ];
+    environment.systemPackages = [scripts.packages."x86_64-linux"];
   };
 }
-

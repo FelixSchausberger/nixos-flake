@@ -1,8 +1,8 @@
 {pkgs, ...}: {
   programs.helix.languages = {
     # the language-server option currently requires helix from the master branch at https://github.com/helix-editor/helix/
-    language-server.gpt = with pkgs.nodePackages; {
-      command = "${helix-gpt}/bin/helix-gpt";
+    language-server.gpt = {
+      command = "${pkgs.helix-gpt}/bin/helix-gpt";
     };
 
     # language-server.typescript-language-server = with pkgs.nodePackages; {
@@ -10,7 +10,7 @@
     #   args = [ "--stdio" "--tsserver-path=${typescript}/lib/node_modules/typescript/lib" ];
     #   language-id = "javascript";
     # };
-  
+
     language = [
       {
         name = "bash";
@@ -36,7 +36,6 @@
         language-servers = [
           "gpt"
         ];
-
       }
       {
         name = "toml";

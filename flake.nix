@@ -58,12 +58,15 @@
     };
 
     # Rest of inputs, alphabetical order
-    helix.url = "github:SoraTenshi/helix/new-daily-driver";
+    # helix.url = "github:SoraTenshi/helix/new-daily-driver";
+    helix.url = "github:helix-editor/helix";
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    impermanence.url = "github:nix-community/impermanence";
 
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
@@ -85,6 +88,6 @@
       };
     };
 
-    scripts.url = "${inputs.self}/home/scripts";
+    scripts.url = "./home/scripts";
   };
 }

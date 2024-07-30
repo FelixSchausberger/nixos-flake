@@ -18,5 +18,5 @@
     };
   };
 
-  environment.etc."NetworkManager/system-connections".source = "/per/etc/NetworkManager/system-connections";
+  # environment.etc."NetworkManager/system-connections".source = "/per/etc/NetworkManager/system-connections";
 }

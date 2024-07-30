@@ -3,21 +3,21 @@
   fonts = {
     packages = with pkgs; [
       (nerdfonts.override {fonts = ["FiraCode"];})
-      font-awesome
-      noto-fonts-emoji-blob-bin # Needed for planify
-      roboto
-      roboto-mono
+      # font-awesome
+      # noto-fonts-emoji-blob-bin # Needed for planify
+      # roboto
+      # roboto-mono
       # source-serif-pro
     ];
 
-    fontconfig = {
-      defaultFonts = {
-        # monospace = [ "FiraCode Mono" ];
-        # sansSerif = [ "FiraCode" ];
-        monospace = ["Roboto Mono"];
-        sansSerif = ["Roboto"];
-        serif = ["Source Serif Pro"];
-      };
-    };
+    # fontconfig = {
+    #   defaultFonts = {
+    #     # monospace = [ "FiraCode Mono" ];
+    #     # sansSerif = [ "FiraCode" ];
+    #     monospace = ["Roboto Mono"];
+    #     sansSerif = ["Roboto"];
+    #     serif = ["Source Serif Pro"];
+    #   };
+    # };
   };
 }
