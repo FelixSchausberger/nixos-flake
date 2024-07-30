@@ -132,7 +132,7 @@ in {
             definedAliases = ["@yt"];
           };
 
-          # disable default search engines
+          # Disable default search engines
           "Amazon.de".metaData.hidden = true;
           "Bing".metaData.hidden = true;
           # "DuckDuckGo".metaData.hidden = true;
@@ -144,6 +144,7 @@ in {
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         bitwarden
         darkreader
+        ff2mpv
         i-dont-care-about-cookies
         privacy-badger
         to-deepl
@@ -154,44 +155,21 @@ in {
 
       # https://github.com/gvolpe/nix-config/blob/6feb7e4f47e74a8e3befd2efb423d9232f522ccd/home/programs/browsers/firefox.nix
       settings = {
-        # Auto enable extensions'
-        "extensions.autoDisableScopes" = 0;
+        # disable Studies
+        # disable Normandy/Shield [FF60+]
+        # Shield is a telemetry system that can push and test "recipes"
+        "app.normandy.first_run" = false;
+        "app.shield.optoutstudies.enabled" = false;
 
-        # "app.normandy.first_run" = false;
-        # "app.shield.optoutstudies.enabled" = false;
-
-        # disable updates (pretty pointless with nix)
+        # Disable updates (pretty pointless with nix)
         "app.update.channel" = "default";
-
-        # Performance settings
-        "gfx.webrender.all" = true; # Force enable GPU acceleration
-        "media.ffmpeg.vaapi.enabled" = true;
-        "widget.dmabuf.force-enabled" = true; # Required in recent Firefoxes
-
-        # Keep the reader button enabled at all times; really don't
-        # care if it doesn't work 20% of the time, most websites are
-        # crap and unreadable without this
-        "reader.parse-on-load.force-enabled" = true;
-
-        # Hide the "sharing indicator", it's especially annoying
-        # with tiling WMs on wayland
-        "privacy.webrtc.legacyGlobalIndicator" = false;
-
-        # Actual settings
-        "browser.search.region" = "DE";
-        "browser.search.widget.inNavBar" = true;
-
-        # disable all the annoying quick actions
-        "browser.urlbar.quickactions.enabled" = false;
-        "browser.urlbar.quickactions.showPrefs" = false;
-        "browser.urlbar.shortcuts.quickactions" = false;
-        "browser.urlbar.suggest.quickactions" = false;
 
         "browser.bookmarks.restore_default_bookmarks" = false;
         "browser.contentblocking.category" = "strict";
         "browser.ctrlTab.recentlyUsedOrder" = false;
         "browser.discovery.enabled" = false;
         "browser.laterrun.enabled" = false;
+        
         "browser.newtabpage.activity-stream.showSearch" = false;
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" =
           false;
@@ -205,27 +183,71 @@ in {
         "browser.newtabpage.activity-stream.showSponsored" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.newtabpage.pinned" = false;
-        "browser.startup.homepage.StartPage" = "none";
-        "browser.startup.page.StartPage" = "none";
-        "signon.rememberSignons" = false;
-        "pref.privacy.disable_button.view_passwords" = false;
+        
+        "browser.search.region" = "DE";
+        "browser.search.widget.inNavBar" = true;
+
         "browser.protections_panel.infoMessage.seen" = true;
         "browser.quitShortcut.disabled" = true;
         "browser.shell.checkDefaultBrowser" = false;
         "browser.ssb.enabled" = true;
+        
+        "browser.startup.homepage.StartPage" = "none";
+        "browser.startup.page.StartPage" = "none";
+        
         "browser.toolbars.bookmarks.visibility" = "never";
+        
+        # Disable all the annoying quick actions
         "browser.urlbar.placeholderName" = "DuckDuckGo";
+        "browser.urlbar.quickactions.enabled" = false;
+        "browser.urlbar.quickactions.showPrefs" = false;
+        "browser.urlbar.shortcuts.quickactions" = false;
+        "browser.urlbar.suggest.quickactions" = false;
         "browser.urlbar.suggest.openpage" = false;
+
         "datareporting.policy.dataSubmissionEnable" = false;
         "datareporting.policy.dataSubmissionPolicyAcceptedVersion" = 2;
+
+        "doh-rollout.doneFirstRun" = true;
+        
         "dom.security.https_only_mode" = true;
         "dom.security.https_only_mode_ever_enabled" = true;
+
+        # Auto enable extensions
+        "extensions.autoDisableScopes" = 0;
         "extensions.getAddons.showPane" = false;
         "extensions.htmlaboutaddons.recommendations.enabled" = false;
         "extensions.pocket.enabled" = false;
+
+        "gfx.webrender.all" = true; # Force enable GPU acceleration
+
         "identity.fxaccounts.enabled" = false;
+
+        "media.ffmpeg.vaapi.enabled" = true;
+        
+        "pref.privacy.disable_button.view_passwords" = false;
+
+        "print.print_footerleft" = "";
+        "print.print_footerright" = "";
+        "print.print_headerleft" = "";
+        "print.print_headerright" = "";
+
+        "privacy.donottrackheader.enabled" = true;
+        
         "privacy.trackingprotection.enabled" = true;
         "privacy.trackingprotection.socialtracking.enabled" = true;
+        # Hide the "sharing indicator", it's especially annoying
+        # with tiling WMs on wayland
+        "privacy.webrtc.legacyGlobalIndicator" = false;
+
+        # Keep the reader button enabled at all times; really don't
+        # care if it doesn't work 20% of the time, most websites are
+        # crap and unreadable without this
+        "reader.parse-on-load.force-enabled" = true;
+
+        "signon.rememberSignons" = false;
+
+        "widget.dmabuf.force-enabled" = true; # Required in recent Firefoxes
       };
     };
   };

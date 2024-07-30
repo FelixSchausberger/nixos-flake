@@ -8,9 +8,9 @@ in {
     ./shells
   ];
 
-  # add environment variables
+  # Add environment variables
   home.sessionVariables = {
-    # clean up ~
+    # Clean up home directory
     LESSHISTFILE = "${cache}/less/history";
     LESSKEY = "${conf}/less/lesskey";
 
@@ -20,7 +20,7 @@ in {
     EDITOR = "hx";
     DIRENV_LOG_FORMAT = "";
 
-    # auto-run programs using nix-index-database
+    # Auto-run programs using nix-index-database
     NIX_AUTO_RUN = "1";
   };
 }

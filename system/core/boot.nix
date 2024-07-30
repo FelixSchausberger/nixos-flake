@@ -19,31 +19,6 @@
 
     supportedFilesystems = ["ntfs" "zfs"];
     initrd = {
-      #   systemd = {
-      #   	enable = lib.mkDefault true;
-
-      #   	services.rollback = {
-      #   	  description = "Rollback root filesystem to a pristine state on boot";
-      #   	  wantedBy = [
-      #   	    "initrd.target"
-      #   	  ];
-      #   	  after = [
-      #   	    "zfs-import-zpool.service"
-      #   	  ];
-      #   	  before = [
-      #   	    "sysroot.mount"
-      #   	  ];
-      #   	  path = with pkgs; [
-      #   	    zfs
-      #   	  ];
-      #   	  unitConfig.DefaultDependencies = "no";
-      #   	  serviceConfig.Type = "oneshot";
-      #   	  script = ''
-      #   	    zfs rollback -r rpool/eyd/root@blank && echo "  >> >> rollback complete << <<"
-      #   	  '';
-      #   	};
-      # };
-
       # Enable wipe-on-boot
       # Might ned mkAfter or might need mkBefore
       # Remember to add 'lib' as a param to the enclosing function

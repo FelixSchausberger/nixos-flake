@@ -1,8 +1,4 @@
 {
-  # hostName,
-  # self,
-  ...
-}: {
   imports = [
     ./bash.nix # GNU Bourne-Again Shell, the de facto standard shell on Linux
     ./nushell.nix # A modern shell written in Rust
@@ -15,17 +11,22 @@
     br = "broot";
     cat = "bat";
     # cd = "z";
-    # cleanup = "sudo nix store gc --debug"; # "sudo nix-collect-garbage";
-    cleanup = "nh clean all";
+    clone = "git clone";
+    cleanup = "nh clean all"; # "sudo nix store gc --debug"; # "sudo nix-collect-garbage";
     cp = "cp -rpv";
+    fetch = "git fetch";
+    # ga = "git add -p"; # --interactive
+    # gcm = "git commit -m";
+    # gst = "git status";
     ll = "br -sdp";
+    log = "git log --graph --abbrev-commit --all";
     merge = "rsync -avhu --progress";
     nixinfo = "nix-shell -p nix-info --run 'nix-info -m'";
     pls = "sudo";
-    # rebuild = "sudo nixos-rebuild --flake ${self}/#${host} switch";
-    # rebuild = "nh os switch ${self} -H ${hostName}";
+    # pull = "git pull"; # --rebase origin main
+    # push = "git push"; # origin main
+    rebuild = "nh os -u switch /per/etc/nixos"; # "sudo nixos-rebuild --flake ${self}/#${host} switch";
     repair = "sudo nix-store --verify --check-contents --repair";
     rip = "rip --graveyard /per/share/Trash";
-    # upgrade = "sudo nix flake update ${self} && sudo nixos-rebuild --upgrade --flake ${self}/#${hostName} switch";
   };
 }

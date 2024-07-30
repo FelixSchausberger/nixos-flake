@@ -34,7 +34,6 @@
       user_allow_other
     '';
 
-    # nixos.source = /per/etc/nixos/system/default.nix;
     nixos.source = "${inputs.self}";
 
     "ssh/ssh_host_ed25519_key.pub".source =

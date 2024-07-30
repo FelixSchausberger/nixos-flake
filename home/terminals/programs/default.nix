@@ -2,7 +2,6 @@
   imports = [
     ./bat.nix # A cat clone with syntax highlighting and Git integration
     ./broot.nix # An interactive tree view, a fuzzy search, a balanced BFS descent
-    ./cli.nix # CLI utils
     ./direnv.nix # A shell extension that manages your environment
     ./fzf.nix # A command-line fuzzy finder written in Go
     ./git.nix # Distributed version control system
@@ -16,11 +15,17 @@
   ];
 
   programs = {
+    bottom.enable = true; # A cross-platform graphical process/system monitor
     home-manager.enable = true; # A Nix-based user environment configurator
     nix-index.enable = true; # A files database for nixpkgs
   };
 
   home.packages = with pkgs; [
+    fd # A simple, fast and user-friendly alternative to find
+    ouch # A CLI for easily compressing and decompressing files and directories
+    procs # A modern replacement for ps
+    rm-improved # Replacement for rm
+    ripgrep-all # Ripgrep, but also search in PDFs, E-Books, Office documents, ...
     quickemu # Quickly create and run virtual machines
   ];
 

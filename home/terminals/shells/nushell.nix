@@ -21,8 +21,6 @@
 
         direnv export json | from json | default {} | load-env
       }
-
-      def upgrade [] { sudo nix flake update /per/etc/nixos | sudo nixos-rebuild --upgrade --flake "/per/etc/nixos/#${hostName}" switch }
     '';
 
     # Move to home config once https://github.com/nushell/nushell/issues/10088 is closed
@@ -32,8 +30,7 @@
       cat = "bat";
       cd = "z";
       clone = "git clone";
-      # cleanup = "sudo nix store gc --debug"; # "sudo nix-collect-garbage";
-      cleanup = "nh clean all";
+      cleanup = "nh clean all"; # "sudo nix store gc --debug"; # "sudo nix-collect-garbage";
       cp = "cp -rpv";
       fetch = "git fetch";
       ga = "git add -p"; # --interactive
@@ -46,8 +43,7 @@
       pls = "sudo";
       pull = "git pull"; # --rebase origin main
       push = "git push"; # origin main
-      # rebuild = "sudo nixos-rebuild --flake ${self}/#${host} switch";
-      rebuild = "nh os switch /per/etc/nixos";
+      rebuild = "nh os -u switch /per/etc/nixos"; # "sudo nixos-rebuild --flake ${self}/#${host} switch";
       repair = "sudo nix-store --verify --check-contents --repair";
       rip = "rip --graveyard /per/share/Trash";
     };

@@ -14,8 +14,4 @@
     steam
     wineWowPackages.waylandFull
   ];
-
-  # hardware = {
-  #   xpadneo.enable = true;
-  # };
 }

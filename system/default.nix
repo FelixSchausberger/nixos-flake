@@ -1,7 +1,7 @@
 let
   desktop = [
     ./core
-    ./network
+    ./network.nix
     ./programs
   ];
 

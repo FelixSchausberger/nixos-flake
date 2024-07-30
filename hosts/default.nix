@@ -1,18 +1,16 @@
 {
   homeImports,
   inputs,
-  # self,
   ...
 }: let
   # Shorten paths
   inherit (inputs.nixpkgs.lib) nixosSystem;
-  # mod = "${self}/system";
   # Get the basic config to build on top of
   inherit (import "${inputs.self}/system") desktop laptop;
   # Get these into the module system
   specialArgs = {
     secrets = builtins.fromJSON (builtins.readFile "${inputs.self}/secrets/secrets.json");
-    inherit inputs; # self;
+    inherit inputs;
   };
 
   # Function to create a configuration with the host variable

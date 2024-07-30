@@ -7,7 +7,7 @@
       noto-fonts-emoji-blob-bin # Needed for planify
       roboto
       roboto-mono
-      source-serif-pro
+      # source-serif-pro
     ];
 
     fontconfig = {

@@ -2,7 +2,7 @@
   imports = [
     ./cosmic.nix
     ./development.nix
-    ./fonts.nix
+    # ./fonts.nix
     ./home-manager.nix
   ];
 }

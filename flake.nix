@@ -52,15 +52,12 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     # nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-    # unstable.url = "nixpkgs/nixos-unstable";
-
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Rest of inputs, alphabetical order
-
     helix.url = "github:SoraTenshi/helix/new-daily-driver";
 
     home-manager = {
@@ -78,18 +75,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # nix-gaming = {
-    #   url = "github:fufexan/nix-gaming";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.flake-parts.follows = "flake-parts";
-    # };
-
     nur.url = "github:nix-community/NUR";
 
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "flake-compat";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-compat.follows = "flake-compat";
+      };
     };
   };
 }
