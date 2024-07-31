@@ -1,7 +1,7 @@
 let
   desktop = [
     ./core
-    ./hardware
+    # ./hardware
     ./network.nix
     ./persistence.nix
     ./programs

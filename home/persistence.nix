@@ -1,9 +1,9 @@
-{inputs, ...}: {
+{config, inputs, ...}: {
   imports = [
     (inputs.impermanence + "/home-manager.nix")
   ];
 
-  home.persistence."/per/home/fesch" = {
+  home.persistence."/per/home/${config.home.username}" = {
     allowOther = true;
     removePrefixDirectory = false;
     directories = [

@@ -1,3 +1,4 @@
+{host, inputs, ...}:
 {
   programs.nushell = {
     enable = true;
@@ -29,7 +30,7 @@
       cat = "bat";
       cd = "z";
       clone = "git clone";
-      cleanup = "nh clean all"; # "sudo nix store gc --debug"; # "sudo nix-collect-garbage";
+      cleanup = "sudo nix-collect-garbage";
       cp = "cp -rpv";
       fetch = "git fetch";
       ga = "git add -p"; # --interactive
@@ -42,8 +43,8 @@
       pls = "sudo";
       pull = "git pull"; # --rebase origin main
       push = "git push"; # origin main
-      rebuild = "nh os switch /per/etc/nixos"; # "sudo nixos-rebuild --flake ${self}/#${host} switch";
-      upgrade = "nh os switch -u /per/etc/nixos";
+      rebuild = "sudo nixos-rebuild --flake ${inputs.self}/#${host} switch";
+      upgrade = "rebuild --upgrade";
       repair = "sudo nix-store --verify --check-contents --repair";
       rip = "rip --graveyard .local/share/graveyard";
     };

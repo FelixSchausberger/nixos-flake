@@ -33,6 +33,7 @@
       gcm = "git commit -m";
       gst = "git status";
       log = "git log --graph --abbrev-commit --all";
+      # prune = "git filter-branch --index-filter \"git rm -f --cached --ignore-unmatch $1/*\" --prune-empty --tag-name-filter cat -- --all"
       pull = "git pull";
       push = "git push";
     };

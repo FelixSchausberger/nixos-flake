@@ -3,14 +3,14 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   host,
-  lib,
   inputs,
+  lib,
   ...
 }: {
   imports = [
     ./boot.nix
     ../nix
-    ./security.nix
+    ./security
     ./users.nix
   ];
 
@@ -28,12 +28,10 @@
   # Set your time zone.
   time.timeZone = lib.mkDefault "Europe/Vienna";
 
+  programs.fuse.userAllowOther = true;
+
   # Configure system-wide files.
   environment.etc = {
-    "fuse.conf".text = ''
-      user_allow_other
-    '';
-
     nixos.source = "${inputs.self}";
 
     "ssh/ssh_host_ed25519_key.pub".source =

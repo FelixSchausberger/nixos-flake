@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ./nh.nix
     ./nixpkgs.nix
     ./substituters.nix
   ];

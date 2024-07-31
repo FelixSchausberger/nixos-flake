@@ -89,5 +89,7 @@
     };
 
     scripts.url = "./home/scripts";
+
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 }

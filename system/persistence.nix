@@ -11,7 +11,7 @@
         "/var/log"
       ];
       files = [
-        "/etc/machine-id"
+        "/etc/machine-id" # Needed for systemd logs 
       ];
       # users.fesch = {
       #   directories = [

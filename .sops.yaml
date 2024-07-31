@@ -1,0 +1,10 @@
+keys:
+  - &remote age1...
+  - &personal age1...
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini|sops)$
+    key_groups:
+      - age:
+          - *remote
+          - *personal
+
