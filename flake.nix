@@ -50,15 +50,13 @@
     };
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
+    # Rest of inputs, alphabetical order
+    firefox-nightly = {
+      url = "github:nix-community/flake-firefox-nightly";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Rest of inputs, alphabetical order
-    # helix.url = "github:SoraTenshi/helix/new-daily-driver";
     helix.url = "github:helix-editor/helix";
 
     home-manager = {
@@ -70,8 +68,9 @@
 
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixpkgs.follows = "nixos-cosmic/nixpkgs";
 
     nix-index-db = {
       url = "github:Mic92/nix-index-database";
@@ -88,8 +87,13 @@
       };
     };
 
-    scripts.url = "./home/scripts";
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     sops-nix.url = "github:Mic92/sops-nix";
+
+    yazi.url = "github:sxyazi/yazi";
   };
 }

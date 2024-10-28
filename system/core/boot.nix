@@ -1,6 +1,7 @@
 {
+  config,
   lib,
-  pkgs,
+  # pkgs,
   ...
 }: {
   boot = {
@@ -9,6 +10,7 @@
         enable = true;
         editor = false; # Set to true allows gaining root access by passing init=/bin/sh as a kernel parameter
         consoleMode = "max";
+        configurationLimit = 3;
       };
 
       grub.device = "/dev/nvme0n1";
@@ -27,7 +29,8 @@
       '';
     };
 
-    kernelPackages = pkgs.zfs.latestCompatibleLinuxPackages;
+    kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages; # pkgs.zfs.latestCompatibleLinuxPackages;
+    # kernelPackages = pkgs.linuxPackages_6_6;
     kernelParams = ["nohibernate" "quiet" "udev.log_level=3"];
   };
 

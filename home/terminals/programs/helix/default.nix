@@ -1,5 +1,5 @@
 {
-  inputs,
+  # inputs,
   pkgs,
   ...
 }: {
@@ -8,8 +8,14 @@
   programs.helix = {
     enable = true;
     defaultEditor = true;
-    package = inputs.helix.packages.${pkgs.system}.default;
-    extraPackages = [pkgs.helix-gpt];
+    # package = inputs.helix.packages.${pkgs.system}.default;
+    package = pkgs.evil-helix;
+
+    extraPackages = [
+      pkgs.helix-gpt
+      pkgs.markdown-oxide
+    ];
+
     settings = {
       editor = {
         gutters = ["diff" "line-numbers" "spacer" "diagnostics"];

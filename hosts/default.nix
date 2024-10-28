@@ -11,10 +11,10 @@
   in "${lib.strings.toUpper firstChar}${restOfString}";
 
   inherit (inputs.nixpkgs.lib) nixosSystem;
-  
+
   # Get the basic config to build on top of
   inherit (import "${inputs.self}/system") desktop laptop;
-  
+
   # Get these into the module system
   specialArgs = {
     secrets = builtins.fromJSON (builtins.readFile "${inputs.self}/secrets/secrets.json");
@@ -26,28 +26,32 @@
     hostName,
     baseModules,
     extraModules ? [],
-  }: nixosSystem {
-    inherit specialArgs;
-    modules = baseModules ++ [
-      {
-        # Capitalize the first character of the hostname
-        networking.hostName = capitalizeFirstChar hostName;
-        _module.args.host = hostName;
-      }
-      {
-        home-manager = {
-          users.fesch.imports = homeImports."fesch@${hostName}";
-          extraSpecialArgs = specialArgs // { inherit hostName; };
-        };
-      }
-    ] ++ extraModules;
-  };
+  }:
+    nixosSystem {
+      inherit specialArgs;
+      modules =
+        baseModules
+        ++ [
+          {
+            # Capitalize the first character of the hostname
+            networking.hostName = capitalizeFirstChar hostName;
+            _module.args.hostName = hostName;
+          }
+          {
+            home-manager = {
+              users.fesch.imports = homeImports."fesch@${hostName}";
+              extraSpecialArgs = specialArgs // {inherit hostName;};
+            };
+          }
+        ]
+        ++ extraModules;
+    };
 in {
   flake.nixosConfigurations = {
     desktop = mkHostConfig {
       hostName = "desktop";
       baseModules = desktop;
-      extraModules = [ ./desktop ];
+      extraModules = [./desktop];
     };
 
     surface = mkHostConfig {

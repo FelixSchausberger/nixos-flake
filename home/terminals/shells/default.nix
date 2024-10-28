@@ -1,8 +1,12 @@
-{host, inputs, ...}:
 {
+  config,
+  hostName,
+  ...
+}: {
   imports = [
     ./bash.nix # GNU Bourne-Again Shell, the de facto standard shell on Linux
-    ./nushell.nix # A modern shell written in Rust
+    ./fish.nix # Smart and user-friendly command line shell
+    # ./nushell.nix # A modern shell written in Rust
     ./starship.nix # A minimal, blazing fast, and extremely customizable prompt
     ./zoxide.nix # A fast cd command that learns your habits
   ];
@@ -26,9 +30,10 @@
     pls = "sudo";
     # pull = "git pull"; # --rebase origin main
     # push = "git push"; # origin main
-    rebuild = "sudo nixos-rebuild --flake ${inputs.self}/#${host} switch";
-    upgrade = "rebuild --upgrade";
+    rebuild = "sudo nixos-rebuild --flake /per/etc/nixos/#${hostName} switch";
+    # upgrade = "rebuild --upgrade";
+    upgrade = "nix flake update --flake /per/etc/nixos";
     repair = "sudo nix-store --verify --check-contents --repair";
-    rip = "rip --graveyard .local/share/graveyard";
+    rip = "rip --graveyard /per/home/${config.home.username}/.local/share/graveyard";
   };
 }

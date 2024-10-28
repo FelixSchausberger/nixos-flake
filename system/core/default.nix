@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
-  host,
+  hostName,
   inputs,
   lib,
   ...
@@ -35,8 +35,8 @@
     nixos.source = "${inputs.self}";
 
     "ssh/ssh_host_ed25519_key.pub".source =
-      if builtins.pathExists ../../hosts/${host}/ssh_host_ed25519_key.pub
-      then ../../hosts/${host}/ssh_host_ed25519_key.pub
+      if builtins.pathExists ../../hosts/${hostName}/ssh_host_ed25519_key.pub
+      then ../../hosts/${hostName}/ssh_host_ed25519_key.pub
       else null;
   };
 

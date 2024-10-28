@@ -1,5 +1,8 @@
-{host, inputs, ...}:
 {
+  config,
+  hostName,
+  ...
+}: {
   programs.nushell = {
     enable = true;
     envFile.text = ''
@@ -21,6 +24,16 @@
 
         direnv export json | from json | default {} | load-env
       }
+
+      def --env y [...args] {
+      	let tmp = (mktemp -t "yazi-cwd.XXXXXX")
+      	yazi ...$args --cwd-file $tmp
+      	let cwd = (open $tmp)
+      	if $cwd != "" and $cwd != $env.PWD {
+      		cd $cwd
+      	}
+      	rm -fp $tmp
+      }
     '';
 
     # Move to home config once https://github.com/nushell/nushell/issues/10088 is closed
@@ -38,15 +51,16 @@
       gst = "git status";
       ll = "br -sdp";
       log = "git log --graph --abbrev-commit --all";
-      merge = "rsync -avhu --progress";
+      merge = "sudo rsync -avhu --progress";
       nixinfo = "nix-shell -p nix-info --run 'nix-info -m'";
       pls = "sudo";
       pull = "git pull"; # --rebase origin main
       push = "git push"; # origin main
-      rebuild = "sudo nixos-rebuild --flake ${inputs.self}/#${host} switch";
-      upgrade = "rebuild --upgrade";
+      rebuild = "sudo nixos-rebuild --flake /per/etc/nixos/#${hostName} switch";
+      # upgrade = "rebuild --upgrade";
+      upgrade = "nix flake update --flake /per/etc/nixos";
       repair = "sudo nix-store --verify --check-contents --repair";
-      rip = "rip --graveyard .local/share/graveyard";
+      rip = "rip --graveyard /per/home/${config.home.username}/.local/share/graveyard";
     };
   };
 }

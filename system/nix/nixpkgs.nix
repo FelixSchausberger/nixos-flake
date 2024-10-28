@@ -1,8 +1,4 @@
 {inputs, ...}: {
-  imports = [
-    inputs.lix-module.nixosModules.default
-  ];
-
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -11,6 +7,9 @@
       ];
       allowBroken = true;
     };
-    overlays = [inputs.nur.overlay];
+
+    overlays = [
+      inputs.nur.overlay
+    ];
   };
 }

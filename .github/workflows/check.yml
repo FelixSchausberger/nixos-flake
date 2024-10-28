@@ -11,6 +11,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: cachix/install-nix-action@v26
         with:
+          key_encoded: ${{ secrets.KEY }}
           install_url: https://nixos.org/nix/install
           extra_nix_config: |
             auto-optimise-store = true

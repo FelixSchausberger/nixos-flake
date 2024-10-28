@@ -2,7 +2,7 @@
   programs.rbw = {
     enable = true;
     settings = {
-      email = "fel.schausberger@gmail.com";
+      email = "131732042+FelixSchausberger@users.noreply.github.com";
       # pinentry = "tty";
     };
   };

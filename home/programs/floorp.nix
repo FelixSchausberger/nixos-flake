@@ -10,14 +10,10 @@ in {
     inputs.nur.nixosModules.nur
   ];
 
-  programs.firefox = {
+  programs.floorp = {
     enable = true;
     languagePacks = ["de" "en-US"];
 
-    /*
-    ---- POLICIES ----
-    */
-    # Check about:policies#documentation for options.
     policies = {
       "3rdparty".Extensions = {
         # https://github.com/gorhill/uBlock/blob/master/platform/common/managed_storage.json
@@ -141,16 +137,18 @@ in {
         };
       };
 
+      # https://nur.nix-community.org/repos/rycee/
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        bitwarden
-        darkreader
-        ff2mpv
-        i-dont-care-about-cookies
-        privacy-badger
-        to-deepl
-        ublock-origin
-        unpaywall
-        youtube-nonstop
+        bitwarden # At home, at work, or on the go, Bitwarden easily secures all your passwords, passkeys, and sensitive information.
+        ff2mpv # Tries to play links in mpv.
+        i-dont-care-about-cookies #  	Get rid of cookie warnings from almost all websites!
+        keepa # → Price History charts → Price Drop & Availability Alerts→ Over 1 billion tracked products→ Supports Amazon.com
+        privacy-badger # Automatically learns to block invisible trackers.
+        tree-style-tab # Shows tabs like a tree.
+        ublock-origin # Finally, an efficient wide-spectrum content blocker. Easy on CPU and memory.
+        unpaywall # Get free text of research papers as you browse, using Unpaywall’s index of ten million legal, open-access articles.
+        vimium # The Hacker’s Browser.
+        youtube-nonstop # Tired of getting that “Video paused. Continue watching?” confirmation dialog?
       ];
 
       # https://github.com/gvolpe/nix-config/blob/6feb7e4f47e74a8e3befd2efb423d9232f522ccd/home/programs/browsers/firefox.nix
@@ -164,12 +162,13 @@ in {
         # Disable updates (pretty pointless with nix)
         "app.update.channel" = "default";
 
+        "browser.aboutConfig.showWarning" = false;
         "browser.bookmarks.restore_default_bookmarks" = false;
         "browser.contentblocking.category" = "strict";
         "browser.ctrlTab.recentlyUsedOrder" = false;
         "browser.discovery.enabled" = false;
         "browser.laterrun.enabled" = false;
-        
+
         "browser.newtabpage.activity-stream.showSearch" = false;
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" =
           false;
@@ -183,7 +182,7 @@ in {
         "browser.newtabpage.activity-stream.showSponsored" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.newtabpage.pinned" = false;
-        
+
         "browser.search.region" = "DE";
         "browser.search.widget.inNavBar" = true;
 
@@ -191,13 +190,15 @@ in {
         "browser.quitShortcut.disabled" = true;
         "browser.shell.checkDefaultBrowser" = false;
         "browser.ssb.enabled" = true;
-        
+
         "browser.startup.homepage.StartPage" = "none";
         "browser.startup.page.StartPage" = "none";
-        
+
+        "browser.tabs.allow_transparent_browser" = true;
         "browser.toolbars.bookmarks.visibility" = "never";
-        
+
         # Disable all the annoying quick actions
+        "browser.urlbar.hidebuttons" = true;
         "browser.urlbar.placeholderName" = "DuckDuckGo";
         "browser.urlbar.quickactions.enabled" = false;
         "browser.urlbar.quickactions.showPrefs" = false;
@@ -209,7 +210,7 @@ in {
         "datareporting.policy.dataSubmissionPolicyAcceptedVersion" = 2;
 
         "doh-rollout.doneFirstRun" = true;
-        
+
         "dom.security.https_only_mode" = true;
         "dom.security.https_only_mode_ever_enabled" = true;
 
@@ -224,7 +225,7 @@ in {
         "identity.fxaccounts.enabled" = false;
 
         "media.ffmpeg.vaapi.enabled" = true;
-        
+
         "pref.privacy.disable_button.view_passwords" = false;
 
         "print.print_footerleft" = "";
@@ -233,7 +234,7 @@ in {
         "print.print_headerright" = "";
 
         "privacy.donottrackheader.enabled" = true;
-        
+
         "privacy.trackingprotection.enabled" = true;
         "privacy.trackingprotection.socialtracking.enabled" = true;
         # Hide the "sharing indicator", it's especially annoying
@@ -247,8 +248,49 @@ in {
 
         "signon.rememberSignons" = false;
 
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+
+        "ui.key.menuAccessKeyFocuses" = false;
+
         "widget.dmabuf.force-enabled" = true; # Required in recent Firefoxes
       };
+
+      userChrome = ''
+        /* Disable back, forward and close button */
+        /* #back-button, */
+        #forward-button { display:none!important; }
+
+        .titlebar-buttonbox-container{ display:none }
+
+        /* Hide tab close buttons */
+        .tabbrowser-tab .tab-close-button {
+          visibility: collapse !important;
+        }
+
+        #sidebar-header {
+          display: none;
+        }
+
+        /* Hide extensions button */
+        #unified-extensions-button, #unified-extensions-button > .toolbarbutton-icon{
+          width: 0px !important;
+          padding: 0px !important;
+        }
+
+        /* Hide bookmark star button */
+        #star-button-box {display: none !important;}
+
+        /* Disable site information button */
+        #identity-box {display: none !important;}
+
+        /* Disable enhanced tracking protection button */
+        #tracking-protection-icon-container {display: none;}
+
+        /* Center align url text */
+        #urlbar .urlbar-input-box {
+          text-align: center !important;
+        }
+      '';
     };
   };
 }
