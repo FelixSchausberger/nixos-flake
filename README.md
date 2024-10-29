@@ -24,7 +24,6 @@ Personal configs for Home-Manager and NixOS. Using
 public ssh key.
 - [Handle secrets in nixos](https://lgug2z.com/articles/handling-secrets-in-nixos-an-overview):
   - Copy the git-crypt key from Bitwarden to the clipboard and decode the key:
-    - `wl-paste | base64 -d | save ./secrets/secret-key # nushell`
     - `wl-paste | base64 -d > ./secrets/secret-key # bash`
   - Unlock the secrets: `git-crypt unlock ./secrets/secret-key`
 6. Rebuild the system: `sudo nixos-rebuild switch --flake .`

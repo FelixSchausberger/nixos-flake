@@ -40,4 +40,9 @@ lib.mkDefault {
       }
     ];
   };
+
+  home.shellAliases = {
+    br = "broot";
+    ll = "br -sdp";
+  };
 }

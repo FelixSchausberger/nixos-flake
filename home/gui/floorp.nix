@@ -79,7 +79,7 @@ in {
           "Nix Options" = {
             urls = [{template = "https://search.nixos.org/options?type=options&query={searchTerms}";}];
             iconURL = "https://nixos.org/favicon.ico";
-            definedAliases = ["@no"];
+            definedAliases = ["no"];
           };
 
           "Nix Packages" = {
@@ -100,32 +100,32 @@ in {
             ];
 
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            definedAliases = ["@np"];
+            definedAliases = ["np"];
           };
 
           "NixOS Wiki" = {
             urls = [{template = "https://nixos.wiki/index.php?search={searchTerms}";}];
             iconUpdateURL = "https://nixos.wiki/favicon.png";
             updateInterval = 24 * 60 * 60 * 1000; # every day
-            definedAliases = ["@nw"];
+            definedAliases = ["nw"];
           };
 
           "GitHub" = {
             urls = [{template = "https://github.com/search?q={searchTerms}&type=repositories";}];
             iconURL = "https://github.com/favicon.ico";
-            definedAliases = ["@gh"];
+            definedAliases = ["gh"];
           };
 
           "Home Manager" = {
-            urls = [{template = "https://mipmip.github.io/home-manager-option-search/?query={searchTerms}";}];
+            urls = [{template = "https://home-manager-options.extranix.com/?query={searchTerms}&release=master";}];
             iconURL = "https://nixos.org/favicon.ico";
-            definedAliases = ["@hm"];
+            definedAliases = ["hm"];
           };
 
           "YouTube" = {
             urls = [{template = "https://www.youtube.com/results?search_query={searchTerms}";}];
             iconURL = "https://www.youtube.com/favicon.ico";
-            definedAliases = ["@yt"];
+            definedAliases = ["yt"];
           };
 
           # Disable default search engines
@@ -134,6 +134,7 @@ in {
           # "DuckDuckGo".metaData.hidden = true;
           "eBay".metaData.hidden = true;
           "Wikipedia (en)".metaData.hidden = true;
+          "You.com".metaData.hidden = true;
         };
       };
 
@@ -144,10 +145,10 @@ in {
         i-dont-care-about-cookies #  	Get rid of cookie warnings from almost all websites!
         keepa # → Price History charts → Price Drop & Availability Alerts→ Over 1 billion tracked products→ Supports Amazon.com
         privacy-badger # Automatically learns to block invisible trackers.
-        tree-style-tab # Shows tabs like a tree.
+        # tree-style-tab # Shows tabs like a tree.
         ublock-origin # Finally, an efficient wide-spectrum content blocker. Easy on CPU and memory.
         unpaywall # Get free text of research papers as you browse, using Unpaywall’s index of ten million legal, open-access articles.
-        vimium # The Hacker’s Browser.
+        vimium-c # The Hacker’s Browser.
         youtube-nonstop # Tired of getting that “Video paused. Continue watching?” confirmation dialog?
       ];
 

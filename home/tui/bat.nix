@@ -8,6 +8,7 @@
   };
 
   home.shellAliases = {
+    cat = "bat";
     rg = "batgrep";
   };
 }

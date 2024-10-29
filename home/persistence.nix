@@ -11,35 +11,33 @@
     allowOther = true;
     removePrefixDirectory = false;
     directories = [
+      # ".gnupg"
+      # ".local/share/direnv"
+      ".local/share/graveyard"
+
       {
         directory = ".config/cosmic/";
         method = "symlink";
       }
-      # ".gnupg"
-      # ".local/share/direnv"
-      ".local/share/graveyard"
-      # ".mozilla"
-      # {
-      #   directory = ".local/share/graveyard";
-      #   method = "symlink";
-      # }
-      # {
-      #   directory = ".mozilla";
-      #   method = "symlink";
-      # }
-      # ".ssh"
-      # {
-      #   directory = ".local/share/Steam";
-      #   method = "symlink";
-      # }
       {
         directory = ".config/rclone/";
         method = "symlink";
       }
+      {
+        directory = ".local/share/Steam";
+        method = "symlink";
+      }
+      {
+        directory = ".mozilla";
+        method = "symlink";
+      }
+      {
+        directory = ".ssh";
+        method = "symlink";
+      }
     ];
-    # files = [
-    # ".config/nushell/history.txt"
-    # ".config/rclone/rclone.conf"
-    # ];
+    files = [
+      ".local/share/fish/fish_history"
+    ];
   };
 }

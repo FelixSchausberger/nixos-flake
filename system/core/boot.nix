@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  # pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   boot = {
     loader = {
       systemd-boot = {
@@ -21,16 +16,21 @@
 
     supportedFilesystems = ["ntfs" "zfs"];
     initrd = {
-      # Enable wipe-on-boot
-      # Might ned mkAfter or might need mkBefore
-      # Remember to add 'lib' as a param to the enclosing function
-      postDeviceCommands = lib.mkAfter ''
-        zfs rollback -r rpool/eyd/root@blank
-      '';
+      systemd.enable = true;
+
+      # systemd in initrd requires a service instead of a command
+      systemd.services.reset = {
+        description = "reset root filesystem";
+        wantedBy = ["initrd.target"];
+        after = ["zfs-import.target"];
+        before = ["sysroot.mount"];
+        path = with pkgs; [zfs];
+        unitConfig.DefaultDependencies = "no";
+        serviceConfig.Type = "oneshot";
+        script = "zfs rollback -r rpool/eyd/root@blank";
+      };
     };
 
-    kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages; # pkgs.zfs.latestCompatibleLinuxPackages;
-    # kernelPackages = pkgs.linuxPackages_6_6;
     kernelParams = ["nohibernate" "quiet" "udev.log_level=3"];
   };
 

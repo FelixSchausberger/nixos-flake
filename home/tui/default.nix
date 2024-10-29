@@ -8,7 +8,6 @@
     ./fzf.nix # A command-line fuzzy finder written in Go
     ./git.nix # Distributed version control system
     ./helix
-    # ./i2p.nix # Applications and router for I2P, anonymity over the Internet
     ./nix.nix # Nix tooling
     ./rbw.nix # Unofficial command line client for Bitwarden
     ./rclone.nix # Sync files and directories to and from major cloud storage
@@ -24,7 +23,6 @@
   };
 
   home.packages = with pkgs; [
-    bat
     ouch # A CLI for easily compressing and decompressing files and directories
     procs # A modern replacement for ps
     quickemu # Quickly create and run virtual machines

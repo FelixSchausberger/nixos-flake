@@ -58,6 +58,11 @@
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-1.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Rest of inputs, alphabetical order
     firefox-nightly = {
       url = "github:nix-community/flake-firefox-nightly";

@@ -3,6 +3,7 @@ let
     ./core
     ./network.nix
     ./programs
+    ./persistence.nix # Module to help you handle persistent state on systems
   ];
 
   laptop =
