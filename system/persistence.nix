@@ -13,7 +13,7 @@
     files = [
       "/etc/machine-id"
     ];
-    users.fesch = {
+    users.${inputs.self.lib.user} = {
       directories = [
         "Downloads"
         "Music"

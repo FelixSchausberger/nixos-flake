@@ -1,4 +1,8 @@
-{inputs, ...}: let
+{
+  config,
+  inputs,
+  ...
+}: let
   data = config.xdg.dataHome;
   conf = config.xdg.configHome;
   cache = config.xdg.cacheHome;
@@ -13,7 +17,7 @@ in {
 
     sessionVariables = {
       XDG_RUNTIME_DIR = "/run/user/$UID";
-    
+
       # Clean up home directory
       LESSHISTFILE = "${cache}/less/history";
       LESSKEY = "${conf}/less/lesskey";
