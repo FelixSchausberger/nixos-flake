@@ -1,17 +1,16 @@
 {
-  # pkgs,
+  inputs,
   secrets,
   ...
 }: {
   users.users = {
-    fesch = {
+    ${inputs.self.lib.user} = {
       isNormalUser = true;
       description = "Felix Schausberger";
       extraGroups = ["networkmanager" "video" "wheel"];
-      # shell = pkgs.nushell;
-      password = "${secrets.fesch.password}";
+      password = "${secrets.${inputs.self.lib.user}.password}";
     };
   };
 
-  services.getty.autologinUser = "fesch";
+  services.getty.autologinUser = inputs.self.lib.user;
 }

@@ -39,7 +39,7 @@
           }
           {
             home-manager = {
-              users.fesch.imports = homeImports."fesch@${hostName}";
+              users.${inputs.self.lib.user}.imports = homeImports."${inputs.self.lib.user}@${hostName}";
               extraSpecialArgs = specialArgs // {inherit hostName;};
             };
           }

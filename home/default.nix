@@ -5,8 +5,8 @@
   ];
 
   home = {
-    homeDirectory = "/home/fesch";
-    username = "fesch";
+    homeDirectory = "/home/${inputs.self.lib.user}";
+    username = inputs.self.lib.user;
 
     sessionVariables = {
       XDG_RUNTIME_DIR = "/run/user/$UID";

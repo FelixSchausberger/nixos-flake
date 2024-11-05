@@ -3,11 +3,11 @@
   extraSpecialArgs = {inherit inputs;};
 
   homeImports = {
-    "fesch@desktop" = [
+    "${inputs.self.lib.user}@desktop" = [
       ../.
       ./desktop
     ];
-    "fesch@surface" = [
+    "${inputs.self.lib.user}@surface" = [
       ../.
       ./surface
     ];
@@ -22,13 +22,13 @@ in {
 
   flake = {
     homeConfigurations = {
-      "fesch_desktop" = homeManagerConfiguration {
-        modules = homeImports."fesch@desktop";
+      "${inputs.self.lib.user}_desktop" = homeManagerConfiguration {
+        modules = homeImports."${inputs.self.lib.user}@desktop";
         inherit pkgs extraSpecialArgs;
       };
 
-      "fesch_surface" = homeManagerConfiguration {
-        modules = homeImports."fesch@surface";
+      "${inputs.self.lib.user}_surface" = homeManagerConfiguration {
+        modules = homeImports."${inputs.self.lib.user}@surface";
         inherit pkgs extraSpecialArgs;
       };
     };
