@@ -6,5 +6,7 @@ Home-Manager configurations for different hosts.
 | --------------------- | ---------------------------------------------------- |
 | `default.nix`         | Home-Manager specific configuration                  |
 | `profiles`            | Per-device/user profiles, entry point of the configs |
-| `programs`            | Programs, games, media, etc                          |
-| `terminals`           | Terminal programs, shells, emulators, etc            |
+| `gui`                 | Programs, games, media, etc                          |
+| `shells`              | Shells, etc                                          |
+| `tui`                 | Terminal programs, emulators, etc                    |
+

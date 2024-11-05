@@ -1,7 +1,8 @@
 {pkgs, ...}: {
   imports = [
-    ../../programs
-    ../../terminals
+    ../../gui
+    ../../shells
+    ../../tui
   ];
 
   home.packages = with pkgs; [
