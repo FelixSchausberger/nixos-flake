@@ -5,7 +5,6 @@
 in {
   imports = [
     inputs.nix-index-db.hmModules.nix-index
-    ./persistence.nix # Module to help you handle persistent state on systems
   ];
 
   home = {

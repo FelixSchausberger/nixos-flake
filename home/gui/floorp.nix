@@ -259,33 +259,34 @@ in {
       userChrome = ''
         /* Disable back, forward and close button */
         /* #back-button, */
-        #forward-button { display:none!important; }
+        #forward-button {
+          display:none!important;
+        }
 
-        .titlebar-buttonbox-container{ display:none }
+        .titlebar-buttonbox-container{
+          display:none
+        }
 
         /* Hide tab close buttons */
         .tabbrowser-tab .tab-close-button {
           visibility: collapse !important;
         }
 
+        /* Hide sidebar header
         #sidebar-header {
           display: none;
         }
-
-        /* Hide extensions button */
-        #unified-extensions-button, #unified-extensions-button > .toolbarbutton-icon{
-          width: 0px !important;
-          padding: 0px !important;
-        }
-
-        /* Hide bookmark star button */
-        #star-button-box {display: none !important;}
+        */
 
         /* Disable site information button */
-        #identity-box {display: none !important;}
+        #identity-box {
+          display: none !important;
+        }
 
         /* Disable enhanced tracking protection button */
-        #tracking-protection-icon-container {display: none;}
+        #tracking-protection-icon-container {
+          display: none;
+        }
 
         /* Center align url text */
         #urlbar .urlbar-input-box {

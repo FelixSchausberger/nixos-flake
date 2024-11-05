@@ -18,7 +18,7 @@
     nixinfo = "nix-shell -p nix-info --run 'nix-info -m'";
     nixos-rebuild = "sudo nixos-rebuild --flake /per/etc/nixos/#${hostName} switch";
     pls = "sudo";
-    upgrade = "rebuild --upgrade";
+    upgrade = "nixos-rebuild --upgrade";
     repair = "sudo nix-store --verify --check-contents --repair";
     rip = "rip --graveyard /per/home/${config.home.username}/.local/share/graveyard";
   };

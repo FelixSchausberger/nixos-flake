@@ -9,7 +9,6 @@
 }: {
   imports = [
     ./boot.nix
-    ../nix
     ./security
     ./users.nix
   ];
