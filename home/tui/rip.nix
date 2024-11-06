@@ -3,12 +3,11 @@
   inputs,
   pkgs,
   ...
-}:
-{
+}: {
   imports = [
     (inputs.impermanence + "/home-manager.nix")
   ];
-  
+
   home.packages = with pkgs; [
     rm-improved
   ];
@@ -18,7 +17,6 @@
       {
         directory = ".local/share/graveyard";
         method = "symlink";
-        mode = "0700";
       }
     ];
   };

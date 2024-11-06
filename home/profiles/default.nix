@@ -1,8 +1,4 @@
-{
-  inputs,
-  # hostName,
-  ...
-}: let
+{inputs, ...}: let
   # Get these into the module system
   extraSpecialArgs = {inherit inputs;};
 

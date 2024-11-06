@@ -1,3 +1,7 @@
+# {
+#   lib,
+#   ...
+# }:
 {
   programs.starship = {
     enable = true;
@@ -8,6 +12,14 @@
 
     # https://starship.rs/config/#prompt
     settings = {
+      # add_newline = false;
+      command_timeout = 1000; # Timeout for commands executed by starship (in milliseconds)
+
+      # A minimal left prompt
+      # format = lib.concatStrings [
+      #   "$character"
+      # ];
+
       git_status = {
         ahead = "⇡($count)";
         diverged = "⇕⇡($ahead_count)⇣($behind_count)";
@@ -16,7 +28,10 @@
         staged = "[++($count)](green)";
       };
 
-      # command_timeout = 1000; # Timeout for commands executed by starship (in milliseconds)
+      # move the rest of the prompt to the right
+      # right_format = lib.concatStrings [
+      #   "$all"
+      # ];
     };
   };
 }

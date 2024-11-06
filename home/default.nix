@@ -9,6 +9,7 @@
 in {
   imports = [
     inputs.nix-index-db.hmModules.nix-index
+    (inputs.impermanence + "/home-manager.nix")
   ];
 
   home = {
@@ -39,4 +40,9 @@ in {
 
   # Let HM manage itself when in standalone mode
   programs.home-manager.enable = true;
+
+  home.persistence."/per/home/${config.home.username}" = {
+    allowOther = true;
+    removePrefixDirectory = false;
+  };
 }

@@ -4,6 +4,7 @@
 
     bashrcExtra = ''
       eval "$(direnv hook bash)"
+      eval "$(starship init bash)"
 
       function y() {
       	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"

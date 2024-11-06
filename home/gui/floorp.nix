@@ -1,5 +1,4 @@
 {
-  config,
   inputs,
   lib,
   pkgs,
@@ -9,7 +8,6 @@
 in {
   imports = [
     inputs.nur.nixosModules.nur
-    (inputs.impermanence + "/home-manager.nix")
   ];
 
   programs.floorp = {
@@ -296,15 +294,4 @@ in {
       '';
     };
   };
-
-  home.persistence."/per/home/${config.home.username}" = {
-    directories = [
-      {
-        directory = ".floorp";
-        method = "symlink";
-        mode = "0700";
-      }
-    ];
-  };
-
 }

@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   pkgs,
   ...
@@ -7,14 +8,26 @@
 in {
   imports = [
     inputs.spicetify-nix.homeManagerModules.default
+    (inputs.impermanence + "/home-manager.nix")
   ];
 
   programs.spicetify = {
     enable = true;
     enabledExtensions = with spicePkgs.extensions; [
       adblock
+      shuffle # shuffle+ (Special characters are sanitized out of extension names)
     ];
 
     # theme = spicePkgs.themes.hazy;
+    theme = spicePkgs.themes.text;
+    colorScheme = "Kanagawa";
+  };
+
+  home.persistence."/per/home/${config.home.username}" = {
+    directories = [
+      {
+        directory = ".cache/spotify";
+      }
+    ];
   };
 }
