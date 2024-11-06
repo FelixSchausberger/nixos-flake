@@ -5,7 +5,7 @@
         enable = true;
         editor = false; # Set to true allows gaining root access by passing init=/bin/sh as a kernel parameter
         consoleMode = "max";
-        configurationLimit = 3;
+        configurationLimit = 10;
       };
 
       grub.device = "/dev/nvme0n1";

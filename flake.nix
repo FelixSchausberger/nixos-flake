@@ -78,9 +78,7 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
-    nixos-cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
-    };
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
 
     nixpkgs.follows = "nixos-cosmic/nixpkgs";
 

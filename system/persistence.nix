@@ -1,17 +1,19 @@
 {inputs, ...}: {
-  imports = ["${inputs.impermanence}/nixos.nix"];
+  imports = [
+    "${inputs.impermanence}/nixos.nix"
+  ];
 
   environment.persistence."/per" = {
     hideMounts = true;
     directories = [
-      "/var/log"
+      "/var/log" # Stores system and application logs essential for troubleshooting and auditing
       "/var/lib/bluetooth"
-      "/var/lib/nixos"
-      "/var/lib/systemd/coredump"
+      "/var/lib/nixos" # Contains state files for NixOS, critical for preserving system and package state across reboots
+      "/var/lib/systemd/coredump" # Stores core dumps from crashed applications, useful for debugging and analyzing issues
       "/etc/NetworkManager/system-connections"
     ];
     files = [
-      "/etc/machine-id"
+      "/etc/machine-id" # A unique identifier for the system, used by systemd and other services for consistent identification
     ];
     users.${inputs.self.lib.user} = {
       directories = [
@@ -20,51 +22,6 @@
         "Pictures"
         "Documents"
         "Videos"
-        "VirtualBox VMs"
-        {
-          directory = ".config/cosmic/";
-          # method = "symlink";
-        }
-        {
-          directory = ".config/rclone/";
-          # method = "symlink";
-        }
-        {
-          directory = ".local/share/Steam";
-          # method = "symlink";
-        }
-        {
-          directory = ".mozilla";
-          # method = "symlink";
-        }
-        {
-          directory = ".floorp";
-          mode = "0700";
-        }
-        {
-          directory = ".gnupg";
-          mode = "0700";
-        }
-        {
-          directory = ".ssh";
-          mode = "0700";
-        }
-        {
-          directory = ".nixops";
-          mode = "0700";
-        }
-        {
-          directory = ".local/share/graveyard";
-          mode = "0700";
-        }
-        {
-          directory = ".local/share/keyrings";
-          mode = "0700";
-        }
-        ".local/share/direnv"
-      ];
-      files = [
-        ".local/share/fish/fish_history"
       ];
     };
   };

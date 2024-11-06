@@ -14,8 +14,8 @@
   sops = {
     defaultSopsFile = "${inputs.self}/secrets/secrets.yaml";
     age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
-    secrets = {
-      # "github/oauth_token" = {};
-    };
+    # secrets = {
+    #   "github/oauth_token" = {};
+    # };
   };
 }

@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   lib,
   pkgs,
@@ -8,6 +9,7 @@
 in {
   imports = [
     inputs.nur.nixosModules.nur
+    (inputs.impermanence + "/home-manager.nix")
   ];
 
   # home.file = {
@@ -165,13 +167,12 @@ in {
         ff2mpv # Tries to play links in mpv.
         i-dont-care-about-cookies #  	Get rid of cookie warnings from almost all websites!
         keepa # → Price History charts → Price Drop & Availability Alerts→ Over 1 billion tracked products→ Supports Amazon.com
-        privacy-badger # Automatically learns to block invisible trackers.
         tabliss # A beautiful New Tab page with many customisable backgrounds and widgets that does not require any permissions.
         to-deepl # Right-click on a section of text and click on “To DeepL” to translate it to your language. Default language is selected in extension preferences.
         # tridactyl # Vim, but in your browser.
         ublock-origin # Finally, an efficient wide-spectrum content blocker. Easy on CPU and memory.
         unpaywall # Get free text of research papers as you browse, using Unpaywall’s index of ten million legal, open-access articles.
-        vimium # The Hacker’s Browser.
+        vimium-c # The Hacker’s Browser.
         youtube-nonstop # Tired of getting that “Video paused. Continue watching?” confirmation dialog?
       ];
 
@@ -307,5 +308,14 @@ in {
         #tracking-protection-icon-container {display: none;}
       '';
     };
+  };
+
+  home.persistence."/per/home/${config.home.username}" = {
+    directories = [
+      {
+        directory = ".mozilla";
+        method = "symlink";
+      }
+    ];
   };
 }

@@ -1,10 +1,16 @@
 {
+  config,
+  inputs,
   pkgs,
   secrets,
   ...
 }: let
   mountdir = "/per/mnt/gdrive";
 in {
+  imports = [
+    (inputs.impermanence + "/home-manager.nix")
+  ];
+  
   systemd.user.services.gdrive_mount = {
     Unit = {
       Description = "mount gdrive dirs";
@@ -30,5 +36,14 @@ in {
       RestartSec = "10s";
       Environment = ["PATH=/run/wrappers/bin/:$PATH"];
     };
+  };
+
+  home.persistence."/per/home/${config.home.username}" = {
+    directories = [
+      {
+        directory = ".config/rclone";
+        method = "symlink";
+      }
+    ];
   };
 }

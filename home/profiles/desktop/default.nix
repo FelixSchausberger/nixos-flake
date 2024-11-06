@@ -3,6 +3,7 @@
     ../../gui
     ../../shells
     ../../tui
+    ../../gui/steam.nix
   ];
 
   home.packages = with pkgs; [
@@ -12,7 +13,6 @@
     lutris
     # minecraft
     prusa-slicer
-    steam
     wineWowPackages.waylandFull
   ];
 }

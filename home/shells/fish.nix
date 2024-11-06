@@ -1,4 +1,13 @@
-{pkgs, ...}: {
+{
+  config,
+  inputs,
+  pkgs, 
+  ...
+}: {
+  imports = [
+    (inputs.impermanence + "/home-manager.nix")  
+  ];
+  
   home.packages = with pkgs; [
     grc # A generic text colouriser
   ];
@@ -78,4 +87,10 @@
       echo -n -s " $nix_shell_info ~>"
     end
   '';
+
+  home.persistence."/per/home/${config.home.username}" = {
+    files = [
+      ".local/share/fish/fish_history"
+    ];
+  };
 }

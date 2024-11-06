@@ -33,7 +33,8 @@ in {
     };
 
     # Specify Home Manager release version
-    stateVersion = "24.05";
+    # https://nix-community.github.io/home-manager/release-notes.xhtml
+    stateVersion = "24.11";
   };
 
   # Let HM manage itself when in standalone mode

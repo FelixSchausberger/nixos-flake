@@ -9,8 +9,8 @@
     ./git.nix # Distributed version control system
     ./helix
     ./nix.nix # Nix tooling
-    ./rbw.nix # Unofficial command line client for Bitwarden
     ./rclone.nix # Sync files and directories to and from major cloud storage
+    ./rip.nix # Replacement for rm with focus on safety, ergonomics and performance
     ./tealdeer.nix # A very fast implementation of tldr
     ./thefuck.nix # Magnificent app which corrects your previous console command
     ./yazi
