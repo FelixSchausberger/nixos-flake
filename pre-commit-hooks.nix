@@ -2,7 +2,13 @@
   imports = [inputs.pre-commit-hooks.flakeModule];
 
   perSystem.pre-commit = {
-    settings.excludes = ["flake.lock"];
+    settings.excludes = [
+      "flake.lock"
+      # Exclude because of pipe operators
+      "home/default.nix"
+      "home/profiles/default.nix"
+      "hosts/default.nix"
+    ];
 
     settings.hooks = {
       alejandra.enable = true; # The Uncompromising Nix Code Formatter

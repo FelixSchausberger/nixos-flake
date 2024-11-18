@@ -1,13 +1,14 @@
 {inputs, ...}: let
-  # Get these into the module system
+  getUserHost = user: host: "${user}@${host}";
+  
   extraSpecialArgs = {inherit inputs;};
 
   homeImports = {
-    "${inputs.self.lib.user}@desktop" = [
+    "${inputs.self.lib.user |> getUserHost <| "desktop"}" = [
       ../.
       ./desktop
     ];
-    "${inputs.self.lib.user}@surface" = [
+    "${inputs.self.lib.user |> getUserHost <| "surface"}" = [
       ../.
       ./surface
     ];

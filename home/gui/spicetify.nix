@@ -18,9 +18,7 @@ in {
       shuffle # shuffle+ (Special characters are sanitized out of extension names)
     ];
 
-    # theme = spicePkgs.themes.hazy;
-    theme = spicePkgs.themes.text;
-    colorScheme = "Kanagawa";
+    theme = spicePkgs.themes.hazy;
   };
 
   home.persistence."/per/home/${config.home.username}" = {

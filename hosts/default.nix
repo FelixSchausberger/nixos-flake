@@ -4,24 +4,21 @@
   lib,
   ...
 }: let
-  # Custom function to convert the first character to uppercase
-  capitalizeFirstChar = str: let
-    firstChar = builtins.substring 0 1 str;
-    restOfString = builtins.substring 1 (builtins.stringLength str - 1) str;
-  in "${lib.strings.toUpper firstChar}${restOfString}";
+  capitalizeFirstChar = str: 
+    str 
+    |> builtins.substring 0 1 
+    |> lib.strings.toUpper 
+    |> (firstChar: firstChar + builtins.substring 1 (builtins.stringLength str - 1) str);
 
   inherit (inputs.nixpkgs.lib) nixosSystem;
 
-  # Get the basic config to build on top of
   inherit (import "${inputs.self}/system") desktop laptop;
 
-  # Get these into the module system
   specialArgs = {
     secrets = builtins.fromJSON (builtins.readFile "${inputs.self}/secrets/secrets.json");
     inherit inputs;
   };
 
-  # Function to create a configuration with the host variable
   mkHostConfig = {
     hostName,
     baseModules,
@@ -33,13 +30,13 @@
         baseModules
         ++ [
           {
-            # Capitalize the first character of the hostname
-            networking.hostName = capitalizeFirstChar hostName;
+            networking.hostName = hostName |> capitalizeFirstChar;
             _module.args.hostName = hostName;
           }
           {
             home-manager = {
-              users.${inputs.self.lib.user}.imports = homeImports."${inputs.self.lib.user}@${hostName}";
+              users.${inputs.self.lib.user}.imports = 
+                homeImports."${inputs.self.lib.user}@${hostName}";
               extraSpecialArgs = specialArgs // {inherit hostName;};
             };
           }

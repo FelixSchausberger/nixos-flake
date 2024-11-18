@@ -2,10 +2,26 @@
   config,
   inputs,
   ...
-}: let
-  data = config.xdg.dataHome;
-  conf = config.xdg.configHome;
-  cache = config.xdg.cacheHome;
+}: 
+let
+  # Use pipe operator to create derived paths more functionally
+  getPath = base: suffix: "${base}/${suffix}";
+  data = config.xdg.dataHome 
+    |> getPath "data"
+    |> (path: "${path}/wine");
+  
+  conf = config.xdg.configHome 
+    |> getPath "config"
+    |> (path: {
+      less = {
+        history = "${path}/less/history";
+        lesskey = "${path}/less/lesskey";
+      };
+    });
+  
+  cache = config.xdg.cacheHome 
+    |> getPath "cache"
+    |> (path: "${path}/less/history");
 in {
   imports = [
     inputs.nix-index-db.hmModules.nix-index
@@ -19,11 +35,11 @@ in {
     sessionVariables = {
       XDG_RUNTIME_DIR = "/run/user/$UID";
 
-      # Clean up home directory
-      LESSHISTFILE = "${cache}/less/history";
-      LESSKEY = "${conf}/less/lesskey";
+      # Clean up home directory using pipe operator for transformation
+      LESSHISTFILE = conf.less.history;
+      LESSKEY = conf.less.lesskey;
 
-      WINEPREFIX = "${data}/wine";
+      WINEPREFIX = data;
       XAUTHORITY = "$XDG_RUNTIME_DIR/Xauthority";
 
       EDITOR = "hx";
@@ -34,7 +50,6 @@ in {
     };
 
     # Specify Home Manager release version
-    # https://nix-community.github.io/home-manager/release-notes.xhtml
     stateVersion = "24.11";
   };
 

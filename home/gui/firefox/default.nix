@@ -166,10 +166,9 @@ in {
         darkreader # Dark mode for every website. Take care of your eyes, use dark theme for night and daily browsing.
         ff2mpv # Tries to play links in mpv.
         i-dont-care-about-cookies #  	Get rid of cookie warnings from almost all websites!
-        keepa # → Price History charts → Price Drop & Availability Alerts→ Over 1 billion tracked products→ Supports Amazon.com
+        keepa # Price History charts
         tabliss # A beautiful New Tab page with many customisable backgrounds and widgets that does not require any permissions.
-        to-deepl # Right-click on a section of text and click on “To DeepL” to translate it to your language. Default language is selected in extension preferences.
-        # tridactyl # Vim, but in your browser.
+        # to-deepl # Right-click on a section of text and click on “To DeepL” to translate it to your language. Default language is selected in extension preferences.
         ublock-origin # Finally, an efficient wide-spectrum content blocker. Easy on CPU and memory.
         unpaywall # Get free text of research papers as you browse, using Unpaywall’s index of ten million legal, open-access articles.
         vimium-c # The Hacker’s Browser.
@@ -280,33 +279,33 @@ in {
         "widget.dmabuf.force-enabled" = true; # Required in recent Firefoxes
       };
 
-      userChrome = ''
-        /* Disable back, forward and close button */
-        /* #back-button, */
-        #forward-button { display:none!important; }
+      # userChrome = ''
+      #   /* Disable back, forward and close button */
+      #   /* #back-button, */
+      #   #forward-button { display:none!important; }
 
-        .titlebar-buttonbox-container{ display:none }
+      #   .titlebar-buttonbox-container{ display:none }
 
-        /* Hide tab close buttons */
-        .tabbrowser-tab .tab-close-button {
-          visibility: collapse !important;
-        }
+      #   /* Hide tab close buttons */
+      #   .tabbrowser-tab .tab-close-button {
+      #     visibility: collapse !important;
+      #   }
 
-        /* Hide extensions button */
-        #unified-extensions-button, #unified-extensions-button > .toolbarbutton-icon{
-          width: 0px !important;
-          padding: 0px !important;
-        }
+      #   /* Hide extensions button */
+      #   #unified-extensions-button, #unified-extensions-button > .toolbarbutton-icon{
+      #     width: 0px !important;
+      #     padding: 0px !important;
+      #   }
 
-        /* Hide bookmark star button */
-        #star-button-box {display: none !important;}
+      #   /* Hide bookmark star button */
+      #   #star-button-box {display: none !important;}
 
-        /* Disable site information button */
-        #identity-box {display: none !important;}
+      #   /* Disable site information button */
+      #   #identity-box {display: none !important;}
 
-        /* Disable enhanced tracking protection button */
-        #tracking-protection-icon-container {display: none;}
-      '';
+      #   /* Disable enhanced tracking protection button */
+      #   #tracking-protection-icon-container {display: none;}
+      # '';
     };
   };
 
@@ -314,7 +313,7 @@ in {
     directories = [
       {
         directory = ".mozilla";
-        method = "symlink";
+        # method = "symlink";
       }
     ];
   };

@@ -35,4 +35,24 @@
       ];
     };
   };
+
+  # Allow auto-login
+  environment.etc."greetd/cosmic-greeter.toml" = {
+    source = pkgs.writeText "cosmic-greeter-config" ''
+      [terminal]
+      vt = "1"
+
+      [general]
+      service = "login"
+
+      [default_session]
+      command = "cosmic-comp systemd-cat -t cosmic-greeter cosmic-greeter"
+      user = "cosmic-greeter"
+
+      [initial_session]
+      command = "cosmic-session"
+      user = "${inputs.self.lib.user}"
+    '';
+    mode = "0644";
+  };
 }

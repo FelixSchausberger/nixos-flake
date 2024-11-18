@@ -2,8 +2,7 @@
   # Import configurations of graphical applications
   imports = [
     ./calibre.nix # Comprehensive e-book software
-    # ./firefox # A web browser built from Firefox source tree
-    ./floorp.nix # A fork of Firefox, focused on keeping the Open, Private and Sustainable Web alive, built in Japan
+    ./firefox # A web browser built from Firefox source tree
     ./mpv.nix # General-purpose media player, fork of MPlayer and mplayer2
     ./planify.nix # Task manager with Todoist support
     ./spicetify.nix # Play music from the Spotify music service
