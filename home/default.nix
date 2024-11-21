@@ -50,7 +50,7 @@ in {
     };
 
     # Specify Home Manager release version
-    stateVersion = "24.11";
+    stateVersion = "25.05";
   };
 
   # Let HM manage itself when in standalone mode

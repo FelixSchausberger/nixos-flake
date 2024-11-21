@@ -23,6 +23,7 @@
   };
 
   home.packages = with pkgs; [
+    # clipboard-jh # Cut, copy, and paste anything, anywhere, all from the terminal
     ouch # A CLI for easily compressing and decompressing files and directories
     procs # A modern replacement for ps
     quickemu # Quickly create and run virtual machines

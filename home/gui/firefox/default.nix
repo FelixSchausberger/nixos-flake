@@ -219,6 +219,8 @@ in {
         "browser.startup.page.StartPage" = "none";
 
         "browser.tabs.allow_transparent_browser" = true;
+        "browser.tabs.tabmanager.enabled" = false;
+        "browser.theme.native-theme" = true;
         "browser.toolbars.bookmarks.visibility" = "never";
 
         # Disable all the annoying quick actions
@@ -277,35 +279,98 @@ in {
         "ui.key.menuAccessKeyFocuses" = false;
 
         "widget.dmabuf.force-enabled" = true; # Required in recent Firefoxes
+        "widget.windows.mica" = true;
       };
 
-      # userChrome = ''
-      #   /* Disable back, forward and close button */
-      #   /* #back-button, */
-      #   #forward-button { display:none!important; }
+      userChrome = ''
+        /* Disable back, forward and close button */
+        /* #back-button, */
+        #forward-button {
+          display:none!important;
+        }
 
-      #   .titlebar-buttonbox-container{ display:none }
+        .titlebar-buttonbox-container{
+          display:none
+        }
 
-      #   /* Hide tab close buttons */
-      #   .tabbrowser-tab .tab-close-button {
-      #     visibility: collapse !important;
-      #   }
+        /* Hide tab close buttons */
+        .tabbrowser-tab .tab-close-button {
+          visibility: collapse !important;
+        }
 
-      #   /* Hide extensions button */
-      #   #unified-extensions-button, #unified-extensions-button > .toolbarbutton-icon{
-      #     width: 0px !important;
-      #     padding: 0px !important;
-      #   }
+        /* Disable site information button */
+        #identity-box {
+          display: none !important;
+        }
 
-      #   /* Hide bookmark star button */
-      #   #star-button-box {display: none !important;}
+        /* Disable enhanced tracking protection button */
+        #tracking-protection-icon-container {
+          display: none;
+        }
 
-      #   /* Disable site information button */
-      #   #identity-box {display: none !important;}
+        /* Center urlbar text */
+        #urlbar {
+          text-align: center;
+        }
 
-      #   /* Disable enhanced tracking protection button */
-      #   #tracking-protection-icon-container {display: none;}
-      # '';
+        /* Transparency */
+        #sidebar-main, #sidebar-box {
+          background-color: transparent !important;
+          background-image: none !important;
+        }
+
+        #navigator-toolbox {
+          background-color: transparent !important;
+           border-bottom: none !important;
+        }
+
+        #main-window {
+          background-color: transparent !important;
+        }
+
+        #PersonalToolbar {
+          background-color: transparent !important;
+        }
+
+        #nav-bar {
+          border-top: none !important;
+        }
+
+        #nav-bar{
+          background-color: transparent !important;
+        }
+
+        /* Search box transparency */
+        #urlbar {
+          --toolbar-field-background-color:  transparent !important;
+        }
+
+        /* Fixing window control buttons */
+        #navigator-toolbox .titlebar-min .toolbarbutton-icon,
+        #navigator-toolbox .titlebar-restore .toolbarbutton-icon,
+        #navigator-toolbox .titlebar-max .toolbarbutton-icon{
+         opacity: 0;
+        }
+
+        /* Fixing window control buttons, could need a change with different resolutions or windows scaling */
+        #navigator-toolbox .titlebar-buttonbox-container{
+          height: 28px;
+        }
+
+        /* Fixing window control buttons, could need a change with different resolutions or windows scaling */
+        :root[sizemode="maximized"] #navigator-toolbox .titlebar-close .toolbarbutton-icon{
+        /*   opacity:0; */
+          margin-right:2px !important;
+        }
+
+        /* Remove the white line around the content window */
+        @media (-moz-bool-pref: "sidebar.revamp") {
+          #tabbrowser-tabbox {
+            outline: none !important;
+        /*     box-shadow: none !important; */
+          }
+        }
+      '';
     };
   };
 
