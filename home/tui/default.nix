@@ -11,6 +11,7 @@
     ./nix.nix # Nix tooling
     ./rclone.nix # Sync files and directories to and from major cloud storage
     ./rip.nix # Replacement for rm with focus on safety, ergonomics and performance
+    ./spotify-player.nix # A terminal spotify player that has feature parity with the official client
     ./tealdeer.nix # A very fast implementation of tldr
     ./thefuck.nix # Magnificent app which corrects your previous console command
     ./yazi
