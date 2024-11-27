@@ -1,4 +1,5 @@
 {
+  config,
   # inputs,
   pkgs,
   ...
@@ -11,9 +12,10 @@
     # package = inputs.helix.packages.${pkgs.system}.default;
     package = pkgs.evil-helix;
 
-    extraPackages = [
-      pkgs.helix-gpt
-      pkgs.markdown-oxide
+    extraPackages = with pkgs; [
+      # helix-gpt
+      lsp-ai
+      markdown-oxide
     ];
 
     settings = {
@@ -28,6 +30,10 @@
         true-color = true;
         lsp.display-messages = true;
         mouse = false;
+        shell = [
+          "/etc/profiles/per-user/${config.home.username}/bin/fish"
+          "-c"
+        ];
         soft-wrap = {
           enable = true;
           wrap-indicator = "";
