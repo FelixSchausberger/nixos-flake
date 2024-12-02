@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.mpv = {
     enable = true;
     defaultProfiles = ["gpu-hq"];
@@ -12,5 +11,16 @@
       # yt-dlp
       # mediainfo
     ];
+  };
+
+  xdg = {
+    enable = true;
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "video/mp4" = "mpv.desktop";
+        "video/quicktime" = "mpv.desktop";
+      };
+    };
   };
 }

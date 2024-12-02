@@ -1,5 +1,5 @@
 {
-  lib,
+  inputs,
   pkgs,
   ...
 }: {
@@ -7,14 +7,21 @@
     oculante
   ];
 
-  home-manager.users.${inputs.self.lib.user} = {
-    xdg.mimeApps = {
+  xdg = {
+    enable = true;
+    mimeApps = {
       enable = true;
       defaultApplications = {
-        "image/gif" = "oculante.desktop";
-        "image/jpeg" = "oculante.desktop";
-        "image/png" = "oculante.desktop";
+        "image/gif" = "Oculante.desktop";
+        "image/jpg" = "Oculante.desktop";
+        "image/jpeg" = "Oculante.desktop";
+        "image/png" = "Oculante.desktop";
       };
+    };
+
+    desktopEntries.oculante = {
+      name = "Oculante";
+      exec = "${pkgs.oculante}/bin/oculante";
     };
   };
 }

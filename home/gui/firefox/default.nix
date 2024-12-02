@@ -219,6 +219,7 @@ in {
         "browser.startup.page.StartPage" = "none";
 
         "browser.tabs.allow_transparent_browser" = true;
+        "browser.tabs.closeWindowWithLastTab" = false;
         "browser.tabs.tabmanager.enabled" = false;
         "browser.theme.native-theme" = true;
         "browser.toolbars.bookmarks.visibility" = "never";

@@ -4,10 +4,11 @@
     ./calibre.nix # Comprehensive e-book software
     ./firefox # A web browser built from Firefox source tree
     ./mpv.nix # General-purpose media player, fork of MPlayer and mplayer2
-    ./oculante.nix
+    ./obsidian.nix # A powerful knowledge base
+    ./oculante.nix # # A minimalistic crossplatform image viewer written in Rust
     ./planify.nix # Task manager with Todoist support
     ./spicetify.nix # Play music from the Spotify music service
-    # ./vscode.nix # Open source source code editor developed by Microsoft
+    ./vscode.nix # Open source source code editor developed by Microsoft
   ];
 
   home.packages = with pkgs; [
@@ -17,8 +18,6 @@
     krita # A free and open source painting application
     libwacom # Libraries, configuration, and diagnostic tools for Wacom tablets running under Linux
     # morgen # All-in-one Calendars, Tasks and Scheduler
-    obsidian # A powerful knowledge base
-    # oculante # A minimalistic crossplatform image viewer written in Rust
     qbittorrent # Featureful free software BitTorrent client
     rnote # Simple drawing application to create handwritten notes
     spacedrive # An open source file manager
