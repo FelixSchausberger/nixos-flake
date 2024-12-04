@@ -29,10 +29,8 @@ in {
 
   home.persistence."/per/home/${config.home.username}" = {
     directories = [
-      {
-        # directory = ".cache/spotify";
-        directory = ".config/spotify";
-      }
+      ".cache/spotify"
+      ".config/spotify"
     ];
   };
 }

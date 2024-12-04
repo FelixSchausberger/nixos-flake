@@ -12,16 +12,16 @@
     mimeApps = {
       enable = true;
       defaultApplications = {
-        "image/gif" = "Oculante.desktop";
-        "image/jpg" = "Oculante.desktop";
-        "image/jpeg" = "Oculante.desktop";
-        "image/png" = "Oculante.desktop";
+        "image/gif" = "oculante.desktop";
+        "image/jpg" = "oculante.desktop";
+        "image/jpeg" = "oculante.desktop";
+        "image/png" = "oculante.desktop";
       };
     };
 
-    desktopEntries.oculante = {
-      name = "Oculante";
-      exec = "${pkgs.oculante}/bin/oculante";
-    };
+    # desktopEntries.oculante = {
+    #   name = "Oculante";
+    #   exec = "${pkgs.oculante}/bin/oculante";
+    # };
   };
 }

@@ -20,7 +20,7 @@
     # morgen # All-in-one Calendars, Tasks and Scheduler
     qbittorrent # Featureful free software BitTorrent client
     rnote # Simple drawing application to create handwritten notes
-    spacedrive # An open source file manager
+    # spacedrive # An open source file manager
     typst # A markup-based typesetting system
     # upscayl # Free and Open Source AI Image Upscaler
     # zed-editor # High-performance, multiplayer code editor
