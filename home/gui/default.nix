@@ -7,6 +7,7 @@
     ./obsidian.nix # A powerful knowledge base
     ./oculante.nix # # A minimalistic crossplatform image viewer written in Rust
     ./planify.nix # Task manager with Todoist support
+    ./sioyek.nix # A PDF viewer
     ./spicetify.nix # Play music from the Spotify music service
     ./vscode.nix # Open source source code editor developed by Microsoft
   ];
@@ -25,8 +26,4 @@
     # upscayl # Free and Open Source AI Image Upscaler
     # zed-editor # High-performance, multiplayer code editor
   ];
-
-  programs = {
-    sioyek.enable = true; # A PDF viewer
-  };
 }

@@ -13,7 +13,8 @@
     };
 
     overlays = [
-      inputs.nur.overlay
+      # inputs.nur.overlay
+      inputs.nur.overlays.default
     ];
   };
 }

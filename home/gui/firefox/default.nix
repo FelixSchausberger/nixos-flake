@@ -8,7 +8,8 @@
   inherit (lib) mkForce;
 in {
   imports = [
-    inputs.nur.nixosModules.nur
+    # inputs.nur.nixosModules.nur
+    # inputs.nur.modules.nixos.default
     (inputs.impermanence + "/home-manager.nix")
   ];
 
