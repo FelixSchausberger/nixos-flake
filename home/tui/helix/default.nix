@@ -41,20 +41,49 @@
       };
       theme = "base16_transparent";
       keys = {
-        insert = {esc = ["collapse_selection" "normal_mode"];};
+        insert = {
+          esc = ["collapse_selection" "normal_mode"];
+        };
+
         normal = {
           esc = ["collapse_selection" "normal_mode"];
           X = "extend_line_above";
           a = ["append_mode" "collapse_selection"];
-          g.q = ":reflow";
-          i = ["insert_mode" "collapse_selection"];
+          g = {
+            q = ":reflow";
+            n = "goto_line_start";
+            o = "goto_line_end";
+          };
+          # i = ["insert_mode" "collapse_selection"];
           ret = ["move_line_down" "goto_line_start"];
           space = {
             w = ":write";
             q = ":quit";
+            space = "file_picker";
           };
+
+          # Colemak-DH
+          n = "move_char_left";
+          e = "move_line_down";
+          i = "move_line_up";
+          o = "move_char_right";
+
+          h = "insert_mode";
+          H = "insert_at_line_start";
+
+          l = "open_below";
+          L = "open_above";
+
+          k = "move_next_word_end";
+          K = "move_next_long_word_end";
+
+          j = "search_next";
+          J = "search_prev";
         };
-        select = {esc = ["collapse_selection" "keep_primary_selection" "normal_mode"];};
+
+        select = {
+          esc = ["collapse_selection" "keep_primary_selection" "normal_mode"];
+        };
       };
     };
   };
