@@ -1,30 +1,34 @@
-{ 
-  config, 
-  pkgs, 
-  inputs, 
-  ... 
-}: {
-  imports = [
-    inputs.typix.packages.default
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: let
+  # Typst templates directory
+  templatesDir = "${config.home.homeDirectory}/.local/share/typst/packages/local/templates/1.0.0";
+in {
+  home.packages = [
+    inputs.typix
   ];
-  # environment.systemPackages = [ typix ];
-  # home.packages = [ typix ];
-  programs.typix.enable = true;
 
-  # Ensure Typst templates are cloned and available locally
-  systemd.services.typst-templates = {
-    description = "Sync Typst Templates";
-    wantedBy = [ "multi-user.target" ];
+  # Clone or update Typst templates during activation
+  home.activation.typst-templates = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    mkdir -p ${templatesDir}
+    if [ ! -d "${templatesDir}/.git" ]; then
+      ${pkgs.git}/bin/git clone https://github.com/typst/templates.git ${templatesDir}
+    else
+      ${pkgs.git}/bin/git -C ${templatesDir} pull
+    fi
+  '';
+
+  # Systemd user service to keep templates updated
+  systemd.user.services.typst-templates-update = {
+    description = {text = "Update Typst Templates";};
+    wantedBy = {targets = ["default.target"];};
     serviceConfig = {
-      ExecStart = ''
-        mkdir -p ${config.home.username}/.local/share/typst/packages/local/templates/1.0.0
-        rsync -a ${inputs.typix.inputs.typst-templates}/ ${config.home.username}/.local/share/typst/packages/local/templates/1.0.0/
-      '';
-
-      # Periodically pull changes from the repository
-      ExecStartPost = ''
-        git -C ${config.home.username}/.local/share/typst/packages/local/templates/1.0.0 pull || true
-      '';
+      ExecStart = "${pkgs.git}/bin/git -C ${templatesDir} pull";
+      WorkingDirectory = templatesDir;
     };
   };
 

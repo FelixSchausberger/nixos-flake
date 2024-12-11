@@ -566,6 +566,22 @@
     },
     "nixpkgs_5": {
       "locked": {
+        "lastModified": 1733392399,
+        "narHash": "sha256-kEsTJTUQfQFIJOcLYFt/RvNxIK653ZkTBIs4DG+cBns=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "d0797a04b81caeae77bcff10a9dde78bc17f5661",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_6": {
+      "locked": {
         "lastModified": 1729265718,
         "narHash": "sha256-4HQI+6LsO3kpWTYuVGIzhJs1cetFcwT7quWCk/6rqeo=",
         "owner": "NixOS",
@@ -646,6 +662,7 @@
         "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix",
         "systems": "systems_4",
+        "typix": "typix",
         "yazi": "yazi"
       }
     },
@@ -847,10 +864,28 @@
         "type": "github"
       }
     },
+    "typix": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_5"
+      },
+      "locked": {
+        "lastModified": 1733561124,
+        "narHash": "sha256-dzVieKkmZ4sukvGj4M/zx4g57Wp6pt0un6FbQ1JJNR4=",
+        "owner": "loqusion",
+        "repo": "typix",
+        "rev": "3de6c20903c66ebdad236fea856a7957a82a32c9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "loqusion",
+        "repo": "typix",
+        "type": "github"
+      }
+    },
     "yazi": {
       "inputs": {
         "flake-utils": "flake-utils_5",
-        "nixpkgs": "nixpkgs_5",
+        "nixpkgs": "nixpkgs_6",
         "rust-overlay": "rust-overlay_3"
       },
       "locked": {

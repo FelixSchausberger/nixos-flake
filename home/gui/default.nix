@@ -22,8 +22,8 @@
     qbittorrent # Featureful free software BitTorrent client
     rnote # Simple drawing application to create handwritten notes
     # spacedrive # An open source file manager
-    typst # A markup-based typesetting system
     # upscayl # Free and Open Source AI Image Upscaler
+    vial # # Open-source GUI and QMK fork for configuring your keyboard in real time
     # zed-editor # High-performance, multiplayer code editor
   ];
 }

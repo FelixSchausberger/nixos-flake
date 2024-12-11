@@ -14,6 +14,7 @@
     ./spotify-player.nix # A terminal spotify player that has feature parity with the official client
     ./tealdeer.nix # A very fast implementation of tldr
     ./thefuck.nix # Magnificent app which corrects your previous console command
+    ./typix.nix # Typst: A markup-based typesetting system
     ./yazi
   ];
 
