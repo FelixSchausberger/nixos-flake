@@ -12,7 +12,9 @@
   ];
 
   # General file info
-  home.packages = [pkgs.exiftool];
+  home.packages = [
+    pkgs.exiftool
+  ];
 
   # Blazing fast terminal file manager written in Rust, based on async I/O
   programs.yazi = {

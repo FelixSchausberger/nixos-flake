@@ -104,6 +104,9 @@
 
     sops-nix.url = "github:Mic92/sops-nix";
 
+    typix.url = "github:loqusion/typix";
+    typst-templates.url = "github:typst/templates";
+
     yazi.url = "github:sxyazi/yazi";
   };
 }
