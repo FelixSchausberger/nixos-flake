@@ -54,7 +54,6 @@
             n = "goto_line_start";
             o = "goto_line_end";
           };
-          # i = ["insert_mode" "collapse_selection"];
           ret = ["move_line_down" "goto_line_start"];
           space = {
             w = ":write";
@@ -62,13 +61,13 @@
             space = "file_picker";
           };
 
-          # Colemak-DH
+          # Colemak-DH: hjkl -> neio
           n = "move_char_left";
           e = "move_line_down";
           i = "move_line_up";
           o = "move_char_right";
 
-          h = "insert_mode";
+          h = ["insert_mode" "collapse_selection"];
           H = "insert_at_line_start";
 
           l = "open_below";
@@ -83,6 +82,24 @@
 
         select = {
           esc = ["collapse_selection" "keep_primary_selection" "normal_mode"];
+
+          # Colemak-DH: hjkl -> neio
+          n = "move_char_left";
+          e = "move_line_down";
+          i = "move_line_up";
+          o = "move_char_right";
+
+          h = ["insert_mode" "collapse_selection"];
+          H = "insert_at_line_start";
+
+          l = "open_below";
+          L = "open_above";
+
+          k = "move_next_word_end";
+          K = "move_next_long_word_end";
+
+          j = "search_next";
+          J = "search_prev";
         };
       };
     };
