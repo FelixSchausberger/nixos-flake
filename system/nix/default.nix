@@ -11,7 +11,7 @@
       experimental-features = [
         "nix-command"
         "flakes"
-        "pipe-operator" # Lix, use pipe-operators else
+        "pipe-operator" # Used by lix, for nix use "pipe-operators"
       ];
     };
 
@@ -22,6 +22,7 @@
     };
   };
 
-  # Flakes need git
-  environment.systemPackages = [pkgs.git];
+  environment.systemPackages = [
+    pkgs.git # Flakes need git
+  ];
 }

@@ -1,16 +1,19 @@
 {
   config,
   lib,
-  pkgs, 
+  pkgs,
   ...
 }: let
   # Select the latest zfs-compatible kernel
-  zfsCompatibleKernelPackages = lib.filterAttrs (
-    name: kernelPackages:
-    (builtins.match "linux_[0-9]+_[0-9]+" name) != null
-    && (builtins.tryEval kernelPackages).success
-    && (!kernelPackages.${config.boot.zfs.package.kernelModuleAttribute}.meta.broken)
-  ) pkgs.linuxKernel.packages;
+  zfsCompatibleKernelPackages =
+    lib.filterAttrs (
+      name: kernelPackages:
+        (builtins.match "linux_[0-9]+_[0-9]+" name)
+        != null
+        && (builtins.tryEval kernelPackages).success
+        && (!kernelPackages.${config.boot.zfs.package.kernelModuleAttribute}.meta.broken)
+    )
+    pkgs.linuxKernel.packages;
   latestKernelPackage = lib.last (
     lib.sort (a: b: (lib.versionOlder a.kernel.version b.kernel.version)) (
       builtins.attrValues zfsCompatibleKernelPackages
@@ -47,18 +50,24 @@ in {
         serviceConfig.Type = "oneshot";
         script = "zfs rollback -r rpool/eyd/root@blank";
       };
+
+      systemd.services.zfs-autotrim = {
+        description = "Enable ZFS autotrim";
+        wantedBy = ["initrd.target"];
+        after = ["zfs-import.target"];
+        before = ["sysroot.mount"];
+        path = with pkgs; [zfs];
+        unitConfig.DefaultDependencies = "no";
+        serviceConfig.Type = "oneshot";
+        script = "zpool set autotrim=on rpool";
+      };
     };
 
     kernelPackages = latestKernelPackage;
     kernelParams = ["nohibernate" "quiet" "udev.log_level=3"];
-
-    # With autotrim=on space which has been recently freed, and is no longer allocated by the pool, will be periodically trimmed. 
-    initrd.postDeviceCommands = ''
-      zpool set autotrim=on rpool
-    '';
   };
 
-  services.zfs= {
+  services.zfs = {
     autoScrub.enable = true;
     autoSnapshot.enable = true;
   };

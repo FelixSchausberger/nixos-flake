@@ -16,9 +16,9 @@
     cp = "cp -rpv";
     merge = "rsync -avhu --progress";
     nixinfo = "nix-shell -p nix-info --run 'nix-info -m'";
-    nixos-rebuild = "sudo nixos-rebuild --flake /per/etc/nixos/#${hostName} switch";
+    nxup = "sudo nixos-rebuild --flake /per/etc/nixos/#${hostName} switch";
     pls = "sudo";
-    upgrade = "nixos-rebuild --upgrade";
+    upgrade = "nix flake update && nxup";
     repair = "sudo nix-store --verify --check-contents --repair";
     rip = "rip --graveyard /per/home/${config.home.username}/.local/share/graveyard";
   };

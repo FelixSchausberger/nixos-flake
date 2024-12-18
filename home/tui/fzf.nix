@@ -10,5 +10,6 @@
       "--margin=1"
       "--padding=1"
     ];
+    enableFishIntegration = false;
   };
 }

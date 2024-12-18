@@ -69,8 +69,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ghostty.url = "github:clo4/ghostty-hm-module";
-
     helix.url = "github:helix-editor/helix";
 
     home-manager = {
@@ -107,7 +105,6 @@
     sops-nix.url = "github:Mic92/sops-nix";
 
     typix.url = "github:loqusion/typix";
-    # typst-templates.url = "github:typst/templates";
 
     yazi.url = "github:sxyazi/yazi";
   };

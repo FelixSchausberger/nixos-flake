@@ -23,10 +23,6 @@
         "Documents"
         "Videos"
         {
-          directory = ".floorp";
-          mode = "0700";
-        }
-        {
           directory = ".local/share/fish";
           mode = "0700";
         }

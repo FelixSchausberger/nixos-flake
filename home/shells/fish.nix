@@ -12,10 +12,16 @@
     enable = true;
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
+      COMPLETE=fish jj | source
     '';
     # direnv hook fish | source
 
     plugins = [
+      # {
+      #   # Make your prompt asynchronous to improve the reactivity
+      #   name = "async-prompt";
+      #   src = pkgs.fishPlugins.async-prompt.src;
+      # }
       {
         # Auto-complete matching pairs in the Fish command line
         name = "autopair";

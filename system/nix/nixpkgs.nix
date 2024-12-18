@@ -1,4 +1,18 @@
-{inputs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: let
+  # Import niv sources
+  sources = import ./sources.nix;
+
+  # Create an overlay for niv-managed packages
+  nivOverlay = final: prev: {
+    yaziPlugins = {
+      eza-preview = sources."eza-preview.yazi";
+    };
+  };
+in {
   imports = [
     inputs.lix-module.nixosModules.default
   ];
@@ -11,10 +25,13 @@
       ];
       allowBroken = true;
     };
-
     overlays = [
-      # inputs.nur.overlay
       inputs.nur.overlays.default
+      nivOverlay
     ];
   };
+
+  environment.systemPackages = [
+    pkgs.niv # Easy dependency management for Nix projects
+  ];
 }

@@ -29,7 +29,10 @@ in {
 
   programs.firefox = {
     enable = true;
-    package = inputs.firefox-nightly.packages.${pkgs.system}.firefox-nightly-bin;
+    # package = inputs.firefox-nightly.packages.${pkgs.system}.firefox-nightly-bin;
+
+    # Use alsa instead of pulseaudio
+    package = (pkgs.wrapFirefox.override {libpulseaudio = pkgs.libpressureaudio;}) pkgs.firefox-unwrapped {};
     languagePacks = ["de" "en-US"];
 
     /*
@@ -68,6 +71,18 @@ in {
             "ublock-quick-fixes"
             "ublock-unbreak"
             "urlhaus-1"
+
+            # These filters will remove videos unrelated to your search from your youtube search results.
+            "www.youtube.com##ytd-shelf-renderer.style-scope:has(span:has-text(/For you/i))"
+            "www.youtube.com##ytd-shelf-renderer.style-scope:has(span:has-text(/People also watched/i))"
+            "www.youtube.com##ytd-shelf-renderer.style-scope:has(span:has-text(/People also search for/i))"
+            "www.youtube.com##ytd-shelf-renderer.style-scope:has(span:has-text(/Previously watched/i))"
+            "www.youtube.com##ytd-shelf-renderer.style-scope:has(span:has-text(/Explore more/i))"
+            "www.youtube.com##ytd-shelf-renderer.style-scope:has(span:has-text(/Related to your search/i))"
+            "www.youtube.com##ytd-shelf-renderer.style-scope:has(span:has-text(/From related searches/i))"
+            "www.youtube.com##ytd-shelf-renderer.style-scope:has(span:has-text(/Channels new to you/i))"
+            "www.youtube.com##ytd-horizontal-card-list-renderer.ytd-item-section-renderer.style-scope"
+            "www.youtube.com##ytd-reel-shelf-renderer.ytd-item-section-renderer.style-scope"
           ];
         };
       };

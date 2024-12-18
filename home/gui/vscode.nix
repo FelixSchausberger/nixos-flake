@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   programs.vscode = {
     enable = true;
 
@@ -13,6 +17,14 @@
       rust-lang.rust-analyzer
       nvarner.typst-lsp
       redhat.vscode-yaml
+    ];
+  };
+
+  home.persistence."/per/home/${config.home.username}" = {
+    directories = [
+      {
+        directory = ".config/Code/";
+      }
     ];
   };
 }

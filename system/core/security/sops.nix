@@ -9,6 +9,7 @@
 
   environment.systemPackages = with pkgs; [
     age # Modern encryption tool with small explicit keys
+    ssh-to-age # Convert ssh private keys in ed25519 format to age keys
   ];
 
   sops = {

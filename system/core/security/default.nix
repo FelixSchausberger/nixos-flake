@@ -1,7 +1,4 @@
-{
-  inputs, 
-  ...
-}: {
+{inputs, ...}: {
   imports = [
     ./sops.nix
     ./ssh.nix

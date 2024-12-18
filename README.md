@@ -8,7 +8,7 @@ Personal configs for Home-Manager and NixOS. Using
 
 ## 🗃️ Contents
 
-```
+```lang-markdown
 .
 ├── flake.lock
 ├── flake.nix
@@ -19,7 +19,6 @@ Personal configs for Home-Manager and NixOS. Using
 │   │   ├── firefox
 │   │   │   ├── default.nix
 │   │   │   └── tabliss.css
-│   │   ├── floorp.nix
 │   │   ├── mpv.nix
 │   │   ├── planify.nix
 │   │   ├── spicetify.nix
@@ -130,4 +129,4 @@ public ssh key.
   - Copy the git-crypt key from Bitwarden to the clipboard and decode the key:
     - `wl-paste | base64 -d > ./secrets/secret-key # bash`
   - Unlock the secrets: `git-crypt unlock ./secrets/secret-key`
-6. Rebuild the system: `sudo nixos-rebuild switch --flake .`
+- Rebuild the system: `sudo nixos-rebuild switch --flake .`
