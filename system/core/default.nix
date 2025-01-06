@@ -8,7 +8,6 @@
   ...
 }: {
   imports = [
-    ./boot.nix
     ./security
     ./users.nix
   ];
@@ -39,7 +38,13 @@
       else null;
   };
 
-  services.dbus.enable = true;
+  services = {
+    # Simple interprocess messaging system
+    dbus.enable = true;
+
+    # Automatic CPU speed & power optimizer
+    auto-cpufreq.enable = true;
+  }
 
   # Compresses half the ram for use as swap
   # zramSwap.enable = true;

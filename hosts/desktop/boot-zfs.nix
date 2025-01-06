@@ -1,4 +1,22 @@
-{pkgs, ...}: {
+{
+  config,
+  lib,
+  pkgs, 
+  ...
+}: let
+  # Select the latest zfs-compatible kernel
+  zfsCompatibleKernelPackages = lib.filterAttrs (
+    name: kernelPackages:
+    (builtins.match "linux_[0-9]+_[0-9]+" name) != null
+    && (builtins.tryEval kernelPackages).success
+    && (!kernelPackages.${config.boot.zfs.package.kernelModuleAttribute}.meta.broken)
+  ) pkgs.linuxKernel.packages;
+  latestKernelPackage = lib.last (
+    lib.sort (a: b: (lib.versionOlder a.kernel.version b.kernel.version)) (
+      builtins.attrValues zfsCompatibleKernelPackages
+    )
+  );
+in {
   boot = {
     loader = {
       systemd-boot = {
@@ -31,8 +49,17 @@
       };
     };
 
+    kernelPackages = latestKernelPackage;
     kernelParams = ["nohibernate" "quiet" "udev.log_level=3"];
+
+    # With autotrim=on space which has been recently freed, and is no longer allocated by the pool, will be periodically trimmed. 
+    initrd.postDeviceCommands = ''
+      zpool set autotrim=on rpool
+    '';
   };
 
-  services.zfs.autoScrub.enable = true;
+  services.zfs= {
+    autoScrub.enable = true;
+    autoSnapshot.enable = true;
+  };
 }

@@ -3,6 +3,7 @@
   imports = [
     ./calibre.nix # Comprehensive e-book software
     ./firefox # A web browser built from Firefox source tree
+    ./ghostty.nix # A fast, feature-rich, and cross-platform terminal emulator that uses platform-native UI and GPU acceleration 
     ./mpv.nix # General-purpose media player, fork of MPlayer and mplayer2
     ./obsidian.nix # A powerful knowledge base
     ./oculante.nix # # A minimalistic crossplatform image viewer written in Rust

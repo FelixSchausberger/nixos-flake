@@ -69,6 +69,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ghostty.url = "github:clo4/ghostty-hm-module";
+
     helix.url = "github:helix-editor/helix";
 
     home-manager = {
