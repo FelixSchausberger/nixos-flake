@@ -8,8 +8,14 @@
 
   # Create an overlay for niv-managed packages
   nivOverlay = final: prev: {
+    lumen = final.callPackage ./pkgs/lumen {inherit sources;};
+    mmtui = final.callPackage ./pkgs/mmtui {inherit sources;};
+
     yaziPlugins = {
+      clipboard = sources."clipboard.yazi";
       eza-preview = sources."eza-preview.yazi";
+      fg = sources."fg.yazi";
+      mount = sources."mount.yazi";
     };
   };
 in {

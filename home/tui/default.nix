@@ -28,6 +28,7 @@
   home.packages = with pkgs; [
     bluetui # TUI for managing bluetooth on Linux
     # clipboard-jh # Cut, copy, and paste anything, anywhere, all from the terminal
+    mdcat # Cat for markdown
     ouch # A CLI for easily compressing and decompressing files and directories
     procs # A modern replacement for ps
     # quickemu # Quickly create and run virtual machines

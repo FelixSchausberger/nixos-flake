@@ -1,4 +1,16 @@
 {
+    "clipboard.yazi": {
+        "branch": "master",
+        "description": "mirror of https://gitee.com/DreamMaoMao",
+        "homepage": "",
+        "owner": "DreamMaoMao",
+        "repo": "clipboard.yazi",
+        "rev": "1ca5e31d5ed18cc4c9566c93d0ffff0ad8ab49f8",
+        "sha256": "11l7zlvxhds1l2axn5dppi7yvnmm9vr3yh5pyx9hw2dvsihdaid6",
+        "type": "tarball",
+        "url": "https://github.com/DreamMaoMao/clipboard.yazi/archive/1ca5e31d5ed18cc4c9566c93d0ffff0ad8ab49f8.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "eza-preview.yazi": {
         "branch": "main",
         "description": "A Yazi plugin to preview directories using eza in list and tree modes",
@@ -11,16 +23,88 @@
         "url": "https://github.com/ahkohd/eza-preview.yazi/archive/5ef05bcee141291566276e62cc16e265a387dca4.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "fg.yazi": {
+        "branch": "main",
+        "description": "mirror of https://gitee.com/DreamMaoMao",
+        "homepage": "",
+        "owner": "DreamMaoMao",
+        "repo": "fg.yazi",
+        "rev": "2cb5b49c3471195ebc2fab83fd9fef6fd8a16d5f",
+        "sha256": "1gabx56m96lifyrrjr9ld98vxx7vqhkvzjfs6n6l32b1v3kk33vp",
+        "type": "tarball",
+        "url": "https://github.com/DreamMaoMao/fg.yazi/archive/2cb5b49c3471195ebc2fab83fd9fef6fd8a16d5f.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "lumen": {
+        "branch": "main",
+        "description": "Instant AI Git Commit message, Git changes summary from the CLI (no API key required)",
+        "homepage": "",
+        "owner": "jnsahaj",
+        "repo": "lumen",
+        "rev": "635172557504acb13713f538800dabcd332992bb",
+        "sha256": "0zn75p3ad5n2k6wzj9r15v0lxnwv0x9gpzijap10i72mb6g9pvb9",
+        "type": "tarball",
+        "url": "https://github.com/jnsahaj/lumen/archive/635172557504acb13713f538800dabcd332992bb.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "mmtui": {
+        "branch": "master",
+        "description": "TUI disk mount manager for TUI file managers",
+        "homepage": null,
+        "owner": "SL-RU",
+        "repo": "mmtui",
+        "rev": "69c1ba8dbc40fce3835cb8bb2b81d70e34214cf5",
+        "sha256": "13kn62jq6z3rrbbhbsnrcbxf8k30fv8s1z5cqis3cf4f7s9p9vmk",
+        "type": "tarball",
+        "url": "https://github.com/SL-RU/mmtui/archive/69c1ba8dbc40fce3835cb8bb2b81d70e34214cf5.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "mount.yazi": {
+        "branch": "master",
+        "description": "Yazi plugin for SL_RU/mmtui TUI mount manager",
+        "homepage": "",
+        "owner": "SL-RU",
+        "repo": "mount.yazi",
+        "rev": "e494101cb8a35cfb13f5c42670cdd28ede850216",
+        "sha256": "054cb8zzbhpfwk6dpg123nbsfc7mzd7i6mxivywg76qrhxlvmkvn",
+        "type": "tarball",
+        "url": "https://github.com/SL-RU/mount.yazi/archive/e494101cb8a35cfb13f5c42670cdd28ede850216.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "nixpkgs": {
         "branch": "nixos-unstable",
         "description": "Nix Packages collection",
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "6c43a3495a11e261e5f41e5d7eda2d71dae1b2fe",
-        "sha256": "16f329z831bq7l3wn1dfvbkh95l2gcggdwn6rk3cisdmv2aa3189",
+        "rev": "8f3e1f807051e32d8c95cd12b9b421623850a34d",
+        "sha256": "1cpsxhm3fwsyf5shr35kirj1ajz8iy601q37xi3ma4f8dxd4vagy",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/6c43a3495a11e261e5f41e5d7eda2d71dae1b2fe.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/8f3e1f807051e32d8c95cd12b9b421623850a34d.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "starship-yazi": {
+        "branch": "main",
+        "description": "Starship prompt plugin for yazi",
+        "homepage": null,
+        "owner": "Rolv-Apneseth",
+        "repo": "starship.yazi",
+        "rev": "9c37d37099455a44343f4b491d56debf97435a0e",
+        "sha256": "1zn573v3bdc2qw1yjry357svmwlm6xj2hbc89pipysjna7pb4i60",
+        "type": "tarball",
+        "url": "https://github.com/Rolv-Apneseth/starship.yazi/archive/9c37d37099455a44343f4b491d56debf97435a0e.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "yazi-plugins": {
+        "branch": "main",
+        "description": "Place code snippets from docs into this monorepo, so that users can update more easily via package manager.",
+        "homepage": "",
+        "owner": "yazi-rs",
+        "repo": "plugins",
+        "rev": "600614a9dc59a12a63721738498c5541c7923873",
+        "sha256": "1slplf4g560ibz16aczw43qpzqdxn3s848xzkglfbd3xzfy242cr",
+        "type": "tarball",
+        "url": "https://github.com/yazi-rs/plugins/archive/600614a9dc59a12a63721738498c5541c7923873.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
