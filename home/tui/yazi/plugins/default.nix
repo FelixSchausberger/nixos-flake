@@ -1,15 +1,6 @@
 # https://yazi-rs.github.io/docs/resources/
 # https://github.com/AnirudhG07/awesome-yazi
-
 {
-    yaziPlugins = {
-      clipboard = sources."clipboard.yazi";
-      eza-preview = sources."eza-preview.yazi";
-      fg = sources."fg.yazi";
-      mount = sources."mount.yazi";
-      mmtui = pkgs.callPackage ../../../system/pkgs/mmtui { inherit sources; };
-    };
-
   imports = [
     ./chmod.nix # Execute chmod on the selected files to change their mode.
     ./clipboard.nix # Yazi plugin for copy file to clipboard,support linux and windows.

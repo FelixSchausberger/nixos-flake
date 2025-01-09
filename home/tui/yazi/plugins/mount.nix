@@ -14,6 +14,6 @@
   };
 
   home.packages = with pkgs; [
-    mmtui # TUI disk mount manager for TUI file managers.
+    pkgs.yaziPlugins.mmtui # TUI disk mount manager for TUI file managers.
   ];
 }

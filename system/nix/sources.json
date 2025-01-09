@@ -77,10 +77,10 @@
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "8f3e1f807051e32d8c95cd12b9b421623850a34d",
-        "sha256": "1cpsxhm3fwsyf5shr35kirj1ajz8iy601q37xi3ma4f8dxd4vagy",
+        "rev": "bffc22eb12172e6db3c5dde9e3e5628f8e3e7912",
+        "sha256": "0rvk7svls1c48fsg8a6glanm2hzbcfjdh7xmv4jfaznjjvsm11gi",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/8f3e1f807051e32d8c95cd12b9b421623850a34d.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/bffc22eb12172e6db3c5dde9e3e5628f8e3e7912.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "starship-yazi": {
@@ -89,10 +89,22 @@
         "homepage": null,
         "owner": "Rolv-Apneseth",
         "repo": "starship.yazi",
-        "rev": "9c37d37099455a44343f4b491d56debf97435a0e",
-        "sha256": "1zn573v3bdc2qw1yjry357svmwlm6xj2hbc89pipysjna7pb4i60",
+        "rev": "4053c8c486f9cfd60f1f42fa5d80e97caef41eb1",
+        "sha256": "1h7p4mvqs2cjxcbqspm9ysi6in3xpz31840bqr0nj56mzn0pfcr9",
         "type": "tarball",
-        "url": "https://github.com/Rolv-Apneseth/starship.yazi/archive/9c37d37099455a44343f4b491d56debf97435a0e.tar.gz",
+        "url": "https://github.com/Rolv-Apneseth/starship.yazi/archive/4053c8c486f9cfd60f1f42fa5d80e97caef41eb1.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "yazelix": {
+        "branch": "main",
+        "description": "zellij, yazi and nushell adding a File Tree to Helix & helix-friendly keybindigs for zellij",
+        "homepage": "",
+        "owner": "luccahuguet",
+        "repo": "yazelix",
+        "rev": "da9875c2b1bdf45c276cae6989c233526a47c166",
+        "sha256": "1f39728qw7xx2v7mk7gdpm0bgqdki910izfmkwasy0b7q9xr8kab",
+        "type": "tarball",
+        "url": "https://github.com/luccahuguet/yazelix/archive/da9875c2b1bdf45c276cae6989c233526a47c166.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "yazi-plugins": {

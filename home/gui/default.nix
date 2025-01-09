@@ -2,6 +2,7 @@
   # Import configurations of graphical applications
   imports = [
     ./calibre.nix # Comprehensive e-book software
+    ./chromium.nix
     ./firefox # A web browser built from Firefox source tree
     # ./mpv.nix # General-purpose media player, fork of MPlayer and mplayer2
     ./obsidian.nix # A powerful knowledge base
@@ -10,6 +11,7 @@
     ./sioyek.nix # A PDF viewer
     ./spicetify.nix # Play music from the Spotify music service
     ./vscode.nix # Open source source code editor developed by Microsoft
+    ./zen.nix
   ];
 
   home.packages = with pkgs; [
