@@ -3,9 +3,9 @@
   imports = [
     ./calibre.nix # Comprehensive e-book software
     ./firefox # A web browser built from Firefox source tree
-    ./mpv.nix # General-purpose media player, fork of MPlayer and mplayer2
+    # ./mpv.nix # General-purpose media player, fork of MPlayer and mplayer2
     ./obsidian.nix # A powerful knowledge base
-    ./oculante.nix # # A minimalistic crossplatform image viewer written in Rust
+    # ./oculante.nix # # A minimalistic crossplatform image viewer written in Rust
     ./planify.nix # Task manager with Todoist support
     ./sioyek.nix # A PDF viewer
     ./spicetify.nix # Play music from the Spotify music service
