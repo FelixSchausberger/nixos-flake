@@ -1,5 +1,5 @@
 {
-  home.programs.chromium = {
+  programs.chromium = {
     enable = true;
   };
 }

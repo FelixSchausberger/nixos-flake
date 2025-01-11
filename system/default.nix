@@ -1,6 +1,7 @@
 let
   desktop = [
     ./core
+    ./graphics.nix
     ./network.nix
     ./nix
     ./programs

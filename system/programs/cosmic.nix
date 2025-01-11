@@ -26,6 +26,10 @@
   # For the clipboard manager to work zwlr_data_control_manager_v1 protocol needs to be available
   environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
 
+  # Firefox fullscreen freezes comsic
+  # Remove once https://github.com/pop-os/cosmic-comp/issues/713 is fixed
+  environment.sessionVariables.COSMIC_DISABLE_DIRECT_SCANOUT = 1;
+
   environment.persistence."/per" = {
     users.${inputs.self.lib.user} = {
       directories = [
