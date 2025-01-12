@@ -56,7 +56,10 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs = {
+      follows = "nixos-cosmic/nixpkgs";
+      url = "github:NixOS/nixpkgs/nixos-unstable";
+    };
 
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-1.tar.gz";
@@ -78,9 +81,9 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
-    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+    niri.url = "github:sodiboo/niri-flake";
 
-    nixpkgs.follows = "nixos-cosmic/nixpkgs";
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
 
     nix-index-db = {
       url = "github:Mic92/nix-index-database";
@@ -108,6 +111,6 @@
 
     yazi.url = "github:sxyazi/yazi";
 
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
+    # zen-browser.url = "github:linuxmobile/zen-browser-flake";
   };
 }

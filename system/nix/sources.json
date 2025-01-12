@@ -11,6 +11,18 @@
         "url": "https://github.com/DreamMaoMao/clipboard.yazi/archive/1ca5e31d5ed18cc4c9566c93d0ffff0ad8ab49f8.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "cosmic-ext-alternative-startup": {
+        "branch": "main",
+        "description": null,
+        "homepage": null,
+        "owner": "Drakulix",
+        "repo": "cosmic-ext-alternative-startup",
+        "rev": "8ceda00197c7ec0905cf1dccdc2d67d738e45417",
+        "sha256": "0wzz40l04lwizhwsw846d48va169g1gmqmvzjw6f9wkr2vgafjnj",
+        "type": "tarball",
+        "url": "https://github.com/Drakulix/cosmic-ext-alternative-startup/archive/8ceda00197c7ec0905cf1dccdc2d67d738e45417.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "eza-preview.yazi": {
         "branch": "main",
         "description": "A Yazi plugin to preview directories using eza in list and tree modes",
@@ -77,10 +89,10 @@
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "bffc22eb12172e6db3c5dde9e3e5628f8e3e7912",
-        "sha256": "0rvk7svls1c48fsg8a6glanm2hzbcfjdh7xmv4jfaznjjvsm11gi",
+        "rev": "130595eba61081acde9001f43de3248d8888ac4a",
+        "sha256": "0sw7zg4gal3wpz51ch1v36pdan9z73d4f3yrggh8h2clxs8jdgsx",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/bffc22eb12172e6db3c5dde9e3e5628f8e3e7912.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/130595eba61081acde9001f43de3248d8888ac4a.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "starship-yazi": {

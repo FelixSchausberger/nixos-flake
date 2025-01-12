@@ -17,7 +17,21 @@
     pkgs.exiftool
   ];
 
-  # Blazing fast terminal file manager written in Rust, based on async I/O
+  programs.bash = {
+    enable = true;
+
+    bashrcExtra = ''
+      function y() {
+      	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+      	yazi "$@" --cwd-file="$tmp"
+      	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+      		builtin cd -- "$cwd"
+      	fi
+      	rm -f -- "$tmp"
+      }
+    '';
+  };
+
   programs.yazi = {
     enable = true;
 

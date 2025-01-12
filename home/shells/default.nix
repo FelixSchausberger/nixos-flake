@@ -4,7 +4,6 @@
   ...
 }: {
   imports = [
-    ./bash.nix # GNU Bourne-Again Shell, the de facto standard shell on Linux
     ./fish.nix # Smart and user-friendly command line shell
     ./starship.nix # A minimal, blazing fast, and extremely customizable prompt
     ./zoxide.nix # A fast cd command that learns your habits
