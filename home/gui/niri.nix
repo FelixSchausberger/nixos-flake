@@ -77,50 +77,43 @@ in {
 
       spawn-at-startup = [
         (makeCommand "${pkgs.cosmic-ext-alternative-startup}/bin/cosmic-ext-alternative-startup")
-        # {
-        #   command = [
-        #     # "cosmic-ext-alternative-startup"
-
-        #     "cosmic-applets"
-        #     "cosmic-bg"
-        #     "cosmic-wallpapers"
-        #     "cosmic-panel"
-        #     "cosmic-settings"
-        #     "cosmic-settings-daemon"
-        #   ];
-        # }
+        {
+          command = [
+            "cosmic-panel"
+          ];
+        }
       ];
 
-      layout = {
-        focus-ring.enable = false;
-        border = {
-          enable = true;
-          width = 1;
-          active.gradient = {
-            angle = 45;
-            relative-to = "workspace-view";
-            from = "#e55812";
-            to = "#e6aa1f";
-          };
-          inactive.color = "#412e4e";
-        };
+      # layout = {
+      #   focus-ring.enable = false;
+      #   border = {
+      #     enable = true;
+      #     width = 1;
+      #     active.gradient = {
+      #       angle = 45;
+      #       relative-to = "workspace-view";
+      #       from = "#e55812";
+      #       to = "#e6aa1f";
+      #     };
+      #     inactive.color = "#412e4e";
+      #   };
 
-        preset-column-widths = [
-          {proportion = 1.0 / 3.0;}
-          {proportion = 1.0 / 2.0;}
-          {proportion = 2.0 / 3.0;}
-          {proportion = 1.0;}
-        ];
-        default-column-width = {proportion = 1.0 / 2.0;};
+      #   preset-column-widths = [
+      #     {proportion = 1.0 / 3.0;}
+      #     {proportion = 1.0 / 2.0;}
+      #     {proportion = 2.0 / 3.0;}
+      #     {proportion = 1.0;}
+      #   ];
+      #   default-column-width = {proportion = 1.0 / 2.0;};
 
-        gaps = 8;
-        struts = {
-          left = 0;
-          right = 0;
-          top = 0;
-          bottom = 0;
-        };
-      };
+      #   gaps = 8;
+      #   struts = {
+      #     left = 0;
+      #     right = 0;
+      #     top = 0;
+      #     bottom = 0;
+      #   };
+      # };
 
       animations.shaders.window-resize = ''
         vec4 resize_color(vec3 coords_curr_geo, vec3 size_curr_geo) {
@@ -162,6 +155,7 @@ in {
 
       window-rules = [
         {
+          # Add rounded corners
           geometry-corner-radius = let
             radius = 12.0;
           in {
@@ -178,6 +172,7 @@ in {
         }
       ];
 
+      prefer-no-csd = true; # Whether to prefer server-side decorations (SSD) over client-side decorations (CSD).
       hotkey-overlay.skip-at-startup = true;
     };
   };

@@ -18,8 +18,8 @@
     mimeApps = {
       enable = true;
       defaultApplications = {
-        "video/mp4" = "mpv.desktop";
-        "video/quicktime" = "mpv.desktop";
+        "video/mp4" = ["mpv.desktop"];
+        "video/quicktime" = ["mpv.desktop"];
       };
     };
   };

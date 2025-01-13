@@ -7,7 +7,7 @@
     # ./mpv.nix # General-purpose media player, fork of MPlayer and mplayer2
     ./niri.nix
     ./obsidian.nix # A powerful knowledge base
-    # ./oculante.nix # # A minimalistic crossplatform image viewer written in Rust
+    ./oculante.nix # # A minimalistic crossplatform image viewer written in Rust
     ./planify.nix # Task manager with Todoist support
     ./sioyek.nix # A PDF viewer
     ./spicetify.nix # Play music from the Spotify music service

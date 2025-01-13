@@ -5,6 +5,7 @@
   hostName,
   inputs,
   lib,
+  pkgs,
   ...
 }: {
   imports = [
@@ -29,13 +30,19 @@
   programs.fuse.userAllowOther = true;
 
   # Configure system-wide files.
-  environment.etc = {
-    nixos.source = "${inputs.self}";
+  environment = {
+    etc = {
+      nixos.source = "${inputs.self}";
 
-    "ssh/ssh_host_ed25519_key.pub".source =
-      if builtins.pathExists ../../hosts/${hostName}/ssh_host_ed25519_key.pub
-      then ../../hosts/${hostName}/ssh_host_ed25519_key.pub
-      else null;
+      "ssh/ssh_host_ed25519_key.pub".source =
+        if builtins.pathExists ../../hosts/${hostName}/ssh_host_ed25519_key.pub
+        then ../../hosts/${hostName}/ssh_host_ed25519_key.pub
+        else null;
+    };
+
+    systemPackages = with pkgs; [
+      xdg-utils # Set of command line tools that assist applications with a variety of desktop integration tasks
+    ];
   };
 
   services = {
