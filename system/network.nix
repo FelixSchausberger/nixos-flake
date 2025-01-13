@@ -1,4 +1,15 @@
-{secrets, ...}: {
+{inputs, secrets, ...}: {
+  imports = [
+    "${inputs.impermanence}/nixos.nix"
+  ];
+
+  environment.persistence."/per" = {
+    hideMounts = true;
+    directories = [
+      "/etc/NetworkManager/system-connections"
+    ];
+  };
+
   networking = {
     # Required by zfs.
     # Generate with 'head -c4 /dev/urandom | od -t x4 | cut -c9-16'
