@@ -89,10 +89,10 @@
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "130595eba61081acde9001f43de3248d8888ac4a",
-        "sha256": "0sw7zg4gal3wpz51ch1v36pdan9z73d4f3yrggh8h2clxs8jdgsx",
+        "rev": "eb62e6aa39ea67e0b8018ba8ea077efe65807dc8",
+        "sha256": "13fppgajf295bl4r6npiwdl0s642nfnv3mr9sh6lsqgi9x1qs3xr",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/130595eba61081acde9001f43de3248d8888ac4a.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/eb62e6aa39ea67e0b8018ba8ea077efe65807dc8.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "starship-yazi": {

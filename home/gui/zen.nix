@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   pkgs,
   ...
@@ -14,5 +15,18 @@
     '';
   };
 in {
+  imports = [
+    (inputs.impermanence + "/home-manager.nix")
+  ];
+
   home.packages = [zenWithWayland];
+
+  home.persistence."/per/home/${config.home.username}" = {
+    directories = [
+      {
+        directory = ".zen";
+        # method = "symlink";
+      }
+    ];
+  };
 }

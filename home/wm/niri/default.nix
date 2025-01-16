@@ -62,7 +62,7 @@ in {
         "Mod+Q".action = close-window;
         "Mod+F".action = maximize-column;
         "Mod+Shift+F".action = fullscreen-window;
-        
+
         # Column Management
         "Mod+S".action = switch-preset-column-width;
         "Mod+Comma".action = consume-window-into-column;
@@ -87,7 +87,7 @@ in {
         "Mod+Right".action = focus-column-right;
         "Mod+Down".action = focus-window-down;
         "Mod+Up".action = focus-window-up;
-        
+
         # Alternative Workspace Navigation
         "Mod+U".action = focus-workspace-down;
         "Mod+I".action = focus-workspace-up;
@@ -102,13 +102,13 @@ in {
         "Mod+Shift+L".action = move-column-right;
         "Mod+Shift+K".action = move-column-to-workspace-up;
         "Mod+Shift+J".action = move-column-to-workspace-down;
-        
+
         # Alternative Column Movement
         "Mod+Ctrl+U".action = move-column-to-workspace-down;
         "Mod+Ctrl+I".action = move-column-to-workspace-up;
         "Mod+Ctrl+Page_Down".action = move-column-to-workspace-down;
         "Mod+Ctrl+Page_Up".action = move-column-to-workspace-up;
-        
+
         # Workspace Movement
         "Mod+Shift+U".action = move-workspace-down;
         "Mod+Shift+I".action = move-workspace-up;
@@ -139,14 +139,37 @@ in {
           command = ["gammastep"];
         }
         # Start Firefox in the browser workspace
-        {
-          command = ["firefox"];
-          workspace = "browser";
-        }
+        # {
+        #   command = ["firefox"];
+        #   workspace = "browser";
+        # }
       ];
+
+      layout.always-center-single-column = true;
 
       # Window rules for different applications and scenarios
       window-rules = [
+        {
+          geometry-corner-radius = let
+            radius = 4.0;
+          in {
+            bottom-left = radius;
+            bottom-right = radius;
+            top-left = radius;
+            top-right = radius;
+          };
+          clip-to-geometry = true;
+          draw-border-with-background = false;
+
+          # border = {
+          #   enable = true;
+          #   active.color = "#B2CFCF";
+          # };
+
+          # focus-ring = {
+          #   enable = false;
+          # };
+        }
         # Scratchpad terminal configuration
         {
           matches = [
@@ -195,23 +218,9 @@ in {
         }
       ];
 
-      # Layer-specific rules (e.g., opacity settings)
-      layer-rules = [
-        {
-          matches = [
-            {
-              app-id = "cosmic-term";
-            }
-          ];
-          background = {
-            opacity = 0.8;
-          };
-        }
-      ];
-
       # General preferences
-      prefer-no-csd = true;  # Prefer server-side decorations over client-side
-      hotkey-overlay.skip-at-startup = true;  # Don't show hotkey overlay on startup
+      prefer-no-csd = true; # Prefer server-side decorations over client-side
+      hotkey-overlay.skip-at-startup = true; # Don't show hotkey overlay on startup
     };
   };
 }
