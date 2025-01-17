@@ -1,8 +1,10 @@
 {
   wayland.windowManager.hyprland.settings = {
     windowrulev2 = [
-      # Telegram media viewer
-      "float, title:^(Media viewer)$"
+      "opacity 0.9 0.8, ^(cosmic-term)$"
+      "float, ^(floating-mode)$"
+      "float, ^(Steam)$"
+      "float, title:^(Media viewer)$" # Telegram media viewer
 
       # Bitwarden extension
       "float, title:^(.*Bitwarden Password Manager.*)$"

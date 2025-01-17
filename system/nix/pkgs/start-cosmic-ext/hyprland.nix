@@ -26,11 +26,12 @@
               text = ''
                 set -e
 
-                # From: https://people.debian.org/~mpitt/systemd.conf-2016-graphical-session.pdf
+                # Cleanup any existing DBus server files
+                rm -f /tmp/cosmic-notification-* || true
+                rm -f /run/user/$UID/cosmic-notification-* || true
 
                 if command -v systemctl >/dev/null; then
-                    # robustness: if the previous graphical session left some failed units,
-                    # reset them so that they don't break this startup
+                    # Reset failed units
                     for unit in $(systemctl --user --no-legend --state=failed --plain list-units | cut -f1 -d' '); do
                         partof="$(systemctl --user show -p PartOf --value "$unit")"
                         for target in cosmic-session.target graphical-session.target; do
@@ -40,19 +41,22 @@
                             fi
                         done
                     done
+
+                    # Stop any running cosmic services
+                    systemctl --user stop cosmic-notifications.service || true
+                    systemctl --user stop cosmic-panel.service || true
                 fi
 
-                # use the user's preferred shell to acquire environment variables
-                # see: https://github.com/pop-os/cosmic-session/issues/23
+                # Shell environment handling
                 if [ -n "''${SHELL:-}" ]; then
-                    # --in-login-shell: our flag to indicate that we don't need to recurse any further
                     if [ "''${1:-}" != "--in-login-shell" ]; then
-                        # `exec -l`: like `login`, prefixes $SHELL with a hyphen to start a login shell
                         exec bash -c "exec -l ${"'"}''${SHELL}' -c ${"'"}''${0} --in-login-shell'"
                     fi
                 fi
 
+                # Environment setup
                 export DAEMON_NOTIFICATIONS_FD=18
+                export PANEL_NOTIFICATIONS_FD=18
                 export XDG_CURRENT_DESKTOP="''${XDG_CURRENT_DESKTOP:=Hyprland}"
                 export XDG_SESSION_DESKTOP="''${XDG_SESSION_DESKTOP:=Hyprland}"
                 export XDG_SESSION_TYPE="''${XDG_SESSION_TYPE:=wayland}"
@@ -65,15 +69,17 @@
                 export QT_QPA_PLATFORM="wayland;xcb"
                 export QT_AUTO_SCREEN_SCALE_FACTOR=1
                 export QT_ENABLE_HIGHDPI_SCALING=1
-                export HYPRLAND_LOG_WLR=1  # Optional: Enable Hyprland logging
+                export HYPRLAND_LOG_WLR=1
 
                 if command -v systemctl >/dev/null; then
-                    # set environment variables for new units started by user service manager
-                    systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP
+                    systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP PANEL_NOTIFICATIONS_FD DAEMON_NOTIFICATIONS_FD
                 fi
-                # Run cosmic-session
+
+                # Ensure DBus is running
                 if [[ -z "''${DBUS_SESSION_BUS_ADDRESS}" ]]; then
-                    exec dbus-run-session -- cosmic-session Hyprland
+                    eval $(dbus-launch --sh-syntax)
+                    export DBUS_SESSION_BUS_ADDRESS
+                    exec cosmic-session Hyprland
                 else
                     exec cosmic-session Hyprland
                 fi

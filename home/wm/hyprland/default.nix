@@ -64,13 +64,13 @@ in {
           "blur,notifications"
         ];
 
-        windowrule = [
-          "opacity, 0.8, ^(*)"
-          "float, ^(floating-mode)$"
-          # "float, ^(pavucontrol)$"
-          # "float, ^(it.mijorus.smile)$"
-          "float, ^(Steam)$"
-        ];
+        # windowrule = [
+        #   "opacity 0.9 0.8, ^(cosmic-term)$"
+        #   "float, ^(floating-mode)$"
+        #   # "float, ^(pavucontrol)$"
+        #   # "float, ^(it.mijorus.smile)$"
+        #   "float, ^(Steam)$"
+        # ];
       };
 
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
@@ -84,13 +84,16 @@ in {
         "${pkgs.cosmic-panel}/bin/cosmic-panel"
         # "${pkgs.cosmic-notifications-daemon}/bin/cosmic-notifications-daemon"
         "${pkgs.cosmic-settings-daemon}/bin/cosmic-settings-daemon"
+        "${pkgs.gammastep}/bin/gammastep"
 
         # "${pkgs.hypridle}/bin/hypridle"
         # "${pkgs.udiskie}/bin/udiskie"
         # "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store"
         # "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store"
 
-        "[workspace special:magic silent] ${terminal} start --class=floating-mode"
+        "[workspace special:planify silent] ${pkgs.planify}/bin/planify start --class=floating-mode"
+        "[workspace special:spotify silent] ${pkgs.spotify}/bin/spotify start --class=floating-mode"
+        "[workspace special:terminal silent] ${terminal} start --class=floating-mode"
       ];
 
       misc = {

@@ -4,11 +4,13 @@
   extraSpecialArgs = {inherit inputs;};
 
   homeImports = {
-    "${inputs.self.lib.user |> getUserHost <| "desktop"}" = [
+    # "${inputs.self.lib.user |> getUserHost <| "desktop"}" = [
+    "${getUserHost inputs.self.lib.user "desktop"}" = [
       ../.
       ./desktop
     ];
-    "${inputs.self.lib.user |> getUserHost <| "surface"}" = [
+    # "${inputs.self.lib.user |> getUserHost <| "surface"}" = [
+    "${getUserHost inputs.self.lib.user "surface"}" = [
       ../.
       ./surface
     ];
