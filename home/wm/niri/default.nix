@@ -1,5 +1,4 @@
 {
-  config,
   inputs,
   pkgs,
   ...
@@ -43,9 +42,9 @@ in {
       spawn-at-startup = [
         # Start Cosmic desktop components
         (makeCommand "${pkgs.cosmic-ext-alternative-startup}/bin/cosmic-ext-alternative-startup")
-        (makeCommand "${pkgs.cosmic-panel}/bin/cosmic-panel");
-        (makeCommand "${pkgs.gammastep}/bin/gammastep");
-  
+        (makeCommand "${pkgs.cosmic-panel}/bin/cosmic-panel")
+        (makeCommand "${pkgs.gammastep}/bin/gammastep")
+
         # Start Firefox in the browser workspace
         # {
         #   command = ["firefox"];

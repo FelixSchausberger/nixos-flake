@@ -36,6 +36,7 @@ in {
     ];
   };
   environment.systemPackages = with pkgs; [
+    cosmic-ext-alternative-startup
     niv # Easy dependency management for Nix projects
   ];
 }

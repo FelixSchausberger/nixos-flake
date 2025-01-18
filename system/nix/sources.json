@@ -89,10 +89,10 @@
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "eb62e6aa39ea67e0b8018ba8ea077efe65807dc8",
-        "sha256": "13fppgajf295bl4r6npiwdl0s642nfnv3mr9sh6lsqgi9x1qs3xr",
+        "rev": "5df43628fdf08d642be8ba5b3625a6c70731c19c",
+        "sha256": "05xhbk4yjbv0f760ld6q9z2v0nphakgk78kgd0wnnmzdjqqkbfad",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/eb62e6aa39ea67e0b8018ba8ea077efe65807dc8.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/5df43628fdf08d642be8ba5b3625a6c70731c19c.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "starship-yazi": {
@@ -125,10 +125,10 @@
         "homepage": "",
         "owner": "yazi-rs",
         "repo": "plugins",
-        "rev": "600614a9dc59a12a63721738498c5541c7923873",
-        "sha256": "1slplf4g560ibz16aczw43qpzqdxn3s848xzkglfbd3xzfy242cr",
+        "rev": "e4aaf430ad7f81d2e358e3a60525c8ef3fa259fc",
+        "sha256": "0wg7rd9jwpsbg7w6cdiy5d03d5kc3pxj6fvcqv2qklyd09igd23l",
         "type": "tarball",
-        "url": "https://github.com/yazi-rs/plugins/archive/600614a9dc59a12a63721738498c5541c7923873.tar.gz",
+        "url": "https://github.com/yazi-rs/plugins/archive/e4aaf430ad7f81d2e358e3a60525c8ef3fa259fc.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

@@ -22,67 +22,71 @@
                 specialArgs.inputs.nixos-cosmic.packages.x86_64-linux.cosmic-session
                 pkgs.bash
                 pkgs.coreutils
+                pkgs.fish
               ];
               text = ''
-                set -e
+                                set -e
 
-                # Cleanup any existing DBus server files
-                rm -f /tmp/cosmic-notification-* || true
-                rm -f /run/user/$UID/cosmic-notification-* || true
+                                # Clean up any existing DBus services
+                                busctl --user list | grep cosmic | while read -r service rest; do
+                                    busctl --user call org.freedesktop.DBus /org/freedesktop/DBus org.freedesktop.DBus ReleaseName "s" "$service" || true
+                                done
 
-                if command -v systemctl >/dev/null; then
-                    # Reset failed units
-                    for unit in $(systemctl --user --no-legend --state=failed --plain list-units | cut -f1 -d' '); do
-                        partof="$(systemctl --user show -p PartOf --value "$unit")"
-                        for target in cosmic-session.target graphical-session.target; do
-                            if [ "$partof" = "$target" ]; then
-                                systemctl --user reset-failed "$unit"
-                                break
-                            fi
-                        done
-                    done
+                                # Kill any existing cosmic processes
+                                pkill -f "cosmic-" || true
+                                sleep 1
 
-                    # Stop any running cosmic services
-                    systemctl --user stop cosmic-notifications.service || true
-                    systemctl --user stop cosmic-panel.service || true
-                fi
+                                # Ensure config directories exist
+                #                 mkdir -p "$HOME/.config/cosmic/com.system76.CosmicSettings"
+                #                 mkdir -p "$HOME/.config/cosmic/cosmic-panel"
+                #                 mkdir -p "$HOME/.config/cosmic/cosmic-applet-tiling"
 
-                # Shell environment handling
-                if [ -n "''${SHELL:-}" ]; then
-                    if [ "''${1:-}" != "--in-login-shell" ]; then
-                        exec bash -c "exec -l ${"'"}''${SHELL}' -c ${"'"}''${0} --in-login-shell'"
-                    fi
-                fi
+                #                 # Create basic tiling applet config
+                #                 if [ ! -f "$HOME/.config/cosmic/cosmic-applet-tiling/config.kdl" ]; then
+                #                     cat > "$HOME/.config/cosmic/cosmic-applet-tiling/config.kdl" << EOF
+                # tiling = true
+                # auto_tile = true
+                # window_padding = 4
+                # EOF
+                #                 fi
 
-                # Environment setup
-                export DAEMON_NOTIFICATIONS_FD=18
-                export PANEL_NOTIFICATIONS_FD=18
-                export XDG_CURRENT_DESKTOP="''${XDG_CURRENT_DESKTOP:=Hyprland}"
-                export XDG_SESSION_DESKTOP="''${XDG_SESSION_DESKTOP:=Hyprland}"
-                export XDG_SESSION_TYPE="''${XDG_SESSION_TYPE:=wayland}"
-                export XCURSOR_THEME="''${XCURSOR_THEME:=Cosmic}"
-                export _JAVA_AWT_WM_NONREPARENTING=1
-                export GDK_BACKEND=wayland,x11
-                export MOZ_ENABLE_WAYLAND=1
-                export MOZ_WEBRENDER=1
-                export MOZ_ACCELERATED=1
-                export QT_QPA_PLATFORM="wayland;xcb"
-                export QT_AUTO_SCREEN_SCALE_FACTOR=1
-                export QT_ENABLE_HIGHDPI_SCALING=1
-                export HYPRLAND_LOG_WLR=1
+                #                 # Create basic panel config if it doesn't exist
+                #                 if [ ! -f "$HOME/.config/cosmic/cosmic-panel/config.kdl" ]; then
+                #                     cat > "$HOME/.config/cosmic/cosmic-panel/config.kdl" << EOF
+                # use_notifications = false
+                # size_wings = 42
+                # size_center = 42
+                # EOF
+                #                 fi
 
-                if command -v systemctl >/dev/null; then
-                    systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP PANEL_NOTIFICATIONS_FD DAEMON_NOTIFICATIONS_FD
-                fi
+                                # Environment setup
+                                export XDG_CURRENT_DESKTOP="''${XDG_CURRENT_DESKTOP:=Hyprland}"
+                                export XDG_SESSION_DESKTOP="''${XDG_SESSION_DESKTOP:=Hyprland}"
+                                export XDG_SESSION_TYPE="''${XDG_SESSION_TYPE:=wayland}"
+                                export XCURSOR_THEME="''${XCURSOR_THEME:=Cosmic}"
+                                export _JAVA_AWT_WM_NONREPARENTING=1
+                                export GDK_BACKEND=wayland,x11
+                                export MOZ_ENABLE_WAYLAND=1
+                                export MOZ_WEBRENDER=1
+                                export MOZ_ACCELERATED=1
+                                export QT_QPA_PLATFORM="wayland;xcb"
+                                export QT_AUTO_SCREEN_SCALE_FACTOR=1
+                                export QT_ENABLE_HIGHDPI_SCALING=1
+                                export HYPRLAND_LOG_WLR=1
 
-                # Ensure DBus is running
-                if [[ -z "''${DBUS_SESSION_BUS_ADDRESS}" ]]; then
-                    eval $(dbus-launch --sh-syntax)
-                    export DBUS_SESSION_BUS_ADDRESS
-                    exec cosmic-session Hyprland
-                else
-                    exec cosmic-session Hyprland
-                fi
+                                if command -v systemctl >/dev/null; then
+                                    systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP
+                                fi
+
+                                # Ensure DBus is running with clean session
+                                if [[ -z "''${DBUS_SESSION_BUS_ADDRESS}" ]]; then
+                                    dbus-daemon --session --address=unix:path=/run/user/$UID/bus
+                                fi
+
+                                sleep 2  # Give Hyprland time to initialize
+
+                                # Let cosmic-session handle its own file descriptors
+                                exec cosmic-session Hyprland
               '';
             }}/bin/start-cosmic-ext-hyprland
           '';

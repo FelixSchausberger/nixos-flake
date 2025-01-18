@@ -17,4 +17,8 @@ jobs:
             auto-optimise-store = true
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
             experimental-features = nix-command flakes pipe-operators
+            substituters = https://cache.nixos.org/ https://git.lix.systems/
+            trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= git.lix.systems:aGVsbG8K
+            allow-import-from-derivation = true
+            accept-flake-config = true
       - run: nix flake check

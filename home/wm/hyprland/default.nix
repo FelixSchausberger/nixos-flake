@@ -4,6 +4,10 @@
   pkgs,
   ...
 }: let
+  # Helper function to create command objects for spawn-at-startup
+  # makeCommand = command: {
+  #   command = [command];
+  # };
   browser = "${pkgs.firefox}/bin/firefox";
   editor = "${pkgs.helix}/bin/hx";
   # terminal = "${pkgs.${defaultTerminal}}/bin/${defaultTerminal}";
