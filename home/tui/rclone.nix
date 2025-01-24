@@ -10,7 +10,6 @@ in {
   imports = [
     (inputs.impermanence + "/home-manager.nix")
   ];
-  
   systemd.user.services.gdrive_mount = {
     Unit = {
       Description = "mount gdrive dirs";

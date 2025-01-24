@@ -52,8 +52,9 @@
     };
 
     flake-parts = {
+      # url = "github:hercules-ci/flake-parts/b905f6fc23a9051a6e1b741e1438dbfc0634c6de";
       url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
+      # inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
     nixpkgs = {
@@ -61,9 +62,13 @@
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
 
+    lix = {
+      url = "git+https://git@git.lix.systems/lix-project/lix";
+    };    
+
     lix-module = {
-      # url = "https://git.lix.systems/lix-project/nixos-module/archive/refs/tags/v2.91.1-1.tar.gz";
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz";
+      url = "git+https://git.lix.systems/lix-project/nixos-module";
+      inputs.lix.follows = "lix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -88,11 +93,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-
     impermanence.url = "github:nix-community/impermanence";
-
-    niri.url = "github:sodiboo/niri-flake";
 
     nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
 
@@ -122,6 +123,6 @@
 
     yazi.url = "github:sxyazi/yazi";
 
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    # zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 }

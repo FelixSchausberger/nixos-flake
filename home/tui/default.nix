@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./bat.nix # A cat clone with syntax highlighting and Git integration
-    ./broot.nix # An interactive tree view, a fuzzy search, a balanced BFS descent
+    # ./broot.nix # An interactive tree view, a fuzzy search, a balanced BFS descent
     ./direnv.nix # A shell extension that manages your environment
     ./eza.nix # A modern, maintained replacement for ls
     ./fd.nix # A simple, fast and user-friendly alternative to find

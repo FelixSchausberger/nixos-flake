@@ -89,7 +89,6 @@ Personal configs for Home-Manager and NixOS. Using
 ├── README.md
 ├── scripts.nix
 ├── secrets
-│   ├── secret-key
 │   └── secrets.json
 └── system
     ├── core

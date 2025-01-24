@@ -1,4 +1,8 @@
-{inputs, secrets, ...}: {
+{
+  inputs,
+  secrets,
+  ...
+}: {
   imports = [
     "${inputs.impermanence}/nixos.nix"
   ];

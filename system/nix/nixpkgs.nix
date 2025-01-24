@@ -7,7 +7,6 @@
   sources = import ./sources.nix;
   # Create an overlay for niv-managed packages
   nivOverlay = final: prev: {
-    cosmic-ext-alternative-startup = final.callPackage ./pkgs/cosmic-ext-alternative-startup {inherit sources;};
     lumen = final.callPackage ./pkgs/lumen {inherit sources;};
     yaziPlugins = {
       clipboard = sources."clipboard.yazi";
@@ -30,13 +29,11 @@ in {
       allowBroken = true;
     };
     overlays = [
-      inputs.niri.overlays.niri
       inputs.nur.overlays.default
       nivOverlay
     ];
   };
   environment.systemPackages = with pkgs; [
-    cosmic-ext-alternative-startup
     niv # Easy dependency management for Nix projects
   ];
 }

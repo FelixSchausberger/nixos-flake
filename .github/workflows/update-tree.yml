@@ -16,18 +16,21 @@ jobs:
 
       - name: Generate Repository Tree
         run: |
-          # Generate full tree, excluding some directories
-          tree -L 4 -I 'result|target|.git' --charset=ascii > repo_tree.txt
+          tree -L 4 -I 'result|target|.git|secrets' --charset=ascii > repo_tree.txt
 
       - name: Update README
         run: |
-          # Use sed to replace the tree section between markers
-          sed -i '/```lang-markdown/,/```/c\```lang-markdown\n'"$(cat repo_tree.txt)"'\n```' README.md
+          awk '
+            /```lang-markdown/ {p=1; print; next}
+            /```/ {p=0}
+            !p
+          ' README.md > README.md.tmp
+          sed -i '/```lang-markdown/r repo_tree.txt' README.md.tmp
+          mv README.md.tmp README.md
 
-      - name: Commit and Push Changes
+      - name: Commit Changes
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add README.md
           git diff --quiet && git diff --staged --quiet || git commit -m "Update repository tree"
-          git push

@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    ./boot-zfs.nix
     ./hardware-configuration.nix
   ];
 

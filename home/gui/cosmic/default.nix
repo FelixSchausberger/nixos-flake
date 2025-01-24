@@ -12,7 +12,7 @@
   programs.bash = {
     enable = true;
 
-    # Auto-start niri when logging into TTY1
+    # Auto-start cosmic when logging into TTY1
     bashrcExtra = ''
       # Check if on TTY1 and start cosmic-session if necessary
       if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then

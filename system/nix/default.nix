@@ -11,7 +11,7 @@
       experimental-features = [
         "nix-command"
         "flakes"
-        "pipe-operator" # Used by lix, for nix use "pipe-operators"
+        "pipe-operators" # Used by lix, for nix use "pipe-operators"
       ];
     };
 

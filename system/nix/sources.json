@@ -11,18 +11,6 @@
         "url": "https://github.com/DreamMaoMao/clipboard.yazi/archive/93b73d41e17f3342dab36c4280ec16d1afc7f40e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "cosmic-ext-alternative-startup": {
-        "branch": "main",
-        "description": null,
-        "homepage": null,
-        "owner": "Drakulix",
-        "repo": "cosmic-ext-alternative-startup",
-        "rev": "8ceda00197c7ec0905cf1dccdc2d67d738e45417",
-        "sha256": "0wzz40l04lwizhwsw846d48va169g1gmqmvzjw6f9wkr2vgafjnj",
-        "type": "tarball",
-        "url": "https://github.com/Drakulix/cosmic-ext-alternative-startup/archive/8ceda00197c7ec0905cf1dccdc2d67d738e45417.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "eza-preview.yazi": {
         "branch": "main",
         "description": "A Yazi plugin to preview directories using eza in list and tree modes",
