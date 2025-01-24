@@ -15,7 +15,6 @@
     ./tealdeer.nix # A very fast implementation of tldr
     ./thefuck.nix # Magnificent app which corrects your previous console command
     ./typix.nix # Typst: A markup-based typesetting system
-    ./yazelix.nix # Zellij, Yazi and Nushell adding a File Tree to Helix & Helix-friendly keybindigs for Zellij
     ./yazi
   ];
 

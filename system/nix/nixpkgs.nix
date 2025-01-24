@@ -9,10 +9,6 @@
   nivOverlay = final: prev: {
     cosmic-ext-alternative-startup = final.callPackage ./pkgs/cosmic-ext-alternative-startup {inherit sources;};
     lumen = final.callPackage ./pkgs/lumen {inherit sources;};
-    yazelix = final.callPackage ./pkgs/yazelix {
-      inherit sources;
-      inherit (final) yazi zellij nushell helix;
-    };
     yaziPlugins = {
       clipboard = sources."clipboard.yazi";
       eza-preview = sources."eza-preview.yazi";
@@ -41,6 +37,5 @@ in {
   };
   environment.systemPackages = with pkgs; [
     niv # Easy dependency management for Nix projects
-    yazelix
   ];
 }

@@ -1,0 +1,33 @@
+name: Update Repository Tree
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install tree
+        run: sudo apt-get update && sudo apt-get install -y tree
+
+      - name: Generate Repository Tree
+        run: |
+          # Generate full tree, excluding some directories
+          tree -L 4 -I 'result|target|.git' --charset=ascii > repo_tree.txt
+
+      - name: Update README
+        run: |
+          # Use sed to replace the tree section between markers
+          sed -i '/```lang-markdown/,/```/c\```lang-markdown\n'"$(cat repo_tree.txt)"'\n```' README.md
+
+      - name: Commit and Push Changes
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add README.md
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update repository tree"
+          git push
