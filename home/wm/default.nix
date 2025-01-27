@@ -1,7 +1,0 @@
-{
-  imports = [
-    ./cosmic
-    ./hyprland
-    # ./niri
-  ];
-}

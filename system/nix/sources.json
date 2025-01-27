@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "DreamMaoMao",
         "repo": "clipboard.yazi",
-        "rev": "1ca5e31d5ed18cc4c9566c93d0ffff0ad8ab49f8",
-        "sha256": "11l7zlvxhds1l2axn5dppi7yvnmm9vr3yh5pyx9hw2dvsihdaid6",
+        "rev": "93b73d41e17f3342dab36c4280ec16d1afc7f40e",
+        "sha256": "035mymkibcgvsdbfd5g9j8blrbfai89g7xl0nfjlmbh1wk9a3qn9",
         "type": "tarball",
-        "url": "https://github.com/DreamMaoMao/clipboard.yazi/archive/1ca5e31d5ed18cc4c9566c93d0ffff0ad8ab49f8.tar.gz",
+        "url": "https://github.com/DreamMaoMao/clipboard.yazi/archive/93b73d41e17f3342dab36c4280ec16d1afc7f40e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "cosmic-ext-alternative-startup": {
@@ -41,10 +41,10 @@
         "homepage": "",
         "owner": "DreamMaoMao",
         "repo": "fg.yazi",
-        "rev": "2cb5b49c3471195ebc2fab83fd9fef6fd8a16d5f",
-        "sha256": "1gabx56m96lifyrrjr9ld98vxx7vqhkvzjfs6n6l32b1v3kk33vp",
+        "rev": "69576ef43b3f350d49b0467efb1ff15af66eb177",
+        "sha256": "16j8brixqlc1mm1ahbnd6kxj564br3h8l6k464py21qvhzh0p90v",
         "type": "tarball",
-        "url": "https://github.com/DreamMaoMao/fg.yazi/archive/2cb5b49c3471195ebc2fab83fd9fef6fd8a16d5f.tar.gz",
+        "url": "https://github.com/DreamMaoMao/fg.yazi/archive/69576ef43b3f350d49b0467efb1ff15af66eb177.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "lumen": {
@@ -65,10 +65,10 @@
         "homepage": null,
         "owner": "SL-RU",
         "repo": "mmtui",
-        "rev": "69c1ba8dbc40fce3835cb8bb2b81d70e34214cf5",
-        "sha256": "13kn62jq6z3rrbbhbsnrcbxf8k30fv8s1z5cqis3cf4f7s9p9vmk",
+        "rev": "fc4b80095e691d204c8cf35f07b1d5f9306c8b4a",
+        "sha256": "1p49jg6mnxhx7ih8zacna11xr948dydbiab05kwsnnvxardyd434",
         "type": "tarball",
-        "url": "https://github.com/SL-RU/mmtui/archive/69c1ba8dbc40fce3835cb8bb2b81d70e34214cf5.tar.gz",
+        "url": "https://github.com/SL-RU/mmtui/archive/fc4b80095e691d204c8cf35f07b1d5f9306c8b4a.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "mount.yazi": {
@@ -89,10 +89,10 @@
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5df43628fdf08d642be8ba5b3625a6c70731c19c",
-        "sha256": "05xhbk4yjbv0f760ld6q9z2v0nphakgk78kgd0wnnmzdjqqkbfad",
+        "rev": "852ff1d9e153d8875a83602e03fdef8a63f0ecf8",
+        "sha256": "0f22vwxah4xhasfdi3lssk0kyng7xkjzygrz2d1wss3kpd523zb5",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/5df43628fdf08d642be8ba5b3625a6c70731c19c.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/852ff1d9e153d8875a83602e03fdef8a63f0ecf8.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "starship-yazi": {
@@ -101,10 +101,10 @@
         "homepage": null,
         "owner": "Rolv-Apneseth",
         "repo": "starship.yazi",
-        "rev": "4053c8c486f9cfd60f1f42fa5d80e97caef41eb1",
-        "sha256": "1h7p4mvqs2cjxcbqspm9ysi6in3xpz31840bqr0nj56mzn0pfcr9",
+        "rev": "af8bf6f82165b83272b6501ce7445cf2c61fbf51",
+        "sha256": "0850h00mh68wyhqxhnb85gmwb0lf6n20n7jpxf0dzyl9k9jj9crg",
         "type": "tarball",
-        "url": "https://github.com/Rolv-Apneseth/starship.yazi/archive/4053c8c486f9cfd60f1f42fa5d80e97caef41eb1.tar.gz",
+        "url": "https://github.com/Rolv-Apneseth/starship.yazi/archive/af8bf6f82165b83272b6501ce7445cf2c61fbf51.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "yazelix": {
@@ -125,10 +125,10 @@
         "homepage": "",
         "owner": "yazi-rs",
         "repo": "plugins",
-        "rev": "e4aaf430ad7f81d2e358e3a60525c8ef3fa259fc",
-        "sha256": "0wg7rd9jwpsbg7w6cdiy5d03d5kc3pxj6fvcqv2qklyd09igd23l",
+        "rev": "02d18be03812415097e83c6a912924560e4cec6d",
+        "sha256": "1202ak2gyh5kc4l6rngp08l3aibmnpwywdk6cmx5lmgnqz0pqmnl",
         "type": "tarball",
-        "url": "https://github.com/yazi-rs/plugins/archive/e4aaf430ad7f81d2e358e3a60525c8ef3fa259fc.tar.gz",
+        "url": "https://github.com/yazi-rs/plugins/archive/02d18be03812415097e83c6a912924560e4cec6d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

@@ -2,6 +2,7 @@
   # Import configurations of graphical applications
   imports = [
     ./calibre.nix # Comprehensive e-book software
+    ./cosmic
     ./chromium.nix
     ./firefox # A web browser built from Firefox source tree
     # ./mpv.nix # General-purpose media player, fork of MPlayer and mplayer2
@@ -17,6 +18,7 @@
   home.packages = with pkgs; [
     blender # 3D Creation/Animation/Publishing System
     # celeste # GUI file synchronization client that can sync with any cloud provider
+    fractal # Matrix group messaging app
     gimp # The GNU Image Manipulation Program
     krita # A free and open source painting application
     libwacom # Libraries, configuration, and diagnostic tools for Wacom tablets running under Linux

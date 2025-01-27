@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ./plugins
+    # ./plugins
     ./theme/filetype.nix
     ./theme/icons.nix
     ./theme/manager.nix

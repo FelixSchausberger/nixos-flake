@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    ../nix/pkgs/start-cosmic-ext
+    # ../nix/pkgs/start-cosmic-ext
     inputs.nixos-cosmic.nixosModules.default
     "${inputs.impermanence}/nixos.nix"
   ];

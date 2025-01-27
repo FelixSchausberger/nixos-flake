@@ -6,7 +6,6 @@
     ../../gui/prusaslicer.nix # G-code generator for 3D printer
     ../../shells
     ../../tui
-    ../../wm
   ];
 
   home.packages = with pkgs; [
