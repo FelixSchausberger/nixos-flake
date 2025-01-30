@@ -8,29 +8,74 @@ on:
 jobs:
   update-readme:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install tree
-        run: sudo apt-get update && sudo apt-get install -y tree
+        id: install
+        run: |
+          sudo apt-get update && sudo apt-get install -y tree
+          tree --version
 
       - name: Generate Repository Tree
+        id: generate
+        if: success()
         run: |
-          tree -L 4 -I 'result|target|.git|secrets' --charset=ascii > repo_tree.txt
+          echo ".
+          $(tree -L 4 -I 'result|target|.git|secrets|wallpapers' --charset=ascii)" > repo_tree.txt
 
       - name: Update README
+        id: update
+        if: success()
         run: |
-          awk '
-            /```lang-markdown/ {p=1; print; next}
-            /```/ {p=0}
-            !p
-          ' README.md > README.md.tmp
-          sed -i '/```lang-markdown/r repo_tree.txt' README.md.tmp
+          # Create temporary file
+          touch README.md.tmp
+          
+          while IFS= read -r line; do
+            if [[ "$line" == '```tree' ]]; then
+              echo "$line" >> README.md.tmp
+              cat repo_tree.txt >> README.md.tmp
+              skip=1
+            elif [[ "$line" == '```' && "$skip" == 1 ]]; then
+              echo "$line" >> README.md.tmp
+              skip=0
+            elif [[ "$skip" != 1 ]]; then
+              echo "$line" >> README.md.tmp
+            fi
+          done < README.md
+          
+          # Replace original with new content
           mv README.md.tmp README.md
+          
+          # Clean up
+          rm -f repo_tree.txt
 
       - name: Commit Changes
+        id: commit
+        if: success()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          # Configure git
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Set up HTTPS remote with token
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          
+          # Stage only README.md changes
           git add README.md
-          git diff --quiet && git diff --staged --quiet || git commit -m "Update repository tree"
+          
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update repository tree"
+            # Use HTTPS URL with token for push
+            git push origin HEAD:main
+          fi
