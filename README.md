@@ -10,141 +10,122 @@ Personal configs for Home-Manager and NixOS. Using
 
 ```tree
 .
-├── flake.lock
-├── flake.nix
-├── home
-│   ├── default.nix
-│   ├── gui
-│   │   ├── calibre.nix
-│   │   ├── chromium.nix
-│   │   ├── cosmic
-│   │   │   ├── cosmic-files.nix
-│   │   │   ├── cosmic-term.nix
-│   │   │   └── default.nix
-│   │   ├── default.nix
-│   │   ├── firefox
-│   │   │   ├── default.nix
-│   │   │   └── tabliss.css
-│   │   ├── freecad.nix
-│   │   ├── mpv.nix
-│   │   ├── obsidian.nix
-│   │   ├── oculante.nix
-│   │   ├── planify.nix
-│   │   ├── prusaslicer.nix
-│   │   ├── sioyek.nix
-│   │   ├── spicetify.nix
-│   │   ├── steam.nix
-│   │   ├── vscode.nix
-│   │   └── zen.nix
-│   ├── profiles
-│   │   ├── default.nix
-│   │   ├── desktop
-│   │   │   └── default.nix
-│   │   └── surface
-│   │       └── default.nix
-│   ├── scripts
-│   │   ├── Cargo.lock
-│   │   ├── Cargo.toml
-│   │   ├── flake.lock
-│   │   ├── flake.nix
-│   │   ├── LICENSE
-│   │   ├── README.md
-│   │   └── src
-│   │       └── bin
-│   ├── shells
-│   │   ├── default.nix
-│   │   ├── fish.nix
-│   │   ├── starship.nix
-│   │   └── zoxide.nix
-│   ├── tui
-│   │   ├── bat.nix
-│   │   ├── broot.nix
-│   │   ├── default.nix
-│   │   ├── direnv.nix
-│   │   ├── eza.nix
-│   │   ├── fd.nix
-│   │   ├── fzf.nix
-│   │   ├── gammastep.nix
-│   │   ├── git.nix
-│   │   ├── helix
-│   │   │   ├── default.nix
-│   │   │   └── languages.nix
-│   │   ├── jujutsu.nix
-│   │   ├── nix.nix
-│   │   ├── rclone.nix
-│   │   ├── rip.nix
-│   │   ├── tealdeer.nix
-│   │   ├── thefuck.nix
-│   │   ├── typix.nix
-│   │   └── yazi
-│   │       ├── default.nix
-│   │       ├── plugins
-│   │       │   ├── chmod.nix
-│   │       │   ├── clipboard.nix
-│   │       │   ├── default.nix
-│   │       │   ├── eza-preview.nix
-│   │       │   ├── fg.nix
-│   │       │   ├── git.nix
-│   │       │   ├── mount.nix
-│   │       │   └── starship.nix
-│   │       └── theme
-│   │           ├── filetype.nix
-│   │           ├── icons.nix
-│   │           ├── manager.nix
-│   │           └── status.nix
-│   └── wallpapers
-│       ├── appa.jpg
-│       ├── solar-system.jpg
-│       └── the-whale.jpg
-├── hosts
-│   ├── default.nix
-│   ├── desktop
-│   │   ├── boot-zfs.nix
-│   │   ├── default.nix
-│   │   ├── hardware-configuration.nix
-│   │   └── ssh_host_ed25519_key.pub
-│   └── surface
-│       ├── boot-zfs.nix
-│       ├── default.nix
-│       ├── hardware-configuration.nix
-│       └── ssh_host_ed25519_key.pub
-├── pre-commit-hooks.nix
-├── README.md
-├── scripts.nix
-├── secrets
-│   └── secrets.json
-└── system
-    ├── core
-    │   ├── default.nix
-    │   ├── security
-    │   │   ├── default.nix
-    │   │   ├── sops.nix
-    │   │   └── ssh.nix
-    │   └── users.nix
-    ├── default.nix
-    ├── hardware
-    │   ├── bluetooth.nix
-    │   ├── default.nix
-    │   └── graphics.nix
-    ├── network.nix
-    ├── nix
-    │   ├── default.nix
-    │   ├── nixpkgs.nix
-    │   ├── pkgs
-    │   │   ├── lumen
-    │   │   │   └── default.nix
-    │   │   └── mmtui
-    │   │       └── default.nix
-    │   ├── sources.json
-    │   ├── sources.nix
-    │   └── substituters.nix
-    └── programs
-        ├── cosmic.nix
-        ├── default.nix
-        ├── development.nix
-        ├── fonts.nix
-        ├── home-manager.nix
-        └── waydroid.nix
+.
+|-- README.md
+|-- flake.lock
+|-- flake.nix
+|-- home
+|   |-- default.nix
+|   |-- gui
+|   |   |-- calibre.nix
+|   |   |-- chromium.nix
+|   |   |-- cosmic
+|   |   |   |-- cosmic-files.nix
+|   |   |   |-- cosmic-term.nix
+|   |   |   `-- default.nix
+|   |   |-- default.nix
+|   |   |-- firefox
+|   |   |   |-- default.nix
+|   |   |   `-- tabliss.css
+|   |   |-- freecad.nix
+|   |   |-- mpv.nix
+|   |   |-- obsidian.nix
+|   |   |-- oculante.nix
+|   |   |-- planify.nix
+|   |   |-- prusaslicer.nix
+|   |   |-- sioyek.nix
+|   |   |-- spicetify.nix
+|   |   |-- steam.nix
+|   |   |-- vscode.nix
+|   |   `-- zen.nix
+|   |-- profiles
+|   |   |-- default.nix
+|   |   |-- desktop
+|   |   |   `-- default.nix
+|   |   `-- surface
+|   |       `-- default.nix
+|   |-- scripts
+|   |   |-- Cargo.lock
+|   |   |-- Cargo.toml
+|   |   |-- LICENSE
+|   |   |-- README.md
+|   |   |-- flake.lock
+|   |   `-- flake.nix
+|   |-- shells
+|   |   |-- default.nix
+|   |   |-- fish.nix
+|   |   |-- starship.nix
+|   |   `-- zoxide.nix
+|   `-- tui
+|       |-- bat.nix
+|       |-- broot.nix
+|       |-- default.nix
+|       |-- direnv.nix
+|       |-- eza.nix
+|       |-- fd.nix
+|       |-- fzf.nix
+|       |-- gammastep.nix
+|       |-- git.nix
+|       |-- helix
+|       |   |-- default.nix
+|       |   `-- languages.nix
+|       |-- jujutsu.nix
+|       |-- nix.nix
+|       |-- rclone.nix
+|       |-- rip.nix
+|       |-- tealdeer.nix
+|       |-- thefuck.nix
+|       |-- typix.nix
+|       `-- yazi
+|           |-- default.nix
+|           |-- plugins
+|           `-- theme
+|-- hosts
+|   |-- default.nix
+|   |-- desktop
+|   |   |-- boot-zfs.nix
+|   |   |-- default.nix
+|   |   |-- hardware-configuration.nix
+|   |   `-- ssh_host_ed25519_key.pub
+|   `-- surface
+|       |-- boot-zfs.nix
+|       |-- default.nix
+|       |-- hardware-configuration.nix
+|       `-- ssh_host_ed25519_key.pub
+|-- pre-commit-hooks.nix
+|-- scripts.nix
+`-- system
+    |-- core
+    |   |-- default.nix
+    |   |-- security
+    |   |   |-- default.nix
+    |   |   |-- sops.nix
+    |   |   `-- ssh.nix
+    |   `-- users.nix
+    |-- default.nix
+    |-- hardware
+    |   |-- bluetooth.nix
+    |   |-- default.nix
+    |   `-- graphics.nix
+    |-- network.nix
+    |-- nix
+    |   |-- default.nix
+    |   |-- nixpkgs.nix
+    |   |-- pkgs
+    |   |   |-- lumen
+    |   |   `-- mmtui
+    |   |-- sources.json
+    |   |-- sources.nix
+    |   `-- substituters.nix
+    `-- programs
+        |-- cosmic.nix
+        |-- default.nix
+        |-- development.nix
+        |-- fonts.nix
+        |-- home-manager.nix
+        `-- waydroid.nix
+
+27 directories, 87 files
 ```
 
 ## 📦 Setup
