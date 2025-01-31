@@ -4,19 +4,24 @@
   pkg-config,
   udisks2,
   dbus,
-  sources,
   llvmPackages,
   linuxHeaders,
+  fetchFromGitHub,
   ...
 }:
-rustPlatform.buildRustPackage {
+rustPlatform.buildRustPackage rec {
   pname = "mmtui";
-  version = "0.1.0"; # Update as needed
+  version = "main";
 
-  src = sources.mmtui;
+  src = fetchFromGitHub {
+    owner = "SL-RU";
+    repo = "mmtui";
+    rev = "main";
+    sha256 = "sha256-ae2bnllVnAjCVTL++1IHm9tOwS4hJ/m5mcKWpsYtx34=";
+  };
 
   cargoLock = {
-    lockFile = "${sources.mmtui}/Cargo.lock";
+    lockFile = "${src}/Cargo.lock";
   };
 
   LIBCLANG_PATH = "${llvmPackages.libclang.lib}/lib";

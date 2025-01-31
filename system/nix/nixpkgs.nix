@@ -1,22 +1,7 @@
 {
   inputs,
-  pkgs,
   ...
-}: let
-  # Import niv sources
-  sources = import ./sources.nix;
-  # Create an overlay for niv-managed packages
-  nivOverlay = final: prev: {
-    lumen = final.callPackage ./pkgs/lumen {inherit sources;};
-    yaziPlugins = {
-      clipboard = sources."clipboard.yazi";
-      eza-preview = sources."eza-preview.yazi";
-      fg = sources."fg.yazi";
-      mount = sources."mount.yazi";
-      mmtui = pkgs.callPackage "${inputs.self}/system/nix/pkgs/mmtui" {inherit sources;};
-    };
-  };
-in {
+}: {
   imports = [
     inputs.lix-module.nixosModules.default
   ];
@@ -30,10 +15,6 @@ in {
     };
     overlays = [
       inputs.nur.overlays.default
-      nivOverlay
     ];
   };
-  environment.systemPackages = with pkgs; [
-    niv # Easy dependency management for Nix projects
-  ];
 }

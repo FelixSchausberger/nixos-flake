@@ -1,9 +1,14 @@
-{pkgs, ...}: {
+{
+  inputs, 
+  pkgs, 
+  ...
+}: {
+  home.file.".config/yazi/plugins/mount" = {
+    source = inputs.yazi-mount;
+    recursive = true;
+  };
+  
   programs.yazi = {
-    plugins = {
-      mount = pkgs.yaziPlugins.mount;
-    };
-
     keymap.manager.prepend_keymap = [
       {
         on = ["M"];
@@ -14,6 +19,6 @@
   };
 
   home.packages = with pkgs; [
-    pkgs.yaziPlugins.mmtui # TUI disk mount manager for TUI file managers.
+    inputs.self.packages.${pkgs.system}.mmtui # TUI disk mount manager for TUI file managers.
   ];
 }

@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   # secrets,
   ...
@@ -9,7 +10,7 @@
     # git-crypt # Transparent file encryption in git
     # graphite-cli # CLI that makes creating stacked git changes fast & intuitive
     lazygit # A simple terminal UI for git commands
-    lumen # Instant AI Git Commit message, Git changes summary from the CLI
+    inputs.self.packages.${pkgs.system}.lumen # Instant AI Git Commit message, Git changes summary from the CLI
     pre-commit # A framework for managing and maintaining multi-language pre-commit hooks
   ];
 

@@ -1,12 +1,10 @@
-{inputs, ...}: let
-  # Import niv sources
-  sources = import "${inputs.self}/system/nix/sources.nix";
-in {
+{inputs, ...}: {
+  home.file.".config/yazi/plugins/starship" = {
+    source = inputs.yazi-starship;
+    recursive = true;
+  };
+  
   programs.yazi = {
-    plugins = {
-      starship = sources.starship-yazi;
-    };
-
     initLua = ''
       require("starship"):setup()
     '';

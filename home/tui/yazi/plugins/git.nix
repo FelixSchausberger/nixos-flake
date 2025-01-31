@@ -1,10 +1,7 @@
-{inputs, ...}: let
-  # Import niv sources
-  sources = import "${inputs.self}/system/nix/sources.nix";
-in {
+{inputs, ...}: {
   programs.yazi = {
     plugins = {
-      git = "${sources.yazi-plugins}/git.yazi";
+      git = "${inputs.yazi-plugins}/git.yazi";
     };
 
     settings.plugin.prepend_fetchers = [

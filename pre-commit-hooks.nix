@@ -9,10 +9,6 @@
       "home/default.nix"
       "home/profiles/default.nix"
       "hosts/default.nix"
-
-      # Exclude because of niv
-      "system/nix/nixpkgs.nix"
-      "system/nix/sources.nix"
     ];
 
     settings.hooks = {

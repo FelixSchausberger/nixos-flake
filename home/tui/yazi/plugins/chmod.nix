@@ -1,10 +1,7 @@
-{inputs, ...}: let
-  # Import niv sources
-  sources = import "${inputs.self}/system/nix/sources.nix";
-in {
+{inputs, ...}: {
   programs.yazi = {
     plugins = {
-      chmod = "${sources.yazi-plugins}/chmod.yazi";
+      chmod = "${inputs.yazi-plugins}/chmod.yazi";
     };
 
     keymap.manager.prepend_keymap = [

@@ -23,6 +23,11 @@
         pkgs,
         ...
       }: {
+        packages = {
+          lumen = pkgs.callPackage ./system/nix/pkgs/lumen {};
+          mmtui = pkgs.callPackage ./system/nix/pkgs/mmtui {};
+        };
+
         devShells.default = pkgs.mkShell {
           packages = [
             pkgs.alejandra
@@ -51,11 +56,7 @@
       inputs.systems.follows = "systems";
     };
 
-    flake-parts = {
-      # url = "github:hercules-ci/flake-parts/b905f6fc23a9051a6e1b741e1438dbfc0634c6de";
-      url = "github:hercules-ci/flake-parts";
-      # inputs.nixpkgs-lib.follows = "nixpkgs";
-    };
+    flake-parts.url = "github:hercules-ci/flake-parts";
 
     nixpkgs = {
       follows = "nixos-cosmic/nixpkgs";
@@ -68,8 +69,10 @@
 
     lix-module = {
       url = "git+https://git.lix.systems/lix-project/nixos-module";
-      inputs.lix.follows = "lix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = { 
+        lix.follows = "lix";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
 
     # Rest of inputs, alphabetical order
@@ -112,7 +115,7 @@
       };
     };
 
-    # scripts.url = "./home/scripts";
+    scripts.url = "./home/scripts";
 
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
@@ -124,6 +127,36 @@
     typix.url = "github:loqusion/typix";
 
     yazi.url = "github:sxyazi/yazi";
+
+    yazi-clipboard = {
+      url = "git+https://gitee.com/DreamMaoMao/clipboard.yazi";
+      flake = false; # This repo doesn't contain a flake.nix
+    };
+
+    yazi-eza-preview = {
+      url = "github:ahkohd/eza-preview.yazi";
+      flake = false; # This repo doesn't contain a flake.nix
+    };
+
+    yazi-fg = {
+      url = "git+https://gitee.com/DreamMaoMao/fg.yazi";
+      flake = false; # This repo doesn't contain a flake.nix
+    };
+
+    yazi-mount = {
+      url = "git+https://github.com/SL-RU/mount.yazi";
+      flake = false; # This repo doesn't contain a flake.nix
+    };
+
+    yazi-starship = {
+      url = "github:Rolv-Apneseth/starship.yazi";
+      flake = false; # This repo doesn't contain a flake.nix
+    };
+
+    yazi-plugins = {
+      url = "github:yazi-rs/plugins";
+      flake = false; # This repo doesn't contain a flake.nix
+    };
 
     # zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };

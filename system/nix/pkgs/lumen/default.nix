@@ -1,25 +1,22 @@
-{
-  lib,
-  rustPlatform,
-  pkg-config,
-  openssl,
-  sources,
-}:
-rustPlatform.buildRustPackage {
+{ rustPlatform, fetchFromGitHub, lib }:
+
+rustPlatform.buildRustPackage rec {
   pname = "lumen";
-  version = "0.1.0";
+  version = "main";
 
-  src = sources.lumen;
-
-  cargoLock = {
-    lockFile = "${sources.lumen}/Cargo.lock";
+  src = fetchFromGitHub {
+    owner = "jnsahaj";
+    repo = "lumen";
+    rev = "main";
+    sha256 = "sha256-ae2bnllVnAjCVTL++1IHm9tOwS4hJ/m5mcKWpsYtx34=";
   };
 
-  nativeBuildInputs = [pkg-config openssl.dev];
-  buildInputs = [openssl];
+  cargoLock = {
+    lockFile = "${src}/Cargo.lock";
+  };
 
   meta = with lib; {
-    description = "A blazingly fast CLI tool to set backlight brightness";
+    description = "A Rust-based terminal multiplexer";
     homepage = "https://github.com/jnsahaj/lumen";
     license = licenses.mit;
     platforms = platforms.linux;

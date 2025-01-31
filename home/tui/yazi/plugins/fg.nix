@@ -1,9 +1,10 @@
-{pkgs, ...}: {
+{inputs, ...}: {
+  home.file.".config/yazi/plugins/fg" = {
+    source = inputs.yazi-fg;
+    recursive = true;
+  };
+  
   programs.yazi = {
-    plugins = {
-      fg = pkgs.yaziPlugins.fg;
-    };
-
     keymap.manager.prepend_keymap = [
       {
         on = ["f" "g"];
