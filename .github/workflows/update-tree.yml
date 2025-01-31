@@ -4,9 +4,13 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'README.md'  # Skip when only README.md is changed
 
 jobs:
   update-readme:
+    # Skip if committed by the bot
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -27,7 +31,7 @@ jobs:
         if: success()
         run: |
           echo ".
-          $(tree -L 4 -I 'result|target|.git|secrets|wallpapers' --charset=ascii)" > repo_tree.txt
+          $(tree -L 4 -I 'result|target|.git|secrets|wallpapers' --charset=ascii | sed '$d')" > repo_tree.txt
 
       - name: Update README
         id: update
@@ -38,7 +42,8 @@ jobs:
           
           while IFS= read -r line; do
             if [[ "$line" == '```tree' ]]; then
-              echo "$line" >> README.md.tmp
+              echo '```' >> README.md.tmp  # Close the previous block
+              echo '```plaintext' >> README.md.tmp  # Open new block with plaintext
               cat repo_tree.txt >> README.md.tmp
               skip=1
             elif [[ "$line" == '```' && "$skip" == 1 ]]; then
@@ -76,6 +81,5 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Update repository tree"
-            # Use HTTPS URL with token for push
             git push origin HEAD:main
           fi

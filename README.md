@@ -8,7 +8,7 @@ Personal configs for Home-Manager and NixOS. Using
 
 ## 🗃️ Contents
 
-```tree
+```plaintext
 .
 .
 |-- README.md
