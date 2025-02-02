@@ -12,6 +12,7 @@
     ./nix.nix # Nix tooling
     ./rclone.nix # Sync files and directories to and from major cloud storage
     ./rip.nix # Replacement for rm with focus on safety, ergonomics and performance
+    ./sops.nix # Simple and flexible tool for managing secrets
     ./tealdeer.nix # A very fast implementation of tldr
     ./thefuck.nix # Magnificent app which corrects your previous console command
     ./typix.nix # Typst: A markup-based typesetting system

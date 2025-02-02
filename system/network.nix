@@ -1,6 +1,6 @@
 {
+  config,
   inputs,
-  secrets,
   ...
 }: {
   imports = [
@@ -23,11 +23,11 @@
     wireless = {
       networks = {
         Pretty-Fly-For-A-WiFi = {
-          psk = "${secrets.wifi.pretty-fly-for-a-wifi}";
+          psk = config.sops.secrets."wifi/pretty-fly-for-a-wifi".path;
         };
 
         Hochbau-Talstation = {
-          psk = "${secrets.wifi.hochbau-talstation}";
+          psk = config.sops.secrets."wifi/hochbau-talstation".path;
         };
       };
     };

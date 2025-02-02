@@ -65,11 +65,11 @@
 
     lix = {
       url = "git+https://git@git.lix.systems/lix-project/lix";
-    };    
+    };
 
     lix-module = {
       url = "git+https://git.lix.systems/lix-project/nixos-module";
-      inputs = { 
+      inputs = {
         lix.follows = "lix";
         nixpkgs.follows = "nixpkgs";
       };
@@ -115,7 +115,7 @@
       };
     };
 
-    scripts.url = "./home/scripts";
+    # scripts.url = "./home/scripts";
 
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";

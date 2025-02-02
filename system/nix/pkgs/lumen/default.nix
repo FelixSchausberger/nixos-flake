@@ -1,5 +1,10 @@
-{ rustPlatform, fetchFromGitHub, lib }:
-
+{
+  rustPlatform,
+  fetchFromGitHub,
+  lib,
+  pkg-config,
+  openssl,
+}:
 rustPlatform.buildRustPackage rec {
   pname = "lumen";
   version = "main";
@@ -14,6 +19,9 @@ rustPlatform.buildRustPackage rec {
   cargoLock = {
     lockFile = "${src}/Cargo.lock";
   };
+
+  nativeBuildInputs = [pkg-config];
+  buildInputs = [openssl];
 
   meta = with lib; {
     description = "A Rust-based terminal multiplexer";

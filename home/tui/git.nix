@@ -1,13 +1,13 @@
 {
+  config,
   inputs,
   pkgs,
-  # secrets,
   ...
 }: {
   home.packages = with pkgs; [
     act # Run your GitHub Actions locally
+    git-credential-manager
     # https://lgug2z.com/articles/handling-secrets-in-nixos-an-overview/
-    # git-crypt # Transparent file encryption in git
     # graphite-cli # CLI that makes creating stacked git changes fast & intuitive
     lazygit # A simple terminal UI for git commands
     inputs.self.packages.${pkgs.system}.lumen # Instant AI Git Commit message, Git changes summary from the CLI
@@ -20,12 +20,19 @@
     userEmail = "131732042+FelixSchausberger@users.noreply.github.com"; # https://help.github.com/articles/setting-your-email-in-git/
     delta = {enable = true;};
     extraConfig = {
+      github.token = "${config.sops.secrets."github/token".path}";
+      # github.token = config.sops.secrets."github/token".path;
       init.defaultBranch = "main";
       pull.rebase = true;
-      config.credential.helper = "libsecret";
+      credential.helper = "libsecret";
+      # credential = {
+      #   helper = "manager"; # "libsecret";
+      #   "https://github.com".username = "Felix Schausberger";
+      #   credentialStore = "cache";
+      # };
       core.editor = "${pkgs.helix}/bin/hx";
       # url = {
-      #   "https://oauth2:${secrets.github.oauth_token}@github.com" = {
+      #   "https://oauth2:${config.sops.secrets.github.token}@github.com" = {
       #     insteadOf = "https://github.com";
       #   };
       # };

@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./nixpkgs.nix
     ./substituters.nix
@@ -6,13 +10,17 @@
 
   nix = {
     settings = {
-      warn-dirty = false;
       auto-optimise-store = true;
+      access-tokens = [
+        "github.com=${config.sops.secrets."github/token".path}"
+      ];
       experimental-features = [
         "nix-command"
         "flakes"
-        "pipe-operators" # Used by lix, for nix use "pipe-operators"
+        "pipe-operator" # Used by lix, for nix use "pipe-operators"
       ];
+      trusted-users = ["root" "@wheel"];
+      warn-dirty = false;
     };
 
     gc = {

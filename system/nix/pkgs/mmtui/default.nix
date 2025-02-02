@@ -11,13 +11,13 @@
 }:
 rustPlatform.buildRustPackage rec {
   pname = "mmtui";
-  version = "main";
+  version = "master";
 
   src = fetchFromGitHub {
     owner = "SL-RU";
     repo = "mmtui";
-    rev = "main";
-    sha256 = "sha256-ae2bnllVnAjCVTL++1IHm9tOwS4hJ/m5mcKWpsYtx34=";
+    rev = "master";
+    sha256 = "sha256-ZJDmW1Z9W6v5LGCpuJpviKTcQ1CWqY9gPB12W82Tidw=";
   };
 
   cargoLock = {
