@@ -19,8 +19,8 @@ in {
       ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p ${mountdir}";
       ExecStart = ''
         ${pkgs.rclone}/bin/rclone mount \
-            --drive-client-id "${config.sops.defaultSymlinkPath."rclone/client-id".path}" \
-            --drive-client-secret "${config.sops.defaultSymlinkPath."rclone/client-secret".path}" gdrive: ${mountdir} \
+            --drive-client-id "${config.sops.secrets."rclone/client-id".path}" \
+            --drive-client-secret "${config.sops.secrets."rclone/client-secret".path}" gdrive: ${mountdir} \
               --dir-cache-time 48h \
               --vfs-cache-mode full \
               --vfs-cache-max-age 48h \

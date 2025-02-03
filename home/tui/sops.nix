@@ -1,6 +1,5 @@
 {
   inputs,
-  pkgs,
   ...
 }: {
   imports = [
@@ -8,11 +7,13 @@
   ];
 
   sops = {
-    defaultSymlinkPath = "/run/user/1000/secrets";
-    defaultSecretsMountPoint = "/run/user/1000/secrets.d";
-  };
+    age.sshKeyPaths = ["/home/${inputs.self.lib.user}/.ssh/id_ed25519"];
+    defaultSopsFile = "${inputs.self}/secrets/secrets.json";
 
-  home.packages = with pkgs; [
-    sops
-  ];
+    secrets = {
+      "github/token" = {};
+      "rclone/client-id" = {};
+      "rclone/client-secret" = {};
+    };
+  };
 }
