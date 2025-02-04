@@ -4,12 +4,19 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - 'README.md'  # Skip when only README.md is changed
+    paths:
+      - '**/*.nix'
+      - '**/*.css'
+      - '**/*.js'
+      - '**/*.json'
+      - '**/*.md'
+      - '**/*.toml'
+      - '**/*.yaml'
+      - '**/*.yml'
+      # Add other file types you want to monitor
 
 jobs:
   update-readme:
-    # Skip if committed by the bot
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     permissions:
@@ -31,19 +38,18 @@ jobs:
         if: success()
         run: |
           echo ".
-          $(tree -L 4 -I 'result|target|.git|secrets|wallpapers' --charset=ascii | sed '$d')" > repo_tree.txt
+          $(tree -L 4 --charset=utf8 -I 'result|target|.git|secrets|wallpapers' | sed '$d')" > repo_tree.txt
 
       - name: Update README
         id: update
         if: success()
         run: |
-          # Create temporary file
           touch README.md.tmp
           
           while IFS= read -r line; do
             if [[ "$line" == '```tree' ]]; then
-              echo '```' >> README.md.tmp  # Close the previous block
-              echo '```plaintext' >> README.md.tmp  # Open new block with plaintext
+              echo '```' >> README.md.tmp
+              echo '```lang-markdown' >> README.md.tmp
               cat repo_tree.txt >> README.md.tmp
               skip=1
             elif [[ "$line" == '```' && "$skip" == 1 ]]; then
@@ -54,10 +60,7 @@ jobs:
             fi
           done < README.md
           
-          # Replace original with new content
           mv README.md.tmp README.md
-          
-          # Clean up
           rm -f repo_tree.txt
 
       - name: Commit Changes
@@ -66,17 +69,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Configure git
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # Set up HTTPS remote with token
           git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          
-          # Stage only README.md changes
           git add README.md
           
-          # Check if there are changes to commit
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
