@@ -128,7 +128,7 @@ Personal configs for Home-Manager and NixOS. Using
 ## 📦 Setup
 
 - Install NixOS with opt-in state (darling erasure), follow:
-  - [NixOS Root on ZFS](https://openzfs.github.io/openzfs-docs/Getting%20Started/NixOS/Root%20on%20ZFS.html#nixos-root-on-zfs)
+  - [NixOS Root on ZFS](https://openzfs.github.io/openzfs-docs/Getting%20Started/NixOS/index.html)
   - [NixOS installation with opt-in state (darling erasure)](https://gist.github.com/Quelklef/e5d0d9ea0c2777db45f0779b9996c94b)
 - Clone this repository: `git clone git@github.com:FelixSchausberger/nixos.git`
 - Create a new host in `./hosts` and `.profiles`.
