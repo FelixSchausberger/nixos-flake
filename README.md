@@ -132,7 +132,8 @@ Personal configs for Home-Manager and NixOS. Using
   - [NixOS installation with opt-in state (darling erasure)](https://gist.github.com/Quelklef/e5d0d9ea0c2777db45f0779b9996c94b)
 - Clone this repository: `git clone git@github.com:FelixSchausberger/nixos.git`
 - Create a new host in `./hosts` and `.profiles`.
-- Move the `hardware-configuration.nix` to `./hosts/new_host` and create a public SSH key.
+- Move the `hardware-configuration.nix` to `./hosts/new_host` and
+create a public SSH key.
 - Set up secret management with [sops-nix](https://github.com/Mic92/sops-nix):
   1. Generate an SSH key pair if you don't have one:
 
