@@ -12,10 +12,15 @@
     ./theme/status.nix
   ];
 
-  # General file info
-  home.packages = [
-    pkgs.exiftool
-  ];
+  home = {
+    packages = [
+      pkgs.exiftool # # General file info
+    ];
+
+    shellAliases = {
+      ym = "cd /per/mnt/2tb-ssd/media; yazi";
+    };
+  };
 
   programs.bash = {
     enable = true;

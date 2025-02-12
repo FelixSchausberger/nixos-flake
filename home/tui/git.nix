@@ -11,6 +11,7 @@
     lazygit # A simple terminal UI for git commands
     inputs.self.packages.${pkgs.system}.lumen # Instant AI Git Commit message, Git changes summary from the CLI
     pre-commit # A framework for managing and maintaining multi-language pre-commit hooks
+    serie # A rich git commit graph in your terminal, like magic
   ];
 
   programs.git = {
@@ -24,11 +25,6 @@
       pull.rebase = true;
       credential.helper = "libsecret";
       core.editor = "${pkgs.helix}/bin/hx";
-      # url = {
-      #   "https://oauth2:${config.sops.secrets.github.token}@github.com" = {
-      #     insteadOf = "https://github.com";
-      #   };
-      # };
     };
   };
 

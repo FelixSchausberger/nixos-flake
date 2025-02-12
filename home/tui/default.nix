@@ -29,8 +29,10 @@
   home.packages = with pkgs; [
     bluetui # TUI for managing bluetooth on Linux
     # clipboard-jh # Cut, copy, and paste anything, anywhere, all from the terminal
+    lazyjournal # TUI for journalctl, file system logs, as well as Docker and Podman containers
     mdcat # Cat for markdown
     ouch # A CLI for easily compressing and decompressing files and directories
+    pik # Process Interactive Kill
     procs # A modern replacement for ps
     # quickemu # Quickly create and run virtual machines
     ripgrep # Utility that combines the usability of The Silver Searcher with the raw speed of grep

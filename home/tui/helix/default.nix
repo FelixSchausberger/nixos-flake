@@ -6,6 +6,10 @@
 }: {
   imports = [./languages.nix];
 
+  home.shellAliases = {
+    hn = "hx /per/etc/nixos";
+  };
+
   programs.helix = {
     enable = true;
     defaultEditor = true;
